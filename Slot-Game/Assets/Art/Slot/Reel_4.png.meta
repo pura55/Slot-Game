@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 5a4b7104d5be91f44afd2cc1e76b0bed
+guid: 1ed1f45fc7535bb4dbf775eb3ae98a1c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2068749290605168817
-    second: "\u30EA\u30FC\u30EB_5_0"
+      213: 413573681949055694
+    second: Reel_4_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,37 +96,11 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\u30EA\u30FC\u30EB_5_0"
+      name: Reel_4_0
       rect:
         serializedVersion: 2
         x: 0
@@ -141,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f47332c1b735a43e0800000000000000
-      internalID: -2068749290605168817
+      spriteID: eca1601921f4db500800000000000000
+      internalID: 413573681949055694
       vertices: []
       indices: 
       edges: []
@@ -161,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "\u30EA\u30FC\u30EB_5_0": -2068749290605168817
+      Reel_4_0: 413573681949055694
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

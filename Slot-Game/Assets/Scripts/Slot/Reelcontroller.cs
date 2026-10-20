@@ -1,47 +1,47 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 
 //リールをコントロールする用のスクリプトです
 public class Reelcontroller : MonoBehaviour
 {
-    //リールを取得
-    public RectTransform Reel1;
-    public RectTransform Reel2;
-    public RectTransform Reel3;
+    public RawImage image;                  //回すリール
+    public int symbolCount = 21;            //画像のコマ数
+    public float speed = 1.5f;              //1秒あたり何週
 
-    //初期位置
-    private Vector2 initalpos1;
-    private Vector2 initalpos2;
-    private Vector2 initalpos3;
-
-    //リールの回転速度
-    private float speed1 = 500f;
-    private float speed2 = 480f;
-    private float speed3 = 460f;
-
+    bool spinning;
+    float pos;                              // 0～1の現在位置
     void Start()
     {
-        initalpos1 = Reel1.anchoredPosition;
-        initalpos2 = Reel2.anchoredPosition;
-        initalpos3 = Reel3.anchoredPosition;
+        Apply();
+        //StartSpin();                      //これでまわるよ
     }
 
-    private void Update()
+    public void StartSpin()
     {
-        MoveReel(Reel1, speed1, initalpos1);
-        MoveReel(Reel2, speed2, initalpos2);
-        MoveReel(Reel3, speed3, initalpos3);
+        spinning = true;
     }
 
-    void MoveReel(RectTransform reel,float speed,Vector2 initialPos)
+    public void StopSpin()
     {
-        Vector2 pos = reel.anchoredPosition;
-        pos.y -= speed * Time.deltaTime;
-        if(pos.y < -1500f)
-        {
-            pos = initialPos;
-        }
+        spinning = false;
+        float step = 1f / symbolCount;      //コマの境目にぴったり合わせる
+        pos = Mathf.Round(pos / step) * step;
+        Apply();
+    }
 
-        reel.anchoredPosition = pos;
+    void Update()
+    {
+        if (!spinning) return;
+        pos = Mathf.Repeat(pos + speed * Time.deltaTime, 1f);
+        Apply();
+    }
+
+    void Apply()
+    {
+        var r = image.uvRect;
+        r.y = pos;
+        r.height = 3f / symbolCount;        //窓に3コマ表示
+        image.uvRect = r;
     }
 }
