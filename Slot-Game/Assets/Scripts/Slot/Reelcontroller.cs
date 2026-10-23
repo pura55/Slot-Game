@@ -11,6 +11,9 @@ public class Reelcontroller : MonoBehaviour
 
     bool spinning;
     float pos;                              // 0`1‚ÌŒ»İˆÊ’u
+
+    [SerializeField] private NumberManager numberManager;
+    
     void Start()
     {
         Apply();
@@ -19,6 +22,13 @@ public class Reelcontroller : MonoBehaviour
 
     public void StartSpin()
     {
+        // 3–‡Á”ï‚µ‚Ä‚¢‚È‚¯‚ê‚Î‰ñ‚³‚È‚¢
+        if (numberManager == null || !numberManager.IsUsed)
+        {
+            Debug.Log("æ‚É3–‡Á”ï‚µ‚Ä‚­‚¾‚³‚¢");
+            return;
+        }
+
         spinning = true;
     }
 
