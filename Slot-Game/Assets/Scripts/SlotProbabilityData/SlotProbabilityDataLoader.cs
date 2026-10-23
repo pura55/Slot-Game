@@ -1,0 +1,38 @@
+using UnityEngine;
+
+public class SlotProbabilityDataLoader : MonoBehaviour
+{
+    #region Config
+    [SerializeField] private TextAsset SlotProbabilityData;
+    [SerializeField] private SlotProbabilityDataSo slotprobabilityDataSo;
+    #endregion
+
+    private void Awake()
+    {
+        LoadData();
+    }
+
+    private void Start()
+    {
+
+    }
+
+    private void LoadData()
+    {
+        // アセットがnullではない場合に実行
+        if (SlotProbabilityData != null)
+        {
+            // クラスに変換
+            SlotProbabilityData data = JsonUtility.FromJson<SlotProbabilityData>(SlotProbabilityData.text);
+
+            slotprobabilityDataSo.CopyData(data);
+
+            Debug.Log("データが読み込まれました。");
+        }
+        else
+        {
+            // エラーを出力
+            Debug.LogError("JSONファイルの読み込みに失敗しました。");
+        }
+    }
+}

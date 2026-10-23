@@ -1,0 +1,24 @@
+{
+    "Temporarys":[
+        {
+            "ID":1,
+            "HitPoint":100,
+            "Power":10
+        },
+        {
+             "ID":2,
+            "HitPoint":100,
+            "Power":10
+        },
+        {
+             "ID":3,
+            "HitPoint":100,
+            "Power":10
+        },
+        {
+             "ID":4,
+            "HitPoint":100,
+            "Power":10
+        }
+    ]
+}
