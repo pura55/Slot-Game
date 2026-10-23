@@ -11,6 +11,7 @@ public class BattleManager : MonoBehaviour
     #region State
     private BattleState battleState = BattleState.IDLE; // バトルの状態
     private IBattlable joinTarget; // 参加対象
+    private IBattlable leaveTarget; // 退場対象
     private List<GameObject> joinCharacter = new(); // 参加しているキャラ
     #endregion
 
@@ -53,6 +54,7 @@ public class BattleManager : MonoBehaviour
         }
     }
 
+    /// @brief バトルに入る対象を設定します
     public void SetJoinTarget(IBattlable join)
     {
         if(joinTarget != null)
@@ -64,10 +66,16 @@ public class BattleManager : MonoBehaviour
         joinTarget.OnJoined += JoinBattle;
     }
 
-    private void OnDisable()
-    {
-        joinTarget.OnJoined -= JoinBattle;
-        joinTarget.OnLeft -= LeaveBattle;
+    /// @brief バトルから退場する対象を設定します
+    public void SetLeaveTarget(IBattlable leave)
+    { 
+        if(leaveTarget != null)
+        {
+            leaveTarget.OnLeft -= LeaveBattle;
+        }
+
+        leaveTarget = leave;
+        leaveTarget.OnLeft += LeaveBattle;
     }
 
     /// @brief 参加処理を行います
@@ -86,11 +94,25 @@ public class BattleManager : MonoBehaviour
     {
         if(!joinCharacter.Contains(character))
         {
-            Debug.Log("Did not join this character: " + character);
+            Debug.LogError("参加していないキャラクターを参照しています!!");
             return;
         }
 
-        joinCharacter.Remove(character);
-        Debug.Log("Character left: " + character);
+        foreach(GameObject join in joinCharacter)
+        {
+            if(join != character)
+            {
+                continue;
+            }
+
+            joinCharacter.Remove(join);
+            return;
+        }
+    }
+
+    /// @brief 参加しているキャラクターを取得します
+    public List<GameObject> GetJoinCharacter()
+    {
+        return joinCharacter;
     }
 }

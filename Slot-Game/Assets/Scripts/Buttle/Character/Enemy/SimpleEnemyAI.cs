@@ -17,10 +17,13 @@ public class SimpleEnemyAI : MonoBehaviour, IBattlable
     public event Action<GameObject> OnLeft;
     public bool InBattle { get { return inBattle; } set { inBattle = value; } }
     private bool inBattle = false;
+
+    private int currentWaitTurn;
     #endregion
 
     void Start()
     {
+        currentWaitTurn = waitingTurn;
     }
 
     void Update()

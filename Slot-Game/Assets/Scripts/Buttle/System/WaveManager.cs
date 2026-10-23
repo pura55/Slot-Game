@@ -29,8 +29,12 @@ public class WaveManager : MonoBehaviour
     private void GenerateEnemy()
     {
         GameObject enemy = Instantiate(FirstEnemy, transform.position, Quaternion.identity);
+
+        // バトルに参加する対象の設定
         IBattlable battlable = enemy.GetComponent<IBattlable>();
         battleManager.SetJoinTarget(battlable);
+
+        // バトルに参加
         SimpleEnemyAI ai = enemy.GetComponent<SimpleEnemyAI>();
         ai.JoinedInvoke();
     }

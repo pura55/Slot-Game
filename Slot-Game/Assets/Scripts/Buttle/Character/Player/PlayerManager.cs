@@ -26,7 +26,7 @@ public class PlayerManager : MonoBehaviour
     /// @brief “ü—Íˆ—‚ğs‚¢‚Ü‚·
     private void InputMovement()
     {
-        if (Keyboard.current.dKey.isPressed)
+        if (Keyboard.current.dKey.isPressed && playerState == PlayerState.IDLE)
         {
             playerState = PlayerState.MOVE;
             playerMovement.SetSpeed(playerState);

@@ -629,6 +629,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4604180101053347148, guid: f6143f3c10eddf34f8d51d2171da57d2, type: 3}
+      propertyPath: playerCommands.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -4604180101053347148, guid: f6143f3c10eddf34f8d51d2171da57d2, type: 3}
+      propertyPath: 'playerCommands.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 9be20b74cdb58ea49b26b00e08bea24b, type: 2}
+    - target: {fileID: -4604180101053347148, guid: f6143f3c10eddf34f8d51d2171da57d2, type: 3}
+      propertyPath: 'playerCommands.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: bbd81ca8ddbf9d7448af9306c9a3fcc8, type: 2}
+    - target: {fileID: -4604180101053347148, guid: f6143f3c10eddf34f8d51d2171da57d2, type: 3}
+      propertyPath: 'playerCommands.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: d6b347e484efe3a438d21dbdc01b940e, type: 2}
+    - target: {fileID: -4604180101053347148, guid: f6143f3c10eddf34f8d51d2171da57d2, type: 3}
+      propertyPath: 'playerCommands.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: edcaefa349d218d4fb476a9ff51aba26, type: 2}
+    - target: {fileID: -4604180101053347148, guid: f6143f3c10eddf34f8d51d2171da57d2, type: 3}
+      propertyPath: 'playerCommands.Array.data[4]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 47ffb67d7a9659a4ba6f5fed1ed4c13f, type: 2}
     - target: {fileID: 4895394629953821852, guid: f6143f3c10eddf34f8d51d2171da57d2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.52

@@ -12,12 +12,6 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     /// @brief ダメージ処理を行います
     public void Damaged(int amount)
     {
@@ -28,5 +22,11 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         {
             hitPoint = 0;
         }
+    }
+
+    /// @brief 回復処理を行います
+    public void Healed(int amount)
+    {
+        hitPoint += amount;
     }
 }

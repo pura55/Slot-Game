@@ -6,8 +6,8 @@ using UnityEngine;
 /// </summary>
 public interface IBattlable
 {
-    event Action<GameObject> OnJoined;
-    event Action<GameObject> OnLeft;
+    event Action<GameObject> OnJoined; // バトルに参加する際のイベント通知
+    event Action<GameObject> OnLeft; // バトルから退出する際のイベント通知
 
-    bool InBattle { get; set; }
+    bool InBattle { get; set; } // バトル時かどうかのフラグ取得・設定
 }
