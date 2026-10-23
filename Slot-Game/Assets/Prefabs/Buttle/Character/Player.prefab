@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5075082389928881493}
   - component: {fileID: 5123095819510744184}
   - component: {fileID: 1960268744935228255}
+  - component: {fileID: -4604180101053347148}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -148,3 +149,15 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 969fce9da2f69834182f5618b7ec2975, type: 3}
   spriteRenderer: {fileID: 5825582925982351688}
   secondPerSprite: 0.15
+--- !u!114 &-4604180101053347148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6135197554462265708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91c3b33460f92f74fb5172e923a6c3c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerCommander
