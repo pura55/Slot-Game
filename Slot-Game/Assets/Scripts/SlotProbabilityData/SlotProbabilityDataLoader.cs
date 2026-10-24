@@ -3,7 +3,7 @@ using UnityEngine;
 public class SlotProbabilityDataLoader : MonoBehaviour
 {
     #region Config
-    [SerializeField] private TextAsset SlotProbabilityData;
+    [SerializeField] private TextAsset slotprobabilityData;
     [SerializeField] private SlotProbabilityDataSo slotprobabilityDataSo;
     #endregion
 
@@ -20,10 +20,10 @@ public class SlotProbabilityDataLoader : MonoBehaviour
     private void LoadData()
     {
         // アセットがnullではない場合に実行
-        if (SlotProbabilityData != null)
+        if (slotprobabilityData != null)
         {
             // クラスに変換
-            SlotProbabilityData data = JsonUtility.FromJson<SlotProbabilityData>(SlotProbabilityData.text);
+            SlotProbabilityData data = JsonUtility.FromJson<SlotProbabilityData>(slotprobabilityData.text);
 
             slotprobabilityDataSo.CopyData(data);
 

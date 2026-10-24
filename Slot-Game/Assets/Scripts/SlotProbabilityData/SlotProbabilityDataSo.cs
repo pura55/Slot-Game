@@ -1,31 +1,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "probability_Scriptable")]
+[CreateAssetMenu(menuName = "Probability_Scriptable")]
 public class SlotProbabilityDataSo : ScriptableObject
 {
     // エネミーのデータをリスト化する変数
-    public List<SlotProbabilityDataBase> slotprobabilities;
+    public List<SlotProbabilityDataBase> SlotProbabilities;
 
     /// @brief データをコピーする関数
     public void CopyData(SlotProbabilityData data)
     {
         // リストを初期化
-        slotprobabilities = new List<SlotProbabilityDataBase>();
+        SlotProbabilities = new List<SlotProbabilityDataBase>();
 
         Debug.Log($"コピーまでは来てます");
 
-        foreach (var slotprobability in data.slotprobabilities)
+        foreach (var SlotProbability in data.SlotProbabilities)
         {
             Debug.Log($"データコピー中");
 
             // 実体を作る
-            SlotProbabilityDataBase progressslotprobability = new SlotProbabilityDataBase();
-            progressslotprobability.symbolname = slotprobability.symbolname;
-            progressslotprobability.probability = slotprobability.probability;
+            SlotProbabilityDataBase progressSlotProbability = new SlotProbabilityDataBase();
+            progressSlotProbability.symbolname = SlotProbability.symbolname;
+            progressSlotProbability.probability = SlotProbability.probability;
 
             // 実体を入れる
-            slotprobabilities.Add(progressslotprobability);
+            SlotProbabilities.Add(progressSlotProbability);
         }
     }
 }

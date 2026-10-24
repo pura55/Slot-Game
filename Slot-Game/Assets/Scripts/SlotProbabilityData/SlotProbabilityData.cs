@@ -5,5 +5,5 @@ using System.Collections.Generic;
 [Serializable]
 public class SlotProbabilityData
 {
-    public List<SlotProbabilityDataBase> slotprobabilities;
+    public List<SlotProbabilityDataBase> SlotProbabilities;
 }
