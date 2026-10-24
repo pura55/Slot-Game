@@ -13,7 +13,7 @@ public class HealEffect : CommandEffect
     {
         foreach(GameObject target in targets)
         {
-            IDamageable damageable = target.GetComponent<IDamageable>();
+            IHealable damageable = target.GetComponent<IHealable>();
 
             damageable.Healed(healAmount);
         }

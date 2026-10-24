@@ -5,7 +5,7 @@ using UnityEngine;
 /// 
 /// ƒvƒŒƒCƒ„[‚Ì‘Ì—Í‚ğŠÇ—‚µ‚Ü‚·
 /// </summary>
-public class PlayerHealth : MonoBehaviour, IDamageable
+public class PlayerHealth : MonoBehaviour, IDamageable, IHealable
 {
     #region Config
     #endregion

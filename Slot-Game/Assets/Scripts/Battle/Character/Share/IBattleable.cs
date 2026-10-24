@@ -6,8 +6,10 @@ using UnityEngine;
 /// </summary>
 public interface IBattleable
 {
-    event Action<GameObject> OnJoined; // バトルに参加する際のイベント通知
-    event Action<GameObject> OnLeft; // バトルから退出する際のイベント通知
+    GameObject GameObject { get; } // ゲームオブジェクトを返す
 
-    bool InBattle { get; set; } // バトル時かどうかのフラグ取得・設定
+    event Action<IBattleable> OnDead; // 死亡時のイベント処理
+
+    /// @brief バトルを開始します
+    void BattleStart();
 }

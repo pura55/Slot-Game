@@ -9,16 +9,41 @@ using System.Collections.Generic;
 public class BattleManager : MonoBehaviour
 {
     #region State
+    private IBattleable joinPlayer; // 参加プレイヤー
+    public IBattleable JoinPlayer { get { return joinPlayer; } private set { joinPlayer = value; } }
+    private List<IBattleable> joinEnemies = new(); // 参加している敵
+    public List<IBattleable> JoinEnemies { get { return joinEnemies; } private set { joinEnemies = value; } }
+
     private BattleState battleState = BattleState.IDLE; // バトルの状態
-    private IBattleable joinTarget; // 参加対象
-    private IBattleable leaveTarget; // 退場対象
-    private List<GameObject> joinCharacter = new(); // 参加しているキャラ
     #endregion
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    /// @brief ウェーブバトルを開始します
+    public void StartWaveBattle(List<GameObject> enemies, GameObject player, Vector3 generatePosition)
     {
-        
+        // 参加者のクリア
+        JoinPlayer = null;
+        JoinEnemies.Clear();
+
+        // 参加者登録
+        JoinPlayer = player.GetComponent<IBattleable>();
+        joinPlayer.OnDead += PlayerLeaveBattle;
+
+        foreach (GameObject enemy in enemies)
+        {
+            GameObject enemyObj = Instantiate(enemy, generatePosition,Quaternion.identity);
+            IBattleable battleable = enemy.GetComponent<IBattleable>();
+            JoinEnemies.Add(battleable);
+            battleable.OnDead += EnemyLeaveBattle;
+        }
+
+        // 開始処理
+        joinPlayer.BattleStart();
+
+        foreach (IBattleable enemy in joinEnemies)
+        {
+            enemy.BattleStart();
+        }
+        SetState(BattleStateInput.START);
     }
 
     /// @brief 状態設定を行います
@@ -48,65 +73,25 @@ public class BattleManager : MonoBehaviour
         }
     }
 
-    /// @brief バトルに入る対象を設定します
-    public void SetJoinTarget(IBattleable join)
+    /// @brief プレイヤーをバトルから退場させます
+    private void PlayerLeaveBattle(IBattleable battleable)
     {
-        if(joinTarget != null)
-        {
-            joinTarget.OnJoined -= JoinBattle;
-        }
-
-        joinTarget = join;
-        joinTarget.OnJoined += JoinBattle;
+        joinPlayer.OnDead -= PlayerLeaveBattle;
+        joinPlayer = null;
     }
 
-    /// @brief バトルから退場する対象を設定します
-    public void SetLeaveTarget(IBattleable leave)
-    { 
-        if(leaveTarget != null)
-        {
-            leaveTarget.OnLeft -= LeaveBattle;
-        }
-
-        leaveTarget = leave;
-        leaveTarget.OnLeft += LeaveBattle;
-    }
-
-    /// @brief 参加処理を行います
-    public void JoinBattle(GameObject character)
+    /// @brief 敵をバトルから退場させます
+    private void EnemyLeaveBattle(IBattleable battleable)
     {
-        joinCharacter.Add(character);
-        Debug.Log("Character joined: " + character);
-        if (character.CompareTag("Player"))
-        { 
-            SetState(BattleStateInput.START);
-        }
-    }
-
-    /// @brief 退場処理を行います
-    public void LeaveBattle(GameObject character)
-    {
-        if(!joinCharacter.Contains(character))
+        foreach(IBattleable join in joinEnemies)
         {
-            Debug.LogError("参加していないキャラクターを参照しています!!");
-            return;
-        }
-
-        foreach(GameObject join in joinCharacter)
-        {
-            if(join != character)
+            if(join != battleable)
             {
                 continue;
             }
 
-            joinCharacter.Remove(join);
-            return;
+            join.OnDead -= EnemyLeaveBattle;
         }
-    }
-
-    /// @brief 参加しているキャラクターを取得します
-    public List<GameObject> GetJoinCharacter()
-    {
-        return joinCharacter;
+        joinEnemies.Remove(battleable);
     }
 }

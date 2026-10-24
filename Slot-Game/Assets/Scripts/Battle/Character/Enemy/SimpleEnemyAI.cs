@@ -14,27 +14,23 @@ public class SimpleEnemyAI : MonoBehaviour, IBattleable
     #endregion
 
     #region State
-    public event Action<GameObject> OnJoined;
-    public event Action<GameObject> OnLeft;
-    public bool InBattle { get { return inBattle; } set { inBattle = value; } }
-    private bool inBattle = false;
-
+    public GameObject GameObject { get; }
+    public event Action<IBattleable> OnDead; // 死亡イベント
     private int currentWaitTurn; // 現在の待機ターン
     #endregion
 
     void Start()
     {
-        currentWaitTurn = waitingTurn;
-        leftTurnManager.ChangeLeftTurn(currentWaitTurn);
     }
 
     void Update()
     {
     }
 
-    public void JoinedInvoke()
+    public void BattleStart()
     {
-        OnJoined?.Invoke(this.gameObject);
+        currentWaitTurn = waitingTurn;
+        leftTurnManager.ChangeLeftTurn(currentWaitTurn);
     }
 
     /// @brief ターン減少処理を行います
@@ -42,5 +38,10 @@ public class SimpleEnemyAI : MonoBehaviour, IBattleable
     {
         currentWaitTurn -= turn;
         leftTurnManager.ChangeLeftTurn(currentWaitTurn);
+    }
+
+    private void ExecuteDead()
+    {
+        OnDead?.Invoke(this);
     }
 }

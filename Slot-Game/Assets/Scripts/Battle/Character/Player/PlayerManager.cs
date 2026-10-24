@@ -9,13 +9,10 @@ public class PlayerManager : MonoBehaviour, IBattleable
     #endregion
 
     #region State
-    public event Action<GameObject> OnJoined;
-    public event Action<GameObject> OnLeft;
+    public GameObject GameObject { get; }
+    public event Action<IBattleable> OnDead;
     private PlayerState playerState = PlayerState.IDLE;
     public PlayerState State { get { return playerState; } private set { playerState = value; } }
-
-    public bool InBattle { get { return inBattle; } set { inBattle = value; } }
-    private bool inBattle = false;
     #endregion
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -40,12 +37,11 @@ public class PlayerManager : MonoBehaviour, IBattleable
         }
     }
 
-    /// @brief 準備処理を行います
-    public void ReadyBattle()
+    /// @brief バトル開始処理を行います
+    public void BattleStart()
     {
         playerState = PlayerState.BATTLE;
         playerMovement.SetSpeed(playerState);
-        OnJoined?.Invoke(this.gameObject);
     }
 
     /// @brief バトル終了の処理を行います 
@@ -53,6 +49,10 @@ public class PlayerManager : MonoBehaviour, IBattleable
     {
         playerState = PlayerState.IDLE;
         playerMovement.SetSpeed(playerState);
-        OnLeft?.Invoke(this.gameObject);
+    }
+
+    private void ExecuteDead()
+    {
+        OnDead?.Invoke(this);
     }
 }

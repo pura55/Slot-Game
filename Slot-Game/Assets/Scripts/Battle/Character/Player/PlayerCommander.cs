@@ -48,14 +48,14 @@ public class PlayerCommander : MonoBehaviour
         List<GameObject> enemies = new List<GameObject>();
 
         // ŽQ‰Á‚µ‚Ä‚¢‚é“G‚ð’Ç‰Á‚µ‚Ü‚·
-        foreach (GameObject joinTarget in battleManager.GetJoinCharacter())
+        foreach (IBattleable joinTarget in battleManager.JoinEnemies)
         {
-           if(!joinTarget.CompareTag("Enemy"))
+           if(!joinTarget.GameObject.CompareTag("Enemy"))
             {
                 continue;
             }
 
-           enemies.Add(joinTarget);
+           enemies.Add(joinTarget.GameObject);
         }
         return enemies;
     }

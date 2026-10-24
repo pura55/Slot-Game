@@ -33,10 +33,4 @@ public class EnemyHealth : MonoBehaviour, IDamageable
             //simpleEnemyAI.
         }
     }
-
-    /// @brief ‰ñ•œˆ—‚ğs‚¢‚Ü‚·
-    public void Healed(int amount)
-    {
-        hitPoint += amount;
-    }
 }
