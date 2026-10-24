@@ -2,12 +2,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// ダメージ効果を与えるコマンド
+/// ダメージを与えるコマンド効果
 /// </summary>
 [CreateAssetMenu(menuName = "Command_DamageEffect_Create")]
 public class DamageEffect : CommandEffect
 {
-    [SerializeField] private int damageAmount = 10;
+    [SerializeField] private int damageAmount = 10; // ダメージ量
 
     public override void ApplyEffect(GameObject user, List<GameObject> targets)
     {
