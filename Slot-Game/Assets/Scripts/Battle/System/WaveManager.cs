@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 /// <summary>
 /// ウェーブ管理を行います
@@ -13,6 +14,10 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private GameObject SecondEnemy;  // 敵2
     [SerializeField] private GameObject ThirdEnemy;   // 敵3
     #endregion
+
+    #region State
+    private List<GameObject> enemies = new();
+    #endregion 
 
     void Start()
     {
@@ -30,8 +35,10 @@ public class WaveManager : MonoBehaviour
     {
         GameObject enemy = Instantiate(FirstEnemy, transform.position, Quaternion.identity);
 
+        enemies.Add(enemy);
+
         // バトルに参加する対象の設定
-        IBattlable battlable = enemy.GetComponent<IBattlable>();
+        IBattleable battlable = enemy.GetComponent<IBattleable>();
         battleManager.SetJoinTarget(battlable);
 
         // バトルに参加
@@ -44,6 +51,7 @@ public class WaveManager : MonoBehaviour
         if(collider.gameObject.CompareTag("Player"))
         {
             Debug.Log("プレイヤーが入りました。");
+            battleManager.SetJoinTarget(collider.gameObject.GetComponent<IBattleable>());
             PlayerManager manager = collider.gameObject.GetComponent<PlayerManager>();
             manager.ReadyBattle();
         }

@@ -5,7 +5,6 @@ public enum PlayerState
 { 
     IDLE,   // ‘Ò‹@
     MOVE,   // ˆÚ“®
-    READY,  // €”õ
-    ATTACK  // UŒ‚
+    BATTLE  // ƒoƒgƒ‹
 }
 

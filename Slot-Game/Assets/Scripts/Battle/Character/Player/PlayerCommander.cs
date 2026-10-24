@@ -1,17 +1,30 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.InputSystem;
 
 /// <summary>
 /// プレイヤーコマンダー
 /// 
-/// プレイヤーの指示を行います
+/// プレイヤーのコマンドを指示します
 /// </summary>
 public class PlayerCommander : MonoBehaviour
 {
     #region Config
     [SerializeField] private List<PlayerCommand> playerCommands;
-    [SerializeField] private BattleManager battleManager; 
+    [SerializeField] private BattleManager battleManager;
+    [SerializeField] private PlayerManager playerManager;
     #endregion
+
+    private void Update()
+    {
+        if(playerManager.State == PlayerState.BATTLE)
+        {
+            if(Keyboard.current.rKey.wasPressedThisFrame)
+            {
+                OperateCommand(CommandType.LIGHT_ATTACK);
+            }
+        }
+    }
 
     /// @brief コマンドを指令します
     public void OperateCommand(CommandType type)
@@ -44,7 +57,6 @@ public class PlayerCommander : MonoBehaviour
 
            enemies.Add(joinTarget);
         }
-
         return enemies;
     }
 }

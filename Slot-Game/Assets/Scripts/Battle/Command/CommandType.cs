@@ -4,7 +4,7 @@
 public enum CommandType
 { 
     NONE,         // –³‚µ
-    LIGHY_ATTACK, // ŽãUŒ‚
+    LIGHT_ATTACK, // ŽãUŒ‚
     HEAVY_ATTACK, // ‹­UŒ‚
     RETURN,       // ’Ç‰Áƒ^[ƒ“
     HEAL,         // ‰ñ•œ

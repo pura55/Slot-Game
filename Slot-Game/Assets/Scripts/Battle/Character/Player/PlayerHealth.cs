@@ -25,6 +25,8 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     {
         hitPoint -= amount;
 
+        Debug.Log("ダメージ(プレイヤー）：" + amount);
+
         // 0未満にならないよう固定
         if(hitPoint < 0)
         {

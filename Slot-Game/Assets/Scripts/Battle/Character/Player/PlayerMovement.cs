@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     #endregion
 
     #region
-    private const float stopMovement = 0f;
+    private const float stopMovement = 0f; // à⁄ìÆí‚é~
     private float currentVelocity = 0f; // åªç›ÇÃë¨ìx
     #endregion
 
@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
             case PlayerState.MOVE:
                 currentVelocity = moveSpeed;
                 break;
-            case PlayerState.READY:
+            case PlayerState.BATTLE:
                 currentVelocity = stopMovement;
                 break;
             default:

@@ -6,7 +6,7 @@ using UnityEngine;
 /// 
 /// 敵のAI処理を行います
 /// </summary>
-public class SimpleEnemyAI : MonoBehaviour, IBattlable
+public class SimpleEnemyAI : MonoBehaviour, IBattleable
 {
     #region Config
     [SerializeField] private int waitingTurn = 3; // 待機ターン
@@ -19,7 +19,7 @@ public class SimpleEnemyAI : MonoBehaviour, IBattlable
     public bool InBattle { get { return inBattle; } set { inBattle = value; } }
     private bool inBattle = false;
 
-    private int currentWaitTurn;
+    private int currentWaitTurn; // 現在の待機ターン
     #endregion
 
     void Start()

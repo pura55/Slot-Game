@@ -10,19 +10,13 @@ public class BattleManager : MonoBehaviour
 {
     #region State
     private BattleState battleState = BattleState.IDLE; // バトルの状態
-    private IBattlable joinTarget; // 参加対象
-    private IBattlable leaveTarget; // 退場対象
+    private IBattleable joinTarget; // 参加対象
+    private IBattleable leaveTarget; // 退場対象
     private List<GameObject> joinCharacter = new(); // 参加しているキャラ
     #endregion
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
     {
         
     }
@@ -55,7 +49,7 @@ public class BattleManager : MonoBehaviour
     }
 
     /// @brief バトルに入る対象を設定します
-    public void SetJoinTarget(IBattlable join)
+    public void SetJoinTarget(IBattleable join)
     {
         if(joinTarget != null)
         {
@@ -67,7 +61,7 @@ public class BattleManager : MonoBehaviour
     }
 
     /// @brief バトルから退場する対象を設定します
-    public void SetLeaveTarget(IBattlable leave)
+    public void SetLeaveTarget(IBattleable leave)
     { 
         if(leaveTarget != null)
         {
