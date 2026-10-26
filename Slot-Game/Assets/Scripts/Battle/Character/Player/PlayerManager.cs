@@ -2,16 +2,23 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
 
+/// <summary>
+/// プレイヤーマネージャー
+/// 
+/// プレイヤーの基本動作を管理します
+/// </summary>
 public class PlayerManager : MonoBehaviour, IBattleable
 {
     #region Config
-    [SerializeField] private PlayerMovement playerMovement;
+    [SerializeField] private PlayerMovement playerMovement; // プレイヤーの移動
     #endregion
 
     #region State
-    public GameObject GameObject { get; }
-    public event Action<IBattleable> OnDead;
-    private PlayerState playerState = PlayerState.IDLE;
+    public GameObject GameObject { get { return gameObject; } } // このオブジェクトの取得用ゲッター
+    public event Action<IBattleable> OnDead; // 死亡時のイベント
+
+    // プレイヤー状態
+    private PlayerState playerState = PlayerState.IDLE; 
     public PlayerState State { get { return playerState; } private set { playerState = value; } }
     #endregion
 
@@ -51,6 +58,7 @@ public class PlayerManager : MonoBehaviour, IBattleable
         playerMovement.SetSpeed(playerState);
     }
 
+    /// @brief 死亡時の処理を実行します
     private void ExecuteDead()
     {
         OnDead?.Invoke(this);

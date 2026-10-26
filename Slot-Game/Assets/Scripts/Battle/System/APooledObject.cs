@@ -8,8 +8,9 @@ using UnityEngine;
 /// </summary>
 public abstract class APooledObject : MonoBehaviour
 {
-    // イベント通知型にするためにActionを採用
-    private Action<APooledObject> poolAction;
+    #region State
+    private Action<APooledObject> poolAction; // プールイベント 
+    #endregion
 
     /// @brief リリースされた際の処理を行う関数
     public void Release()

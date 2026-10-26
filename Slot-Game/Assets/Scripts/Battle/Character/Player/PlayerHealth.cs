@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 /// <summary>
@@ -12,18 +13,16 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IHealable
 
     #region State
     private int hitPoint = 10; // 体力
-    #endregion
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public event Action<Vector3, int, DamagedTarget> OnDamaged; // ダメージ表示用イベント
+    #endregion
 
     /// @brief ダメージ処理を行います
     public void Damaged(int amount)
     {
         hitPoint -= amount;
+
+        OnDamaged?.Invoke(transform.position, amount, DamagedTarget.PLAYER);
 
         Debug.Log("ダメージ(プレイヤー）：" + amount);
 

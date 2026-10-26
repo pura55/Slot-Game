@@ -50,13 +50,9 @@ public class PlayerCommander : MonoBehaviour
         // ŽQ‰Á‚µ‚Ä‚¢‚é“G‚ð’Ç‰Á‚µ‚Ü‚·
         foreach (IBattleable joinTarget in battleManager.JoinEnemies)
         {
-           if(!joinTarget.GameObject.CompareTag("Enemy"))
-            {
-                continue;
-            }
-
            enemies.Add(joinTarget.GameObject);
         }
+
         return enemies;
     }
 }

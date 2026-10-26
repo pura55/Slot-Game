@@ -45,9 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5df534cd4bf73f4c9fa551f618a1128, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaveManager
-  FirstEnemy: {fileID: 0}
-  SecondEnemy: {fileID: 0}
-  ThirdEnemy: {fileID: 0}
+  battleManager: {fileID: 0}
+  waveEnemies:
+  - {fileID: 8723584746571827974, guid: fcb8937e82f884f4aa59a590fc5b9633, type: 3}
+  enemyGeneratePosition: {x: 2, y: 0, z: 0}
 --- !u!61 &4976833620750599623
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -92,5 +93,5 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.5, y: 2}
   m_EdgeRadius: 0

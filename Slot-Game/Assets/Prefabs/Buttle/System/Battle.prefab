@@ -44,6 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae7a72668d1cc964bb964179ae2c9f98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BattleManager
-  FirstEnemy: {fileID: 0}
-  SecondEnemy: {fileID: 0}
-  ThirdEnemy: {fileID: 0}
+  damageTextManager: {fileID: 0}

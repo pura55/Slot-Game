@@ -151,6 +151,7 @@ GameObject:
   - component: {fileID: 5123095819510744184}
   - component: {fileID: 1960268744935228255}
   - component: {fileID: -4604180101053347148}
+  - component: {fileID: 6309702127871437713}
   - component: {fileID: 6123154415868265530}
   - component: {fileID: 8296258030763331498}
   m_Layer: 0
@@ -309,6 +310,18 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 47ffb67d7a9659a4ba6f5fed1ed4c13f, type: 2}
   battleManager: {fileID: 0}
   playerManager: {fileID: 5075082389928881493}
+--- !u!114 &6309702127871437713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6135197554462265708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4159198419cf201448bfcb5252cfeab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
 --- !u!50 &6123154415868265530
 Rigidbody2D:
   serializedVersion: 5
