@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85a69a941d250c84d8efd1a9691769b2, type: 3}
   m_Name: LightDamage
   m_EditorClassIdentifier: Assembly-CSharp::DamageEffect
-  damageAmount: 10
+  damageAmount: 5

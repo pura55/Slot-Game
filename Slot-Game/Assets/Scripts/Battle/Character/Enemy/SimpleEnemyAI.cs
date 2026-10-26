@@ -17,6 +17,7 @@ public class SimpleEnemyAI : MonoBehaviour, IBattleable
     public GameObject GameObject { get { return gameObject; }} // このオブジェクトの取得用ゲッター
     public event Action<IBattleable> OnDead; // 死亡イベント
     private int currentWaitTurn; // 現在の待機ターン
+    private const int activeTurn = 0; // 行動するターン
     #endregion
 
     void Start()
@@ -39,6 +40,12 @@ public class SimpleEnemyAI : MonoBehaviour, IBattleable
     {
         currentWaitTurn -= turn;
         leftTurnManager.ChangeLeftTurn(currentWaitTurn);
+
+        if(currentWaitTurn == activeTurn)
+        {
+            currentWaitTurn = waitingTurn;
+            leftTurnManager.ChangeLeftTurn(currentWaitTurn);
+        }
     }
 
     /// @brief 死亡時の処理を実行します
