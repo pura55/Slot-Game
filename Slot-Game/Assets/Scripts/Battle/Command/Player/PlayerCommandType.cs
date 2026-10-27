@@ -1,7 +1,7 @@
 /// <summary>
 /// コマンドの種類を記載します
 /// </summary>
-public enum CommandType
+public enum PlayerCommandType
 { 
     NONE,         // 無し
     LIGHT_ATTACK, // 弱攻撃

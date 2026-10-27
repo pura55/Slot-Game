@@ -8,7 +8,7 @@ using System.Collections.Generic;
 [CreateAssetMenu(menuName = "Command_TurnReductionEffect_Create")]
 public class TurnReductionEffect : CommandEffect
 {
-    [SerializeField] private int redcuctionTurn = 1; // 減少ターン
+    [SerializeField] private int reductionTurn = 1; // 減少ターン
 
     public override void ApplyEffect(GameObject user, List<GameObject> targets)
     {
@@ -16,7 +16,7 @@ public class TurnReductionEffect : CommandEffect
         {
             SimpleEnemyAI enemyAI = target.GetComponent<SimpleEnemyAI>();
 
-            enemyAI.ReductTurn(redcuctionTurn);
+            enemyAI.ReduceTurn(reductionTurn);
         }
     }
 }

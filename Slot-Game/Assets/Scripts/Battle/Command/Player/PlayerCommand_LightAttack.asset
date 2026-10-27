@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bec85986b16fcfb489ba8fc6d5d120f7, type: 3}
-  m_Name: Command_Return
+  m_Name: PlayerCommand_LightAttack
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCommand
-  commandType: 3
-  commandDescription: "\u8FFD\u52A0\u30BF\u30FC\u30F3\u3092\u53D6\u5F97\u3057\u3001\u5F31\u653B\u6483\u3092\u4E0E\u3048\u307E\u3059"
+  playerCommandType: 1
+  commandDescription: "\u5F31\u653B\u6483\u3092\u4E0E\u3048\u307E\u3059"
   commandEffects:
   - {fileID: 11400000, guid: d5836d3b6a43e8e4d92e9f8187642f9b, type: 2}
+  - {fileID: 11400000, guid: a54b81b00a1c6534584780f63fdfe542, type: 2}

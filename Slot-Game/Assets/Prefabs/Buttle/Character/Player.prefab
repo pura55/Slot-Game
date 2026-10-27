@@ -308,7 +308,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d6b347e484efe3a438d21dbdc01b940e, type: 2}
   - {fileID: 11400000, guid: edcaefa349d218d4fb476a9ff51aba26, type: 2}
   - {fileID: 11400000, guid: 47ffb67d7a9659a4ba6f5fed1ed4c13f, type: 2}
-  battleManager: {fileID: 0}
   playerManager: {fileID: 5075082389928881493}
 --- !u!114 &6309702127871437713
 MonoBehaviour:
@@ -322,6 +321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4159198419cf201448bfcb5252cfeab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+  playerManager: {fileID: 5075082389928881493}
 --- !u!50 &6123154415868265530
 Rigidbody2D:
   serializedVersion: 5

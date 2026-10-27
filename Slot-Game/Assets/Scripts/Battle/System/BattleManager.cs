@@ -39,6 +39,7 @@ public class BattleManager : MonoBehaviour
         // プレイヤー参加者登録
         joinPlayer = player.GetComponent<IBattleable>();
         joinPlayer.OnDead += PlayerLeaveBattle;
+        joinPlayer.OnAct += PlayerAction;
 
         // プレイヤーダメージ表示の登録
         damagedPlayer = player.GetComponent<IDamageable>();
@@ -51,6 +52,7 @@ public class BattleManager : MonoBehaviour
             IBattleable battleable = enemyObj.GetComponent<IBattleable>();
             joinEnemies.Add(battleable);
             battleable.OnDead += EnemyLeaveBattle;
+            battleable.OnAct += EnemyAction;
 
             IDamageable damageable = enemyObj.GetComponent<IDamageable>();
             damagedEnemies.Add(damageable);
@@ -104,8 +106,15 @@ public class BattleManager : MonoBehaviour
     /// @brief プレイヤーをバトルから退場させます
     private void PlayerLeaveBattle(IBattleable battleable)
     {
+        Debug.Log("プレイヤーの参加登録を解除します");
+        // イベントの解除
         joinPlayer.OnDead -= PlayerLeaveBattle;
+        joinPlayer.OnAct -= PlayerAction;
         damagedPlayer.OnDamaged -= CharacterShowDamage;
+
+        // 敵の参照を削除
+        joinPlayer.EffectTargets.Clear();
+
         joinPlayer = null;
         damagedPlayer = null;
     }
@@ -113,8 +122,9 @@ public class BattleManager : MonoBehaviour
     /// @brief 敵をバトルから退場させます
     private void EnemyLeaveBattle(IBattleable battleable)
     {
+        Debug.Log("敵の参加登録を解除します");
         // バトルに参加している敵の中から該当する敵を退場させます
-        foreach(IBattleable join in joinEnemies)
+        foreach (IBattleable join in joinEnemies)
         {
             if(join != battleable)
             {
@@ -122,6 +132,7 @@ public class BattleManager : MonoBehaviour
             }
 
             join.OnDead -= EnemyLeaveBattle;
+            join.OnAct -= EnemyAction;
             joinEnemies.Remove(join);
             break;
         }
@@ -145,6 +156,9 @@ public class BattleManager : MonoBehaviour
         {
             PlayerManager player = joinPlayer.GameObject.GetComponent<PlayerManager>();
             player.FinishBattle();
+
+            // プレイヤーの登録を解除
+            PlayerLeaveBattle(joinPlayer);
         }
     }
 
@@ -152,5 +166,31 @@ public class BattleManager : MonoBehaviour
     private void CharacterShowDamage(Vector3 position, int damage, DamagedTarget target)
     {
         damageTextManager.ShowDamageText(position, damage, target);
+    }
+
+    /// @brief プレイヤー行動時の処理を行います
+    private void PlayerAction(IBattleable player)
+    {
+        // ターゲット数が変化していない場合
+        if(player.EffectTargets.Count == JoinEnemies.Count)
+        {
+            return;
+        }
+
+        player.EffectTargets.Clear();
+        player.EffectTargets = JoinEnemies;
+    }
+
+    /// @brief 敵行動時の処理を行います
+    private void EnemyAction(IBattleable enemy)
+    {
+        // プレイヤーが既に入っている場合処理を行わない
+        if(0 < enemy.EffectTargets.Count)
+        {
+            return;
+        }
+
+        enemy.EffectTargets.Clear();
+        enemy.EffectTargets.Add(joinPlayer);
     }
 }

@@ -480,6 +480,7 @@ GameObject:
   - component: {fileID: 8773716748637015715}
   - component: {fileID: 465761687370443322}
   - component: {fileID: -4193948984193464853}
+  - component: {fileID: 2386428596268596660}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -576,6 +577,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SimpleEnemyAI
   waitingTurn: 3
   leftTurnManager: {fileID: 4504373821833795403}
+  enemyCommander: {fileID: 2386428596268596660}
 --- !u!114 &-4193948984193464853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -589,3 +591,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
   simpleEnemyAI: {fileID: 465761687370443322}
+--- !u!114 &2386428596268596660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8723584746571827974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26285d054c259ec459e215d1ab8d299e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyCommander
+  enemyCommands:
+  - {fileID: 11400000, guid: d8900f4d249aa0844bebb00128bd88b6, type: 2}
+  enemyAI: {fileID: 465761687370443322}

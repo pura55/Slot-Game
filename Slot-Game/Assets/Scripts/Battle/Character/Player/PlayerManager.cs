@@ -1,6 +1,7 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using System;
 
 /// <summary>
 /// プレイヤーマネージャー
@@ -11,11 +12,15 @@ public class PlayerManager : MonoBehaviour, IBattleable
 {
     #region Config
     [SerializeField] private PlayerMovement playerMovement; // プレイヤーの移動
+    [SerializeField] private GameObject DeadText; // 死亡時のテキスト
     #endregion
 
     #region State
     public GameObject GameObject { get { return gameObject; } } // このオブジェクトの取得用ゲッター
+    public List<IBattleable> EffectTargets { get; set; } // 行動によって効果を受ける対象
+
     public event Action<IBattleable> OnDead; // 死亡時のイベント
+    public event Action<IBattleable> OnAct; // 行動時のイベント
 
     // プレイヤー状態
     private PlayerState playerState = PlayerState.IDLE; 
@@ -25,7 +30,7 @@ public class PlayerManager : MonoBehaviour, IBattleable
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        EffectTargets = new List<IBattleable>();
     }
 
     // Update is called once per frame
@@ -58,9 +63,16 @@ public class PlayerManager : MonoBehaviour, IBattleable
         playerMovement.SetSpeed(playerState);
     }
 
+    /// @brief 行動実行処理を行います
+    public void ExecuteAction()
+    {
+        OnAct?.Invoke(this);
+    }
+
     /// @brief 死亡時の処理を実行します
-    private void ExecuteDead()
+    public void ExecuteDead()
     {
         OnDead?.Invoke(this);
+        DeadText.SetActive(true);
     }
 }

@@ -8,7 +8,7 @@ using System.Collections.Generic;
 public class PlayerCommand : ScriptableObject, ICommandable
 {
     #region 
-    public CommandType commandType; // コマンドの種類
+    public PlayerCommandType playerCommandType; // コマンドの種類
     public string commandDescription = string.Empty; // コマンドの説明
 
     public List<CommandEffect> commandEffects; // コマンドの効果

@@ -9,6 +9,7 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour, IDamageable, IHealable
 {
     #region Config
+    [SerializeField] private PlayerManager playerManager; // ƒvƒŒƒCƒ„[ŠÇ—Ò
     #endregion
 
     #region State
@@ -30,6 +31,12 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IHealable
         if(hitPoint < 0)
         {
             hitPoint = 0;
+        }
+
+        if (hitPoint == 0)
+        {
+            Debug.Log("‘Ì—Í‚ª‚ ‚è‚Ü‚¹‚ñ");
+            playerManager.ExecuteDead();
         }
     }
 

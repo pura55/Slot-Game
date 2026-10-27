@@ -8,7 +8,7 @@ using UnityEngine;
 public class EnemyCommand : ScriptableObject, ICommandable
 {
     #region Config
-    public EnemyActType enemyActType; // 行動の種類
+    public EnemyCommandType enemyCommandType; // 行動の種類
     public string commandDescription = string.Empty; // コマンドの説明
 
     public List<CommandEffect> commandEffects; // コマンドの効果
