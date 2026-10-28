@@ -13,6 +13,11 @@ public class DamageEffect : CommandEffect
     {
         foreach (GameObject target in targets)
         {
+            if (target == null)
+            {
+                continue;
+            }
+
             IDamageable damageable = target.GetComponent<IDamageable>();
 
             damageable.Damaged(damageAmount);

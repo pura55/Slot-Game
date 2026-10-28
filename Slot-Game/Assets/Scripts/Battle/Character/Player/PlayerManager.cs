@@ -12,7 +12,6 @@ public class PlayerManager : MonoBehaviour, IBattleable
 {
     #region Config
     [SerializeField] private PlayerMovement playerMovement; // プレイヤーの移動
-    [SerializeField] private GameObject DeadText; // 死亡時のテキスト
     #endregion
 
     #region State
@@ -72,7 +71,7 @@ public class PlayerManager : MonoBehaviour, IBattleable
     /// @brief 死亡時の処理を実行します
     public void ExecuteDead()
     {
+        playerState = PlayerState.DEAD;
         OnDead?.Invoke(this);
-        DeadText.SetActive(true);
     }
 }

@@ -38,6 +38,12 @@ public class PlayerCommander : MonoBehaviour
                 continue;
             }
 
+            // プレイヤーの死亡後コマンド指令される可能性を防ぎます
+            if (playerManager.State == PlayerState.DEAD)
+            {
+                return;
+            }
+
             command.Execute(gameObject, GetEnemies());
             return;
         }

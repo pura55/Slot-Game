@@ -65,6 +65,7 @@ public class SimpleEnemyAI : MonoBehaviour, IBattleable
     /// @brief €–S‚Ìˆ—‚ğÀs‚µ‚Ü‚·
     public void ExecuteDead()
     {
+        Debug.Log("“G‚ª€–S‚µ‚Ü‚·");
         OnDead?.Invoke(this);
         Destroy(gameObject);
     }

@@ -5,6 +5,7 @@ public enum PlayerState
 { 
     IDLE,   // 待機
     MOVE,   // 移動
-    BATTLE  // バトル
+    BATTLE, // バトル
+    DEAD    // 死亡
 }
 

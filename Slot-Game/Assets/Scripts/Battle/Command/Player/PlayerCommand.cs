@@ -17,6 +17,12 @@ public class PlayerCommand : ScriptableObject, ICommandable
     /// @brief コマンドを実行します
     public void Execute(GameObject user, List<GameObject> target)
     {
+        // ターゲットの参照先が存在しない場合処理を抜けます
+        if(target.Count < 1)
+        {
+            Debug.Log("コマンド実行対象が存在しません");
+            return;
+        }
         // このコマンドに付属している効果を反映します
         foreach (CommandEffect effect in commandEffects)
         {

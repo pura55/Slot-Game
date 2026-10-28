@@ -4,7 +4,7 @@ using System.Collections.Generic;
 /// <summary>
 /// ウェーブマネージャー
 /// </summary>
-public class WaveGenerater : MonoBehaviour
+public class WaveGenerator : MonoBehaviour
 {
     #region Config
     [SerializeField] private List<GameObject> waves; // ウェーブ

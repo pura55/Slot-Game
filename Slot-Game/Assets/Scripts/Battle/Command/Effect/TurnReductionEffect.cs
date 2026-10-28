@@ -14,6 +14,11 @@ public class TurnReductionEffect : CommandEffect
     {
         foreach (GameObject target in targets)
         {
+            if(target == null)
+            {
+                continue;
+            }
+
             SimpleEnemyAI enemyAI = target.GetComponent<SimpleEnemyAI>();
 
             enemyAI.ReduceTurn(reductionTurn);
