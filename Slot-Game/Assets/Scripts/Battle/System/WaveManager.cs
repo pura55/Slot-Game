@@ -7,16 +7,20 @@ using System.Collections.Generic;
 public class WaveManager : MonoBehaviour
 {
     #region Config
-    [SerializeField] private BattleManager battleManager; // バトルマネージャー
-
     [Header("ENEMY")]
     [SerializeField] private List<GameObject> waveEnemies; // ウェーブの敵
 
     [SerializeField] private Vector3 enemyGeneratePosition = new Vector3(2f, 0f, 0f); // 生成座標
     #endregion
 
+    #region State
+    private BattleManager battleManager; // バトルマネージャー
+    public BattleManager Buttle { set { battleManager = value; } }
+    #endregion
+
     void Start()
     {
+
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
