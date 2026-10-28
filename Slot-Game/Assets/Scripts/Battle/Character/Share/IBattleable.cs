@@ -23,4 +23,7 @@ public interface IBattleable
 
     /// @brief 死亡時の処理を実行します
     void ExecuteDead();
+
+    /// @brief オブジェクトをリセットする処理を行います
+    void ObjectReset();
 }

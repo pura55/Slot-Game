@@ -24,12 +24,15 @@ public class PlayerManager : MonoBehaviour, IBattleable
     // プレイヤー状態
     private PlayerState playerState = PlayerState.IDLE; 
     public PlayerState State { get { return playerState; } private set { playerState = value; } }
+
+    private Vector3 firstPosition = new Vector3();
     #endregion
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         EffectTargets = new List<IBattleable>();
+        firstPosition = transform.position;
     }
 
     // Update is called once per frame
@@ -62,6 +65,22 @@ public class PlayerManager : MonoBehaviour, IBattleable
         playerMovement.SetSpeed(playerState);
     }
 
+    /// @brief 各状態に入った際の処理を行います
+    private void OnEnterState(PlayerState state)
+    {
+        switch (state)
+        {
+            case PlayerState.IDLE:
+                break;
+            case PlayerState.MOVE:
+                break;
+            case PlayerState.BATTLE:
+                break;
+            case PlayerState.DEAD:
+                break;
+        }
+    }
+
     /// @brief 行動実行処理を行います
     public void ExecuteAction()
     {
@@ -73,5 +92,12 @@ public class PlayerManager : MonoBehaviour, IBattleable
     {
         playerState = PlayerState.DEAD;
         OnDead?.Invoke(this);
+    }
+
+    public void ObjectReset()
+    {
+        transform.position = firstPosition;
+        playerState = PlayerState.IDLE;
+        playerMovement.SetSpeed(playerState);
     }
 }

@@ -298,6 +298,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1456280709 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7863625227185544363, guid: c9d7e9979d54f6b4684a2a380c23862b, type: 3}
+  m_PrefabInstance: {fileID: 5625871949289776990}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c579f07c0c1f6014e86a3f967e2bd936, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StageManager
 --- !u!114 &1494547801 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3486180420793077118, guid: a14288ac88a69194c8a4a8d9dde5ff3f, type: 3}
@@ -596,6 +607,10 @@ PrefabInstance:
       propertyPath: DeadText
       value: 
       objectReference: {fileID: 60418681}
+    - target: {fileID: 5329343164337005702, guid: 5724c98d253c56140babc6d001b1996a, type: 3}
+      propertyPath: stageManager
+      value: 
+      objectReference: {fileID: 1456280709}
     - target: {fileID: 5329343164337005702, guid: 5724c98d253c56140babc6d001b1996a, type: 3}
       propertyPath: damageTextManager
       value: 

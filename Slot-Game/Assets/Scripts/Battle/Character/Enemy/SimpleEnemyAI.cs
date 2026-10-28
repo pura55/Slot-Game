@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -24,6 +25,8 @@ public class SimpleEnemyAI : MonoBehaviour, IBattleable
 
     private int currentWaitTurn; // 現在の待機ターン
     private const int activeTurn = 0; // 行動するターン
+
+    private const float resetTime = 1f; // リセット時間
     #endregion
 
     void Start()
@@ -68,5 +71,18 @@ public class SimpleEnemyAI : MonoBehaviour, IBattleable
         Debug.Log("敵が死亡します");
         OnDead?.Invoke(this);
         Destroy(gameObject);
+    }
+
+    public void ObjectReset()
+    {
+        StartCoroutine(WaitReset());
+    }
+
+    /// @brief リセットタイム
+    private IEnumerator WaitReset()
+    {
+        yield return new WaitForSeconds(resetTime);
+
+        ExecuteDead();
     }
 }

@@ -75,7 +75,6 @@ public class BattleManager : MonoBehaviour
             enemy.BattleStart();
         }
 
-        SetState(BattleStateInput.START);
     }
 
     /// @brief 状態設定を行います
@@ -109,6 +108,11 @@ public class BattleManager : MonoBehaviour
     private void PlayerDead(IBattleable battleable)
     {
         DeadText.SetActive(true);
+        foreach (IBattleable enemy in JoinEnemies)
+        {
+            enemy.ObjectReset();
+        }
+        joinPlayer.ObjectReset();
         PlayerLeaveBattle();
         StartCoroutine(WaitRestartStage());
     }
@@ -215,16 +219,12 @@ public class BattleManager : MonoBehaviour
     /// @brief ステージの再スタート待機
     IEnumerator WaitRestartStage()
     {
+
         yield return new WaitForSeconds(reloadTime);
 
         if (JoinEnemies.Count < 1)
         {
             Debug.Log("敵が存在しません");
-        }
-        
-        foreach(IBattleable enemy in JoinEnemies)
-        {
-            enemy.ExecuteDead();
         }
 
         Debug.Log("ステージを再スタートします");
