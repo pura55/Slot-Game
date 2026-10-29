@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bec85986b16fcfb489ba8fc6d5d120f7, type: 3}
+  m_Name: PlayerCommand_Heal
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerCommand
+  playerCommandType: 4
+  commandDescription: "\u56DE\u5FA9\u3092\u3057\u307E\u3059"
+  commandEffects:
+  - {fileID: 11400000, guid: ebee6e8d3e8e9964998c90554b3c7a07, type: 2}
+  - {fileID: 11400000, guid: a54b81b00a1c6534584780f63fdfe542, type: 2}
