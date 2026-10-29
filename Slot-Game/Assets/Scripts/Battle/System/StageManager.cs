@@ -22,14 +22,7 @@ public class StageManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        GeneratePlayer();
         GenerateStage(currentStageNumber);
-    }
-
-    private void GeneratePlayer()
-    {
-        GameObject generatePlayer = Instantiate(player, playerGeneratePosition, Quaternion.identity);
-        gameObjects.Add(generatePlayer);
     }
 
     /// @brief ステージを生成します
@@ -38,11 +31,24 @@ public class StageManager : MonoBehaviour
     {
         GameObject stage = Instantiate(stages[stageNum], Vector3.zero, Quaternion.identity);
         WaveGenerator generator = stage.GetComponent<WaveGenerator>();
+        StageMovement stageMovement = stage.GetComponent<StageMovement>();
+
         if (generator != null)
         {
             generator.Battle = battleManager;
         }
         gameObjects.Add(stage);
+
+        GeneratePlayer(stageMovement);
+    }
+
+    /// @brief プレイヤーを生成します
+    private void GeneratePlayer(StageMovement stageMovement)
+    {
+        GameObject generatePlayer = Instantiate(player, playerGeneratePosition, Quaternion.identity);
+        PlayerManager playerManager = generatePlayer.GetComponent<PlayerManager>();
+        playerManager.Movement = stageMovement;
+        gameObjects.Add(generatePlayer);
     }
 
     /// @brief オブジェクトを再読み込みします

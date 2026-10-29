@@ -45,4 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StageManager
   stages:
-  - {fileID: 0}
+  - {fileID: 6674513159994892422, guid: b72796df559870742b4716b12792597f, type: 3}
+  battleManager: {fileID: 0}
+  player: {fileID: 6135197554462265708, guid: f6143f3c10eddf34f8d51d2171da57d2, type: 3}
+  playerGeneratePosition: {x: -8, y: 0, z: 0}

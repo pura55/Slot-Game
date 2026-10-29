@@ -30,7 +30,7 @@ public class WaveGenerator : MonoBehaviour
 
         foreach(GameObject wave in waves)
         {
-            GameObject generatedWave = Instantiate(wave, generatePosition, Quaternion.identity);
+            GameObject generatedWave = Instantiate(wave, generatePosition, Quaternion.identity, transform);
             WaveManager waveManager = generatedWave.GetComponent<WaveManager>();
             waveManager.Buttle = battleManager;
             generatePosition += generateDistance;

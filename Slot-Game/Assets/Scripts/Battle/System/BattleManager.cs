@@ -13,7 +13,9 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private DamageTextManager damageTextManager; // ダメージテキストの管理者
     [SerializeField] private GameObject DeadText; // 死亡時のテキスト
     [SerializeField] private StageManager stageManager; // ステージマネージャー
-    private float reloadTime = 3f;
+    [SerializeField] private BattleFader battleFader; // バトルフェーダー
+    private float reloadTime = 1f;
+    private float fadeInTime = 1f;
     #endregion
 
     #region State
@@ -108,12 +110,6 @@ public class BattleManager : MonoBehaviour
     private void PlayerDead(IBattleable battleable)
     {
         DeadText.SetActive(true);
-        foreach (IBattleable enemy in JoinEnemies)
-        {
-            enemy.ObjectReset();
-        }
-        joinPlayer.ObjectReset();
-        PlayerLeaveBattle();
         StartCoroutine(WaitRestartStage());
     }
 
@@ -219,13 +215,22 @@ public class BattleManager : MonoBehaviour
     /// @brief ステージの再スタート待機
     IEnumerator WaitRestartStage()
     {
+        battleFader.OrderFadeIn();
+
+        yield return new WaitForSeconds(fadeInTime);
+
+        foreach (IBattleable enemy in JoinEnemies)
+        {
+            enemy.ObjectReset();
+        }
+        joinPlayer.ObjectReset();
+        PlayerLeaveBattle();
 
         yield return new WaitForSeconds(reloadTime);
 
-        if (JoinEnemies.Count < 1)
-        {
-            Debug.Log("敵が存在しません");
-        }
+        DeadText.SetActive(false);
+
+        battleFader.OrderFadeOut();
 
         Debug.Log("ステージを再スタートします");
     }

@@ -1890,6 +1890,7 @@ GameObject:
   - component: {fileID: 2700824001624633532}
   - component: {fileID: 7513322117709417846}
   - component: {fileID: -1849010000696327916}
+  - component: {fileID: -1613163690457654103}
   m_Layer: 0
   m_Name: Stage1
   m_TagString: Untagged
@@ -1943,6 +1944,19 @@ MonoBehaviour:
   - {fileID: 578724562456445869, guid: 3cbff6fffc6b43940afa351fff648ac9, type: 3}
   - {fileID: 578724562456445869, guid: 3cbff6fffc6b43940afa351fff648ac9, type: 3}
   waveDistance: 4
+--- !u!114 &-1613163690457654103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6674513159994892422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7cdce855a941b54181ef1aef6e383eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StageMovement
+  moveSpeed: 1
 --- !u!1 &8193853445802810650
 GameObject:
   m_ObjectHideFlags: 0

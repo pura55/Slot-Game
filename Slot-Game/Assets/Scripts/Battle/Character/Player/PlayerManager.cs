@@ -11,7 +11,7 @@ using UnityEngine.InputSystem;
 public class PlayerManager : MonoBehaviour, IBattleable
 {
     #region Config
-    [SerializeField] private PlayerMovement playerMovement; // プレイヤーの移動
+    [SerializeField] PlayerHealth playerHealth;
     #endregion
 
     #region State
@@ -22,17 +22,17 @@ public class PlayerManager : MonoBehaviour, IBattleable
     public event Action<IBattleable> OnAct; // 行動時のイベント
 
     // プレイヤー状態
-    private PlayerState playerState = PlayerState.IDLE; 
+    private PlayerState playerState = PlayerState.IDLE;
     public PlayerState State { get { return playerState; } private set { playerState = value; } }
 
-    private Vector3 firstPosition = new Vector3();
+    private StageMovement stageMovement; // プレイヤーの移動（ステージの移動であるが実質的なプレイヤーの移動）
+    public StageMovement Movement{ set {stageMovement = value;}}
     #endregion
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         EffectTargets = new List<IBattleable>();
-        firstPosition = transform.position;
     }
 
     // Update is called once per frame
@@ -47,7 +47,7 @@ public class PlayerManager : MonoBehaviour, IBattleable
         if (Keyboard.current.dKey.isPressed && playerState == PlayerState.IDLE)
         {
             playerState = PlayerState.MOVE;
-            playerMovement.SetSpeed(playerState);
+            stageMovement.SetSpeed(playerState);
         }
     }
 
@@ -55,14 +55,14 @@ public class PlayerManager : MonoBehaviour, IBattleable
     public void BattleStart()
     {
         playerState = PlayerState.BATTLE;
-        playerMovement.SetSpeed(playerState);
+        stageMovement.SetSpeed(playerState);
     }
 
     /// @brief バトル終了の処理を行います 
     public void FinishBattle()
     {
         playerState = PlayerState.IDLE;
-        playerMovement.SetSpeed(playerState);
+        stageMovement.SetSpeed(playerState);
     }
 
     /// @brief 各状態に入った際の処理を行います
@@ -96,8 +96,9 @@ public class PlayerManager : MonoBehaviour, IBattleable
 
     public void ObjectReset()
     {
-        transform.position = firstPosition;
+        stageMovement.SetFirstPosition();
+        playerHealth.ResetHealth();
         playerState = PlayerState.IDLE;
-        playerMovement.SetSpeed(playerState);
+        stageMovement.SetSpeed(playerState);
     }
 }

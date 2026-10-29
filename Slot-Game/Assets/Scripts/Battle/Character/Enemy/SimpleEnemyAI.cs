@@ -26,7 +26,7 @@ public class SimpleEnemyAI : MonoBehaviour, IBattleable
     private int currentWaitTurn; // 現在の待機ターン
     private const int activeTurn = 0; // 行動するターン
 
-    private const float resetTime = 1f; // リセット時間
+    private const float resetTime = 0.5f; // リセット時間
     #endregion
 
     void Start()

@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.392}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -88,6 +88,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34a733f3e340ba247ad2f6bb96fa61cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BattleFader
+  fade: {fileID: 5674891274631723571}
 --- !u!1 &4236960981322994317
 GameObject:
   m_ObjectHideFlags: 0
