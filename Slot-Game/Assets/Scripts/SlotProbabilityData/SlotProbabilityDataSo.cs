@@ -4,7 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Probability_Scriptable")]
 public class SlotProbabilityDataSo : ScriptableObject
 {
-    // エネミーのデータをリスト化する変数
+    // 確率のデータをリスト化する変数
     public List<SlotProbabilityDataBase> SlotProbabilities;
 
     /// @brief データをコピーする関数

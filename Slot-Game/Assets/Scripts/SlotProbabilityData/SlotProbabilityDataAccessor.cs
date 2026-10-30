@@ -10,7 +10,7 @@ public class SlotProbabilityDataAccessor : MonoBehaviour
     //probability = 取得した確率　該当データがない場合は0
     public bool TryGetProbability(string symbolName,out float probability)          
     {
-        //取得失敗時の初期値を設定
+        //取得失敗時の初期値の設定
         probability = 0f;
 
         //ScriptableObjectまたはデータリストが存在しない場合は終了
