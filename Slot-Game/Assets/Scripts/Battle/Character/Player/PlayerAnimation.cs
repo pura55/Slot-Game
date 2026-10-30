@@ -18,20 +18,34 @@ public class PlayerAnimation : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer; // スプライトレンダラー
 
     [SerializeField] private float secondPerSprite = 0.5f; // １スプライトの更新にかかる時間
+    [SerializeField] private Color spawnColor = new Color(1f,1f, 1f, 0f); // スポーン時の色
     #endregion
 
     #region State
     private int spriteIndex = 0; // スプライト番号
     private PlayerState playerState = PlayerState.IDLE;
+    private float maxAlpha = 1f; // α値の最大値
+    private float increaseSpawnAlpha = 1f; // スポーン時のα値の増加
+    private bool isSpawn = false; // スポーンのフラグ
     #endregion
 
     void Start()
     {
+        spriteRenderer.color = spawnColor;
+
         // 自動停止用トークンを渡す
         var token = this.GetCancellationTokenOnDestroy();
 
         // ループ処理を起動
         UpdateSpriteLoopAsync(token).Forget();
+    }
+
+    void Update()
+    {
+        if(isSpawn)
+        {
+            IncreasePlayerAlpha();
+        }
     }
 
     /// @brief ループでスプライトを更新し続ける関数
@@ -71,5 +85,25 @@ public class PlayerAnimation : MonoBehaviour
         }
 
         return idleAnimation[spriteIndex]; 
+    }
+
+    /// @brief スポーンの演出を設定します
+    public void SetSpawnPresentation()
+    {
+        spriteRenderer.color = spawnColor;
+        isSpawn = true;
+    }
+
+    /// @brief プレイヤーのα値を増加させます
+    private void IncreasePlayerAlpha()
+    {
+        Color alpha = spriteRenderer.color;
+        alpha.a += increaseSpawnAlpha * Time.deltaTime;
+        if(maxAlpha <= alpha.a)
+        {
+            alpha.a = maxAlpha;
+            isSpawn = false;
+        }
+        spriteRenderer.color = alpha;
     }
 }

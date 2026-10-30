@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -11,7 +12,10 @@ using UnityEngine.InputSystem;
 public class PlayerManager : MonoBehaviour, IBattleable
 {
     #region Config
-    [SerializeField] PlayerHealth playerHealth;
+    [SerializeField] private PlayerHealth playerHealth; // プレイヤーの体力
+    [SerializeField] private PlayerAnimation playerAnimation; // プレイヤーのアニメーション
+    [SerializeField] private GameObject spawnVFX; // スポーンエフェクト
+    [SerializeField] private float spawnPresentationTime = 2f; // スポーンの演出時間
     #endregion
 
     #region State
@@ -22,7 +26,7 @@ public class PlayerManager : MonoBehaviour, IBattleable
     public event Action<IBattleable> OnAct; // 行動時のイベント
 
     // プレイヤー状態
-    private PlayerState playerState = PlayerState.IDLE;
+    private PlayerState playerState = PlayerState.SPAWN;
     public PlayerState State { get { return playerState; } private set { playerState = value; } }
 
     private StageMovement stageMovement; // プレイヤーの移動（ステージの移動であるが実質的なプレイヤーの移動）
@@ -33,6 +37,7 @@ public class PlayerManager : MonoBehaviour, IBattleable
     void Start()
     {
         EffectTargets = new List<IBattleable>();
+        StartCoroutine(WaitSpawnPresentation());
     }
 
     // Update is called once per frame
@@ -46,23 +51,38 @@ public class PlayerManager : MonoBehaviour, IBattleable
     {
         if (Keyboard.current.dKey.isPressed && playerState == PlayerState.IDLE)
         {
-            playerState = PlayerState.MOVE;
-            stageMovement.SetSpeed(playerState);
+            SetState(PlayerStateInput.MOVE);
         }
     }
 
     /// @brief バトル開始処理を行います
     public void BattleStart()
     {
-        playerState = PlayerState.BATTLE;
-        stageMovement.SetSpeed(playerState);
+        SetState(PlayerStateInput.BATTLE);
     }
 
     /// @brief バトル終了の処理を行います 
     public void FinishBattle()
     {
-        playerState = PlayerState.IDLE;
-        stageMovement.SetSpeed(playerState);
+        SetState(PlayerStateInput.LEAVE);
+    }
+
+    /// @brief 状態設定を行います
+    public void SetState(PlayerStateInput input)
+    {
+        playerState = (playerState, input) switch
+        {
+            (PlayerState.SPAWN, PlayerStateInput.IDLE) => PlayerState.IDLE,
+            (PlayerState.IDLE, PlayerStateInput.MOVE) => PlayerState.MOVE,
+            (PlayerState.IDLE, PlayerStateInput.BATTLE) => PlayerState.BATTLE,
+            (PlayerState.MOVE, PlayerStateInput.BATTLE) => PlayerState.BATTLE,
+            (PlayerState.BATTLE, PlayerStateInput.LEAVE) => PlayerState.IDLE,
+            (PlayerState.BATTLE, PlayerStateInput.DEAD) => PlayerState.DEAD,
+            (PlayerState.DEAD, PlayerStateInput.SPAWN) => PlayerState.SPAWN,
+            _ => playerState
+        };
+
+        OnEnterState(playerState);
     }
 
     /// @brief 各状態に入った際の処理を行います
@@ -70,6 +90,8 @@ public class PlayerManager : MonoBehaviour, IBattleable
     {
         switch (state)
         {
+            case PlayerState.SPAWN:
+                break;
             case PlayerState.IDLE:
                 break;
             case PlayerState.MOVE:
@@ -79,6 +101,8 @@ public class PlayerManager : MonoBehaviour, IBattleable
             case PlayerState.DEAD:
                 break;
         }
+
+        stageMovement.SetSpeed(state);
     }
 
     /// @brief 行動実行処理を行います
@@ -98,7 +122,25 @@ public class PlayerManager : MonoBehaviour, IBattleable
     {
         stageMovement.SetFirstPosition();
         playerHealth.ResetHealth();
-        playerState = PlayerState.IDLE;
+        playerState = PlayerState.SPAWN;
         stageMovement.SetSpeed(playerState);
+    }
+
+    /// @brief ステージの再スタート待機
+    IEnumerator WaitSpawnPresentation()
+    {
+        GenerateSpawnVFX();
+
+        yield return new WaitForSeconds(spawnPresentationTime);
+
+        playerAnimation.SetSpawnPresentation();
+
+        SetState(PlayerStateInput.IDLE);
+    }
+
+    /// @brief スポーンエフェクトを生成します
+    private void GenerateSpawnVFX()
+    {
+        Instantiate(spawnVFX, transform.position + spawnVFX.transform.position, spawnVFX.transform.rotation);
     }
 }

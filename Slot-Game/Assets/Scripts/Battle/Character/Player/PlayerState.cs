@@ -3,6 +3,7 @@
 /// </summary>
 public enum PlayerState
 { 
+    SPAWN,  // スポーン
     IDLE,   // 待機
     MOVE,   // 移動
     BATTLE, // バトル

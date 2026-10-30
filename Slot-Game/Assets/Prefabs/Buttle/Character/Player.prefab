@@ -110,6 +110,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerManager
   playerHealth: {fileID: 6309702127871437713}
+  playerAnimation: {fileID: 1960268744935228255}
+  spawnVFX: {fileID: 3377181292992421420, guid: 540885e9dca90ad4ebfe77215fe0e526, type: 3}
+  spawnPresentationTime: 1
 --- !u!114 &1960268744935228255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,6 +141,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 969fce9da2f69834182f5618b7ec2975, type: 3}
   spriteRenderer: {fileID: 5825582925982351688}
   secondPerSprite: 0.15
+  spawnColor: {r: 1, g: 1, b: 1, a: 0}
 --- !u!114 &-4604180101053347148
 MonoBehaviour:
   m_ObjectHideFlags: 0
