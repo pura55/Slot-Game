@@ -1,0 +1,40 @@
+{
+    "SlotProbabilities": [
+        {
+            "symbolname": "sample1",
+            "probability": 0.1
+        },
+        {
+            "symbolname": "sample2",
+            "probability": 0.2
+        },
+        {
+            "symbolname": "sample3",
+            "probability": 0.3
+        },
+        {
+            "symbolname": "sample4",
+            "probability": 0.4
+        },
+        {
+            "symbolname": "sample5",
+            "probability": 0.5
+        },
+        {
+            "symbolname": "sample6",
+            "probability": 0.6
+        },
+        {
+            "symbolname": "sample7",
+            "probability": 0.7
+        },
+        {
+            "symbolname": "sample8",
+            "probability": 0.8
+        },
+        {
+            "symbolname": "sample9",
+            "probability": 0.9
+        }
+    ]
+}
