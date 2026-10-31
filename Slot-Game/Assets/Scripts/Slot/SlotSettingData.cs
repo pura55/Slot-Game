@@ -14,7 +14,6 @@ public enum Role
     BIG_COIN,
     BONUS,
     BIG_BONUS,
-    ATTACK_BONUS
 }
 
 
