@@ -11,7 +11,7 @@ public class StageManager : MonoBehaviour
     [SerializeField] private List<GameObject> stages; // Stage
     [SerializeField] private BattleManager battleManager; // バトルマネージャー
     [SerializeField] private GameObject player; // プレイヤー
-    [SerializeField] private Vector3 playerGeneratePosition = new Vector3(-8, 0f, 0f);
+    [SerializeField] private Vector3 playerGeneratePosition = new Vector3(-7, 0f, 0f);
     #endregion
 
     #region State

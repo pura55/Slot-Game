@@ -10,6 +10,7 @@ public enum CharacterStateInput
     SPAWN,
     IDLE,
     MOVE,
+    READY,
     BATTLE,
     LEAVE,
     DEAD

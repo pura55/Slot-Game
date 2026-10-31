@@ -14,6 +14,7 @@ public class SimpleEnemyAI : MonoBehaviour, IBattleable
     [SerializeField] private int waitingTurn = 3; // 待機ターン
     [SerializeField] private LeftTurnManager leftTurnManager; // 待機ターン管理
     [SerializeField] private EnemyCommander enemyCommander; // 敵のコマンド指示
+    [SerializeField] private EnemyMovement enemyMovement; // 敵の移動
     #endregion
 
     #region State
@@ -23,7 +24,7 @@ public class SimpleEnemyAI : MonoBehaviour, IBattleable
     public event Action<IBattleable> OnDead; // 死亡イベント
     public event Action<IBattleable> OnAct; // 行動時のイベント
 
-    private EnemyState enemyState = EnemyState.SPAWN;
+    private EnemyState enemyState = EnemyState.SPAWN; // 敵の状態
 
     private int currentWaitTurn; // 現在の待機ターン
     private const int activeTurn = 0; // 行動するターン
@@ -33,6 +34,7 @@ public class SimpleEnemyAI : MonoBehaviour, IBattleable
     void Start()
     {
         EffectTargets = new List<IBattleable>();
+        SetState(CharacterStateInput.MOVE);
     }
 
     void Update()
@@ -44,8 +46,8 @@ public class SimpleEnemyAI : MonoBehaviour, IBattleable
     {
         enemyState = (enemyState, input) switch
         {
-            (EnemyState.SPAWN, CharacterStateInput.BATTLE) => EnemyState.BATTLE,
-            (EnemyState.BATTLE, CharacterStateInput.LEAVE) => EnemyState.IDLE,
+            (EnemyState.SPAWN, CharacterStateInput.MOVE) => EnemyState.MOVE,
+            (EnemyState.MOVE, CharacterStateInput.BATTLE) => EnemyState.BATTLE,
             (EnemyState.BATTLE, CharacterStateInput.DEAD) => EnemyState.DEAD,
             _ => enemyState
         };
@@ -58,10 +60,12 @@ public class SimpleEnemyAI : MonoBehaviour, IBattleable
     {
         switch (state)
         {
-            case EnemyState.SPAWN:
+            case EnemyState.MOVE:
+                enemyMovement.OperateMovement();
                 break;
             case EnemyState.BATTLE:
                 currentWaitTurn = waitingTurn;
+                leftTurnManager.OnText();
                 leftTurnManager.ChangeLeftTurn(currentWaitTurn);
                 break;
             case EnemyState.DEAD:

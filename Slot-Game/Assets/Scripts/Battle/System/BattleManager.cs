@@ -14,8 +14,9 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private GameObject DeadText; // 死亡時のテキスト
     [SerializeField] private StageManager stageManager; // ステージマネージャー
     [SerializeField] private BattleFader battleFader; // バトルフェーダー
-    private float reloadTime = 1f;
-    private float fadeInTime = 1f;
+    [SerializeField] private float reloadTime = 1f; // リロードまでの時間
+    [SerializeField] private float fadeInTime = 1f; // フェードインの時間
+    [SerializeField] private float battleStartTime = 2f;
     #endregion
 
     #region State
@@ -74,6 +75,17 @@ public class BattleManager : MonoBehaviour
             return;
         }
 
+        StartCoroutine(WaitStartBattle());
+    }
+
+    /// @brief バトル開始の待機をします
+    IEnumerator WaitStartBattle()
+    {
+        // プレイヤーを準備状態へ
+        playerManager.SetState(CharacterStateInput.READY);
+
+        yield return new WaitForSeconds(battleStartTime);
+
         // 開始処理
         playerManager.SetState(CharacterStateInput.BATTLE);
 
@@ -81,7 +93,6 @@ public class BattleManager : MonoBehaviour
         {
             enemy.SetState(CharacterStateInput.BATTLE);
         }
-
     }
 
     /// @brief 状態設定を行います

@@ -63,8 +63,8 @@ public class PlayerManager : MonoBehaviour, IBattleable
         {
             (PlayerState.SPAWN, CharacterStateInput.IDLE) => PlayerState.IDLE,
             (PlayerState.IDLE, CharacterStateInput.MOVE) => PlayerState.MOVE,
-            (PlayerState.IDLE, CharacterStateInput.BATTLE) => PlayerState.BATTLE,
-            (PlayerState.MOVE, CharacterStateInput.BATTLE) => PlayerState.BATTLE,
+            (PlayerState.MOVE, CharacterStateInput.READY) => PlayerState.READY,
+            (PlayerState.READY, CharacterStateInput.BATTLE) => PlayerState.BATTLE,
             (PlayerState.BATTLE, CharacterStateInput.LEAVE) => PlayerState.IDLE,
             (PlayerState.BATTLE, CharacterStateInput.DEAD) => PlayerState.DEAD,
             (PlayerState.DEAD, CharacterStateInput.SPAWN) => PlayerState.SPAWN,
@@ -88,6 +88,7 @@ public class PlayerManager : MonoBehaviour, IBattleable
             case PlayerState.BATTLE:
                 break;
             case PlayerState.DEAD:
+                ExecuteDead();
                 break;
         }
 
@@ -101,7 +102,7 @@ public class PlayerManager : MonoBehaviour, IBattleable
     }
 
     /// @brief 死亡時の処理を実行します
-    public void ExecuteDead()
+    private void ExecuteDead()
     {
         playerState = PlayerState.DEAD;
         OnDead?.Invoke(this);
@@ -131,6 +132,6 @@ public class PlayerManager : MonoBehaviour, IBattleable
     /// @brief スポーンエフェクトを生成します
     private void GenerateSpawnVFX()
     {
-        Instantiate(spawnVFX, transform.position + spawnVFX.transform.position, spawnVFX.transform.rotation);
+        Instantiate(spawnVFX, transform.position + spawnVFX.transform.position, spawnVFX.transform.rotation, stageMovement.StageTransfrom);
     }
 }

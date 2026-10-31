@@ -12,6 +12,9 @@ public class StageMovement : MonoBehaviour
     #endregion
 
     #region
+    // トランスフォームを返します
+    public Transform StageTransfrom{ get{return gameObject.transform;} } 
+
     private const float stopMovement = 0f; // 移動停止
     private float currentVelocity = 0f; // 現在の速度
     private Vector3 firstPosition = new Vector3();

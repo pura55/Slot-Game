@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4463962195198247497}
   - component: {fileID: 8108033653719443770}
   - component: {fileID: 8711135697299668060}
-  - component: {fileID: 4504373821833795403}
   m_Layer: 5
   m_Name: TurnCount
   m_TagString: Untagged
@@ -53,7 +52,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1317480308925206363}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -138,20 +137,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &4504373821833795403
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1317480308925206363}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 535075247b233384a885799a716229dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LeftTurnManager
-  textMeshPro: {fileID: 8711135697299668060}
-  blinkSpeed: 13
 --- !u!1 &2131234293361365005
 GameObject:
   m_ObjectHideFlags: 0
@@ -163,6 +148,7 @@ GameObject:
   - component: {fileID: 7988903773985575654}
   - component: {fileID: 5328040139092938317}
   - component: {fileID: 7180905416602761950}
+  - component: {fileID: 5584287762450739085}
   m_Layer: 5
   m_Name: TurnPanel
   m_TagString: Untagged
@@ -205,7 +191,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2131234293361365005}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -228,6 +214,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5584287762450739085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2131234293361365005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 535075247b233384a885799a716229dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LeftTurnManager
+  turnPanel: {fileID: 7180905416602761950}
+  turnCount: {fileID: 8711135697299668060}
+  turnText: {fileID: 8037582037504766133}
+  blinkSpeed: 13
 --- !u!1 &3460816588459577504
 GameObject:
   m_ObjectHideFlags: 0
@@ -281,7 +283,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3460816588459577504}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -481,6 +483,7 @@ GameObject:
   - component: {fileID: 465761687370443322}
   - component: {fileID: -4193948984193464853}
   - component: {fileID: 2386428596268596660}
+  - component: {fileID: -8875998228819192640}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -576,8 +579,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SimpleEnemyAI
   waitingTurn: 3
-  leftTurnManager: {fileID: 4504373821833795403}
+  leftTurnManager: {fileID: 5584287762450739085}
   enemyCommander: {fileID: 2386428596268596660}
+  enemyMovement: {fileID: -8875998228819192640}
 --- !u!114 &-4193948984193464853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -606,3 +610,17 @@ MonoBehaviour:
   enemyCommands:
   - {fileID: 11400000, guid: d8900f4d249aa0844bebb00128bd88b6, type: 2}
   enemyAI: {fileID: 465761687370443322}
+--- !u!114 &-8875998228819192640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8723584746571827974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ecc7eeb373087b469f5bc8b3f35c169, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
+  movementSpeed: 2
+  movementDistance: 4

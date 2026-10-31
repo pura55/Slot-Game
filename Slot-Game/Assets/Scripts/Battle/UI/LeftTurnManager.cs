@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 /// <summary>
 /// 点滅状態
@@ -16,7 +17,9 @@ public enum BlinkState
 public class LeftTurnManager : MonoBehaviour
 {
     #region Config
-    [SerializeField] private TextMeshProUGUI textMeshPro;
+    [SerializeField] private Image turnPanel;
+    [SerializeField] private TextMeshProUGUI turnCount;
+    [SerializeField] private TextMeshProUGUI turnText;
     [SerializeField] private float blinkSpeed = 1f;
     #endregion
 
@@ -32,7 +35,7 @@ public class LeftTurnManager : MonoBehaviour
     void Start()
     {
         textColor = new Color(redColor, blinkColor, blinkColor);
-        textMeshPro.color = textColor;
+        turnCount.color = textColor;
     }
 
     // Update is called once per frame
@@ -58,7 +61,7 @@ public class LeftTurnManager : MonoBehaviour
 
         textColor = new Color(redColor, blinkColor, blinkColor);
 
-        textMeshPro.color = textColor;
+        turnCount.color = textColor;
     }
 
     /// @brief 色を増加させます
@@ -89,6 +92,16 @@ public class LeftTurnManager : MonoBehaviour
     /// @brief 残りターンを変更します
     public void ChangeLeftTurn(int leftTurn)
     {
-        textMeshPro.text = leftTurn.ToString();
+        turnCount.text = leftTurn.ToString();
+    }
+
+    /// @brief テキストをオンにします
+    public void OnText()
+    {
+        Debug.Log("テキストをオンにします");
+        if (turnPanel == null) Debug.LogError("[エラー] TurnPanel が空です！");
+        turnPanel.enabled = true;
+        turnText.enabled = true;
+        turnCount.enabled = true;
     }
 }

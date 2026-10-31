@@ -42,7 +42,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IHealable
         if (currentHitPoint == 0)
         {
             Debug.Log("‘Ì—Í‚ª‚ ‚è‚Ü‚¹‚ñ");
-            playerManager.ExecuteDead();
+            playerManager.SetState(CharacterStateInput.DEAD);
         }
     }
 
