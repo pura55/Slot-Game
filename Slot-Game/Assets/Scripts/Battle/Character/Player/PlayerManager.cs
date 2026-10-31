@@ -29,8 +29,9 @@ public class PlayerManager : MonoBehaviour, IBattleable
     private PlayerState playerState = PlayerState.SPAWN;
     public PlayerState State { get { return playerState; } private set { playerState = value; } }
 
-    private StageMovement stageMovement; // プレイヤーの移動（ステージの移動であるが実質的なプレイヤーの移動）
-    public StageMovement Movement{ set {stageMovement = value;}}
+    // ステージの移動（ステージの移動であるが実質的なプレイヤーの移動）
+    private StageMovement stageMovement;
+    public StageMovement Movement { set { stageMovement = value; } }
     #endregion
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -51,34 +52,22 @@ public class PlayerManager : MonoBehaviour, IBattleable
     {
         if (Keyboard.current.dKey.isPressed && playerState == PlayerState.IDLE)
         {
-            SetState(PlayerStateInput.MOVE);
+            SetState(CharacterStateInput.MOVE);
         }
     }
 
-    /// @brief バトル開始処理を行います
-    public void BattleStart()
-    {
-        SetState(PlayerStateInput.BATTLE);
-    }
-
-    /// @brief バトル終了の処理を行います 
-    public void FinishBattle()
-    {
-        SetState(PlayerStateInput.LEAVE);
-    }
-
     /// @brief 状態設定を行います
-    public void SetState(PlayerStateInput input)
+    public void SetState(CharacterStateInput input)
     {
         playerState = (playerState, input) switch
         {
-            (PlayerState.SPAWN, PlayerStateInput.IDLE) => PlayerState.IDLE,
-            (PlayerState.IDLE, PlayerStateInput.MOVE) => PlayerState.MOVE,
-            (PlayerState.IDLE, PlayerStateInput.BATTLE) => PlayerState.BATTLE,
-            (PlayerState.MOVE, PlayerStateInput.BATTLE) => PlayerState.BATTLE,
-            (PlayerState.BATTLE, PlayerStateInput.LEAVE) => PlayerState.IDLE,
-            (PlayerState.BATTLE, PlayerStateInput.DEAD) => PlayerState.DEAD,
-            (PlayerState.DEAD, PlayerStateInput.SPAWN) => PlayerState.SPAWN,
+            (PlayerState.SPAWN, CharacterStateInput.IDLE) => PlayerState.IDLE,
+            (PlayerState.IDLE, CharacterStateInput.MOVE) => PlayerState.MOVE,
+            (PlayerState.IDLE, CharacterStateInput.BATTLE) => PlayerState.BATTLE,
+            (PlayerState.MOVE, CharacterStateInput.BATTLE) => PlayerState.BATTLE,
+            (PlayerState.BATTLE, CharacterStateInput.LEAVE) => PlayerState.IDLE,
+            (PlayerState.BATTLE, CharacterStateInput.DEAD) => PlayerState.DEAD,
+            (PlayerState.DEAD, CharacterStateInput.SPAWN) => PlayerState.SPAWN,
             _ => playerState
         };
 
@@ -118,6 +107,7 @@ public class PlayerManager : MonoBehaviour, IBattleable
         OnDead?.Invoke(this);
     }
 
+    /// @brief プレイヤーのロールバックを行います
     public void ObjectReset()
     {
         stageMovement.SetFirstPosition();
@@ -126,7 +116,7 @@ public class PlayerManager : MonoBehaviour, IBattleable
         stageMovement.SetSpeed(playerState);
     }
 
-    /// @brief ステージの再スタート待機
+    /// @brief スポーン演出の待機処理を行います
     IEnumerator WaitSpawnPresentation()
     {
         GenerateSpawnVFX();
@@ -135,7 +125,7 @@ public class PlayerManager : MonoBehaviour, IBattleable
 
         playerAnimation.SetSpawnPresentation();
 
-        SetState(PlayerStateInput.IDLE);
+        SetState(CharacterStateInput.IDLE);
     }
 
     /// @brief スポーンエフェクトを生成します

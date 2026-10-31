@@ -1,11 +1,11 @@
 using UnityEngine;
 
 /// <summary>
-/// プレイヤーステートインプット
+/// キャラクターステートインプット
 /// 
-/// プレイヤーの状態入力
+/// キャラクターの状態入力
 /// </summary>
-public enum PlayerStateInput
+public enum CharacterStateInput
 {
     SPAWN,
     IDLE,

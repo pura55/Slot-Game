@@ -42,7 +42,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         if(hitPoint == 0)
         {
             Debug.Log("‘Ì—Í‚ª‚ ‚è‚Ü‚¹‚ñ");
-            simpleEnemyAI.ExecuteDead();
+            simpleEnemyAI.SetState(CharacterStateInput.DEAD);
         }
     }
 }

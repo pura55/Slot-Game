@@ -21,9 +21,10 @@ public class BattleManager : MonoBehaviour
     #region State
     // キャラクター //
     private IBattleable joinPlayer; // 参加プレイヤー
-    public IBattleable JoinPlayer { get { return joinPlayer; }}
+    private PlayerManager playerManager; // プレイヤーマネージャー
+    public IBattleable JoinPlayer { get { return joinPlayer; } }
     private List<IBattleable> joinEnemies = new(); // 参加している敵
-    public List<IBattleable> JoinEnemies { get { return joinEnemies; }}
+    public List<IBattleable> JoinEnemies { get { return joinEnemies; } }
 
     private IDamageable damagedPlayer; // ダメージを受けるプレイヤー
     private List<IDamageable> damagedEnemies = new(); // ダメージを受ける敵
@@ -36,6 +37,7 @@ public class BattleManager : MonoBehaviour
     {
         // 参加者のクリア
         joinPlayer = null;
+        playerManager = null;
         damagedPlayer = null;
         joinEnemies.Clear();
         damagedEnemies.Clear();
@@ -45,6 +47,9 @@ public class BattleManager : MonoBehaviour
         joinPlayer.OnDead += PlayerDead;
         joinPlayer.OnAct += PlayerAction;
 
+        // プレイヤーマネージャーの取得
+        playerManager = player.GetComponent<PlayerManager>();
+
         // プレイヤーダメージ表示の登録
         damagedPlayer = player.GetComponent<IDamageable>();
         damagedPlayer.OnDamaged += CharacterShowDamage;
@@ -52,7 +57,7 @@ public class BattleManager : MonoBehaviour
         // 敵の参加者・ダメージ表示登録
         foreach (GameObject enemy in enemies)
         {
-            GameObject enemyObj = Instantiate(enemy, generatePosition,Quaternion.identity);
+            GameObject enemyObj = Instantiate(enemy, generatePosition, Quaternion.identity);
             IBattleable battleable = enemyObj.GetComponent<IBattleable>();
             joinEnemies.Add(battleable);
             battleable.OnDead += EnemyLeaveBattle;
@@ -70,11 +75,11 @@ public class BattleManager : MonoBehaviour
         }
 
         // 開始処理
-        joinPlayer.BattleStart();
+        playerManager.SetState(CharacterStateInput.BATTLE);
 
         foreach (IBattleable enemy in joinEnemies)
         {
-            enemy.BattleStart();
+            enemy.SetState(CharacterStateInput.BATTLE);
         }
 
     }
@@ -95,7 +100,7 @@ public class BattleManager : MonoBehaviour
     /// @brief 各状態に入った際の処理を行います
     private void OnEnterState(BattleState state)
     {
-        switch(state)
+        switch (state)
         {
             case BattleState.IDLE:
                 break;
@@ -138,7 +143,7 @@ public class BattleManager : MonoBehaviour
         // バトルに参加している敵の中から該当する敵を退場させます
         foreach (IBattleable join in joinEnemies)
         {
-            if(join != battleable)
+            if (join != battleable)
             {
                 continue;
             }
@@ -151,9 +156,9 @@ public class BattleManager : MonoBehaviour
         }
 
         // ダメージ表示登録を解除します
-        foreach(IDamageable enemy in damagedEnemies)
+        foreach (IDamageable enemy in damagedEnemies)
         {
-            if(enemy != battleable.GameObject.GetComponent<IDamageable>())
+            if (enemy != battleable.GameObject.GetComponent<IDamageable>())
             {
                 continue;
             }
@@ -162,18 +167,18 @@ public class BattleManager : MonoBehaviour
             damagedEnemies.Remove(enemy);
             break;
         }
-   
+
 
         // 敵が全て倒された場合、勝利処理を実行
-        if(joinEnemies is { Count: 0})
+        if (joinEnemies is { Count: 0 })
         {
-            if(joinPlayer ==  null)
+            if (joinPlayer == null)
             {
                 return;
             }
 
             PlayerManager player = joinPlayer.GameObject.GetComponent<PlayerManager>();
-            player.FinishBattle();
+            player.SetState(CharacterStateInput.LEAVE);
 
             // プレイヤーの登録を解除
             PlayerLeaveBattle();
@@ -190,20 +195,20 @@ public class BattleManager : MonoBehaviour
     private void PlayerAction(IBattleable player)
     {
         // ターゲット数が変化していない場合
-        if(player.EffectTargets.Count == JoinEnemies.Count)
+        if (player.EffectTargets.Count == JoinEnemies.Count)
         {
             return;
         }
 
         player.EffectTargets.Clear();
-        player.EffectTargets = new List<IBattleable> (JoinEnemies);
+        player.EffectTargets = new List<IBattleable>(JoinEnemies);
     }
 
     /// @brief 敵行動時の処理を行います
     private void EnemyAction(IBattleable enemy)
     {
         // プレイヤーが既に入っている場合処理を行わない
-        if(0 < enemy.EffectTargets.Count)
+        if (0 < enemy.EffectTargets.Count)
         {
             return;
         }
