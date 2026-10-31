@@ -1,40 +1,40 @@
 {
     "SlotProbabilities": [
         {
-            "symbolname": "sample1",
-            "probability": 0.1
+            "symbolname": "LIGHT_ATTACK",
+            "probability": 0.05
         },
         {
-            "symbolname": "sample2",
-            "probability": 0.2
+            "symbolname": "HEAVY_ATTACK",
+            "probability": 0.02
         },
         {
-            "symbolname": "sample3",
-            "probability": 0.3
+            "symbolname": "REPLAY",
+            "probability": 0.03
         },
         {
-            "symbolname": "sample4",
-            "probability": 0.4
+            "symbolname": "HEAL",
+            "probability": 0.04
         },
         {
-            "symbolname": "sample5",
-            "probability": 0.5
+            "symbolname": "COIN",
+            "probability": 0.05
         },
         {
-            "symbolname": "sample6",
-            "probability": 0.6
+            "symbolname": "BIG_COIN",
+            "probability": 0.05
         },
         {
-            "symbolname": "sample7",
-            "probability": 0.7
+            "symbolname": "BONUS",
+            "probability": 0.06
         },
         {
-            "symbolname": "sample8",
-            "probability": 0.8
+            "symbolname": "BIG_BONUS",
+            "probability": 0.07
         },
         {
-            "symbolname": "sample9",
-            "probability": 0.9
+            "symbolname": "ATTACK_BONUS",
+            "probability": 0.08
         }
     ]
 }
