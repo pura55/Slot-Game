@@ -415,7 +415,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0db1b84b385639b4c840074b5e193fd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDataLoader
-  enemyData: {fileID: 4900000, guid: 3ce44b775e7177e4c90ffd1db14e380e, type: 3}
+  enemyData: {fileID: 4900000, guid: 0320e0867ec4d9747a4f1584083272d9, type: 3}
   enemyDataSo: {fileID: 11400000, guid: 537b017f36386ec46b4f70c9529aa328, type: 2}
 --- !u!4 &727720336
 Transform:
@@ -541,7 +541,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SlotProbabilityDataLoader
   slotprobabilityData: {fileID: 4900000, guid: 2f71f610551c31f4e9c8df27a7e20902, type: 3}
-  slotprobabilityDataSo: {fileID: 11400000, guid: 2ff6d4d5644abc44fa7dddf0b94682a2, type: 2}
+  slotprobabilityDataSo: {fileID: 11400000, guid: a02be35601c187841923b601a96e90c9, type: 2}
 --- !u!4 &1357173316
 Transform:
   m_ObjectHideFlags: 0
@@ -549,6 +549,52 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1357173314}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1840925110
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1840925112}
+  - component: {fileID: 1840925111}
+  m_Layer: 0
+  m_Name: Player_DataLoader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1840925111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1840925110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd6f551738d2c6c4192465232c32fdfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player_DataLoader
+  player_Data: {fileID: 4900000, guid: 69d68e626f2828c4aaeac56d6026c78d, type: 3}
+  player_DataSo: {fileID: 11400000, guid: 032704e83025ea24290fd6b25a247235, type: 2}
+--- !u!4 &1840925112
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1840925110}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -669,3 +715,4 @@ SceneRoots:
   - {fileID: 270300215}
   - {fileID: 1357173316}
   - {fileID: 727720336}
+  - {fileID: 1840925112}
