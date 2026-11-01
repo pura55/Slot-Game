@@ -22,6 +22,11 @@ public class PlayerCommander : MonoBehaviour
             {
                 OperateCommand(PlayerCommandType.LIGHT_ATTACK);
             }
+
+            if(Keyboard.current.bKey.wasPressedThisFrame)
+            {
+                OperateCommand(PlayerCommandType.BONUS);
+            }
         }
     }
 

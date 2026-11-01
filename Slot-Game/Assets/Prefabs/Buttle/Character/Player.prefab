@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d453cf8c917b44eade86d38bdd126a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimation
+  spriteRenderer: {fileID: 5825582925982351688}
   idleAnimation:
   - {fileID: 21300000, guid: 84ce2f114ad12bd4ebafc77060220324, type: 3}
   - {fileID: 21300000, guid: e70ab950968e2ef439f986ec395141c6, type: 3}
@@ -139,7 +140,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 5f35e0dbf73e2bd4bb8189fcd03962b3, type: 3}
   - {fileID: 21300000, guid: 950268a606733494f8e4b356b0100a41, type: 3}
   - {fileID: 21300000, guid: 969fce9da2f69834182f5618b7ec2975, type: 3}
-  spriteRenderer: {fileID: 5825582925982351688}
   secondPerSprite: 0.15
   spawnColor: {r: 1, g: 1, b: 1, a: 0}
 --- !u!114 &-4604180101053347148
@@ -160,6 +160,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d6b347e484efe3a438d21dbdc01b940e, type: 2}
   - {fileID: 11400000, guid: edcaefa349d218d4fb476a9ff51aba26, type: 2}
   - {fileID: 11400000, guid: 47ffb67d7a9659a4ba6f5fed1ed4c13f, type: 2}
+  - {fileID: 11400000, guid: af6b7fccc20b803458ec1ba0813cf4ed, type: 2}
   playerManager: {fileID: 5075082389928881493}
 --- !u!114 &6309702127871437713
 MonoBehaviour:
@@ -174,6 +175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
   playerManager: {fileID: 5075082389928881493}
+  playerAnimation: {fileID: 1960268744935228255}
   HP: 10
 --- !u!50 &6123154415868265530
 Rigidbody2D:
