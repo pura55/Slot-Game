@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bec85986b16fcfb489ba8fc6d5d120f7, type: 3}
-  m_Name: PlayerCommand_Return
+  m_Name: PlayerCommand_AdditionalTurn
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCommand
   playerCommandType: 3
   commandDescription: "\u8FFD\u52A0\u30BF\u30FC\u30F3\u3092\u53D6\u5F97\u3057\u3001\u5F31\u653B\u6483\u3092\u4E0E\u3048\u307E\u3059"

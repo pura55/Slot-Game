@@ -3,12 +3,12 @@
 /// </summary>
 public enum PlayerCommandType
 { 
-    NONE,         // 無し
-    LIGHT_ATTACK, // 弱攻撃
-    HEAVY_ATTACK, // 強攻撃
-    RETURN,       // 追加ターン
-    HEAL,         // 回復
-    BONUS,        // ボーナス
-    COIN          // コイン
+    NONE,            // 無し
+    LIGHT_ATTACK,    // 弱攻撃
+    HEAVY_ATTACK,    // 強攻撃
+    ADDITIONAL_TURN, // 追加ターン
+    HEAL,            // 回復
+    BONUS,           // ボーナス
+    COIN             // コイン
 }
 
