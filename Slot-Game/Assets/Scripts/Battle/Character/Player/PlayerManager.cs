@@ -104,7 +104,6 @@ public class PlayerManager : MonoBehaviour, IBattleable
     /// @brief 死亡時の処理を実行します
     private void ExecuteDead()
     {
-        playerState = PlayerState.DEAD;
         OnDead?.Invoke(this);
     }
 
@@ -115,6 +114,7 @@ public class PlayerManager : MonoBehaviour, IBattleable
         playerHealth.ResetHealth();
         playerState = PlayerState.SPAWN;
         stageMovement.SetSpeed(playerState);
+        StartCoroutine(WaitSpawnPresentation());
     }
 
     /// @brief スポーン演出の待機処理を行います

@@ -10,6 +10,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IHealable
 {
     #region Config
     [SerializeField] private PlayerManager playerManager; // プレイヤー管理者
+    [SerializeField] private CharacterAnimation playerAnimation; // プレイヤーのアニメーション
     [SerializeField] private int HP = 10; // 設定上の体力
     #endregion
 
@@ -27,8 +28,11 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IHealable
     /// @brief ダメージ処理を行います
     public void Damaged(int amount)
     {
+        // ダメージ反映
         currentHitPoint -= amount;
 
+        // ダメージ演出
+        playerAnimation.SetDamagedPresentation();
         OnDamaged?.Invoke(transform.position, amount, DamagedTarget.PLAYER);
 
         Debug.Log("ダメージ(プレイヤー）：" + amount);

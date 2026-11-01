@@ -37,10 +37,6 @@ public class SimpleEnemyAI : MonoBehaviour, IBattleable
         SetState(CharacterStateInput.MOVE);
     }
 
-    void Update()
-    {
-    }
-
     /// @brief ó‘Ôİ’è‚ğs‚¢‚Ü‚·
     public void SetState(CharacterStateInput input)
     {

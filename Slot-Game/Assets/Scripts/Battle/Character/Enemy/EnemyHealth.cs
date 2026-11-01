@@ -10,6 +10,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 {
     #region Config
     [SerializeField] private SimpleEnemyAI simpleEnemyAI; // 敵AI
+    [SerializeField] private CharacterAnimation enemyAnimation; // 敵のアニメーション
     #endregion
 
     #region State
@@ -29,6 +30,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 
         hitPoint -= amount;
 
+        enemyAnimation.SetDamagedPresentation();
         OnDamaged?.Invoke(transform.position, amount, DamagedTarget.ENEMY);
 
         Debug.Log("ダメージ(敵）：" + amount);

@@ -2404,6 +2404,10 @@ MonoBehaviour:
   waves:
   - {fileID: 578724562456445869, guid: 3cbff6fffc6b43940afa351fff648ac9, type: 3}
   - {fileID: 578724562456445869, guid: 3cbff6fffc6b43940afa351fff648ac9, type: 3}
+  - {fileID: 578724562456445869, guid: 3cbff6fffc6b43940afa351fff648ac9, type: 3}
+  - {fileID: 578724562456445869, guid: 3cbff6fffc6b43940afa351fff648ac9, type: 3}
+  - {fileID: 578724562456445869, guid: 3cbff6fffc6b43940afa351fff648ac9, type: 3}
+  - {fileID: 578724562456445869, guid: 3cbff6fffc6b43940afa351fff648ac9, type: 3}
   waveDistance: 5
   firstGeneratePosition: {x: 10, y: 0, z: 0}
 --- !u!114 &-1613163690457654103
