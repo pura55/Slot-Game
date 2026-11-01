@@ -161,6 +161,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: edcaefa349d218d4fb476a9ff51aba26, type: 2}
   - {fileID: 11400000, guid: 47ffb67d7a9659a4ba6f5fed1ed4c13f, type: 2}
   - {fileID: 11400000, guid: af6b7fccc20b803458ec1ba0813cf4ed, type: 2}
+  - {fileID: 11400000, guid: 4528933692a30a14c972346e87ff3b19, type: 2}
   playerManager: {fileID: 5075082389928881493}
 --- !u!114 &6309702127871437713
 MonoBehaviour:

@@ -30,9 +30,31 @@ public class PlayerCommander : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        /// @ToDo ここにコマンドを使用する型を記入してイベントを追加してください
+        /// @user ClassType.Function += OperateCommand;
+        /// </例> SlotReel.OnCommand += OperateCommand;
+    }
+
+    private void OnDisable()
+    {
+        /// @ToDo ここにコマンドを使用する型を記入してイベントを削除してください
+        /// @user ClassType.Function -= OperateCommand;
+        /// </例> SlotReel.OnCommand -= OperateCommand;
+    }
+
     /// @brief コマンドを指令します
+    /// @user 使用する場合はイベント処理として実行してください
+    ///       </例> event Action<PlayerCommandType> OnCommand;
+    ///             OnCommand?.Invoke(PlayerCommandType userOperationType);
     public void OperateCommand(PlayerCommandType type)
     {
+        if (playerManager.State != PlayerState.BATTLE)
+        {
+            return;
+        }
+
         playerManager.ExecuteAction();
 
         // 指令されたコマンドが存在する場合実行します
