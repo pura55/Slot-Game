@@ -2,9 +2,10 @@ using UnityEngine;
 using System.Collections.Generic;
 
 /// <summary>
+/// ターンリダクションエフェクト
+/// 
 /// ターンを減少させるコマンド効果
 /// </summary>
-/// 
 [CreateAssetMenu(menuName = "Command_TurnReductionEffect_Create")]
 public class TurnReductionEffect : CommandEffect
 {

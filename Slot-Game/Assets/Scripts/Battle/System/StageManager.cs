@@ -4,6 +4,8 @@ using System.Collections;
 
 /// <summary>
 /// ステージマネージャー
+/// 
+/// ステージの管理を行います
 /// </summary>
 public class StageManager : MonoBehaviour
 {
@@ -33,10 +35,10 @@ public class StageManager : MonoBehaviour
         WaveGenerator generator = stage.GetComponent<WaveGenerator>();
         StageMovement stageMovement = stage.GetComponent<StageMovement>();
 
-        if (generator != null)
-        {
-            generator.Battle = battleManager;
-        }
+        //if (generator != null)
+        //{
+        //    generator.Battle = battleManager;
+        //}
         gameObjects.Add(stage);
 
         GeneratePlayer(stageMovement);

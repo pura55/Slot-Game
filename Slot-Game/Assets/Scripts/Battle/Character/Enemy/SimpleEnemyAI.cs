@@ -8,10 +8,11 @@ using UnityEngine;
 /// 
 /// 敵のAI処理を行います
 /// </summary>
-public class SimpleEnemyAI : MonoBehaviour, IBattleable
+public class SimpleEnemyAI : MonoBehaviour, IBattleable, IAmEnemy
 {
     #region Config
     [SerializeField] private int waitingTurn = 3; // 待機ターン
+    [SerializeField] private bool isBoss = false; // ボスかどうかのフラグ
     [SerializeField] private LeftTurnManager leftTurnManager; // 待機ターン管理
     [SerializeField] private EnemyCommander enemyCommander; // 敵のコマンド指示
     [SerializeField] private EnemyMovement enemyMovement; // 敵の移動
@@ -30,6 +31,8 @@ public class SimpleEnemyAI : MonoBehaviour, IBattleable
     private const int activeTurn = 0; // 行動するターン
 
     private const float resetTime = 0.5f; // リセット時間
+
+    public bool IsBoss { get {return isBoss; } } // ボスかどうかのフラグ
     #endregion
     void Start()
     {

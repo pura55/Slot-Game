@@ -2,7 +2,9 @@ using UnityEngine;
 using System.Collections.Generic;
 
 /// <summary>
-/// ウェーブマネージャー
+/// ウェーブジェネレーター
+/// 
+/// ウェーブ生成を行います
 /// </summary>
 public class WaveGenerator : MonoBehaviour
 {
@@ -14,8 +16,10 @@ public class WaveGenerator : MonoBehaviour
 
     #region State
     private Vector3 generatePosition = new Vector3(0f,0f,0f);
-    private BattleManager battleManager; // バトルマネージャー
-    public BattleManager Battle { set { battleManager = value; } }
+
+    // イベント処理での不具合を想定して参照コードを残します
+    //private BattleManager battleManager; // バトルマネージャー
+    //public BattleManager Battle { set { battleManager = value; } }
     #endregion
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -35,7 +39,7 @@ public class WaveGenerator : MonoBehaviour
         {
             GameObject generatedWave = Instantiate(wave, generatePosition, Quaternion.identity, transform);
             WaveManager waveManager = generatedWave.GetComponent<WaveManager>();
-            waveManager.Buttle = battleManager;
+            //waveManager.Buttle = battleManager;
             generatePosition += generateDistance;
         }
     }

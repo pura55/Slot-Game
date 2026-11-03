@@ -1,7 +1,10 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 /// <summary>
+/// ウェーブマネージャー
+/// 
 /// ウェーブ管理を行います
 /// </summary>
 public class WaveManager : MonoBehaviour
@@ -14,8 +17,10 @@ public class WaveManager : MonoBehaviour
     #endregion
 
     #region State
-    private BattleManager battleManager; // バトルマネージャー
-    public BattleManager Buttle { set { battleManager = value; } }
+    //private BattleManager battleManager; // バトルマネージャー
+    //public BattleManager Buttle { set { battleManager = value; } }
+
+    public static event Action<List<GameObject>, GameObject, Vector3> OnStart; // ウェーブバトルを始めるイベント 
     #endregion
 
     void Start()
@@ -29,7 +34,12 @@ public class WaveManager : MonoBehaviour
         {
             Debug.Log("プレイヤーが入りました。");
             Vector3 position = transform.position + enemyGeneratePosition;
-            battleManager.StartWaveBattle(waveEnemies, collider.gameObject, position);
+
+            // バトルのスタートをイベント処理に変更
+            // 不具合が起きた場合は参照取得型に戻します
+            //battleManager.StartWaveBattle(waveEnemies, collider.gameObject, position);
+
+            OnStart?.Invoke(waveEnemies, collider.gameObject, position);
         }
     }
 }

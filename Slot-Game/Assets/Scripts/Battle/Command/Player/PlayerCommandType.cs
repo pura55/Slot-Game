@@ -1,4 +1,6 @@
 /// <summary>
+/// プレイヤーコマンドタイプ
+/// 
 /// コマンドの種類を記載します
 /// </summary>
 public enum PlayerCommandType

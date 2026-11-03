@@ -33,6 +33,16 @@ public class BattleManager : MonoBehaviour
     private BattleState battleState = BattleState.IDLE; // バトルの状態
     #endregion
 
+    private void OnEnable()
+    {
+        WaveManager.OnStart += StartWaveBattle;
+    }
+
+    private void OnDisable()
+    {
+        WaveManager.OnStart -= StartWaveBattle;
+    }
+
     /// @brief ウェーブバトルを開始します
     public void StartWaveBattle(List<GameObject> enemies, GameObject player, Vector3 generatePosition)
     {
@@ -45,6 +55,12 @@ public class BattleManager : MonoBehaviour
 
         // プレイヤー参加者登録
         joinPlayer = player.GetComponent<IBattleable>();
+
+        if(joinPlayer == null)
+        {
+            return;
+        }
+
         joinPlayer.OnDead += PlayerDead;
         joinPlayer.OnAct += PlayerAction;
 
@@ -58,6 +74,11 @@ public class BattleManager : MonoBehaviour
         // 敵の参加者・ダメージ表示登録
         foreach (GameObject enemy in enemies)
         {
+            if(enemy == null)
+            {
+                continue;
+            }
+
             GameObject enemyObj = Instantiate(enemy, generatePosition, Quaternion.identity);
             IBattleable battleable = enemyObj.GetComponent<IBattleable>();
             joinEnemies.Add(battleable);
@@ -67,6 +88,12 @@ public class BattleManager : MonoBehaviour
             IDamageable damageable = enemyObj.GetComponent<IDamageable>();
             damagedEnemies.Add(damageable);
             damageable.OnDamaged += CharacterShowDamage;
+
+            // ボスかどうかを確認します
+            if(enemy.GetComponent<IAmEnemy>().IsBoss)
+            {
+
+            }
         }
 
         if (joinEnemies is { Count: 0 })
