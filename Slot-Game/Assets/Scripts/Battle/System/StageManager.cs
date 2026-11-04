@@ -18,8 +18,9 @@ public class StageManager : MonoBehaviour
     #endregion
 
     #region State
-    private List<GameObject> gameObjects = new();
-    private int currentStageNumber = 0; // 現在のステージ番号
+    private List<GameObject> gameObjects = new(); // 生成したステージや背景、プレイヤーの参照
+    private const int initStageNumber = 0; // ステージの初期番号
+    private int currentStageNumber = initStageNumber; // 現在のステージ番号
     #endregion
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -28,12 +29,21 @@ public class StageManager : MonoBehaviour
         GenerateStage();
     }
 
+    /// @brief 次のステージへ遷移する処理を行います
     public void NextStage()
     {
         currentStageNumber++;
 
-        // ゲームオブジェクトを削除します
-        for(int i = gameObjects.Count - 1; i >= 0; i--)
+        // 次のステージが存在しない場合最初のステージに遷移します
+        if(stages.Count <= currentStageNumber)
+        {
+            currentStageNumber = initStageNumber;
+        }
+
+        // 逆順で安全にオブジェクトのリストを削除します
+        // @brief リストの中身が空になるまで処理を実行
+        // @param i カウントから1を減算して指数を求めます
+        for (int i = gameObjects.Count - 1; i >= 0; i--)
         {
             GameObject destroyObject = gameObjects[i];
             gameObjects.Remove(destroyObject);
