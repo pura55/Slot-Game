@@ -11,6 +11,7 @@ public class StageManager : MonoBehaviour
 {
     #region Config
     [SerializeField] private List<GameObject> stages; // Stage
+    [SerializeField] private List<GameObject> stageBackGrounds; // 背景
     [SerializeField] private BattleManager battleManager; // バトルマネージャー
     [SerializeField] private GameObject player; // プレイヤー
     [SerializeField] private Vector3 playerGeneratePosition = new Vector3(-7, 0f, 0f);
@@ -24,14 +25,32 @@ public class StageManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        GenerateStage(currentStageNumber);
+        GenerateStage();
+    }
+
+    public void NextStage()
+    {
+        currentStageNumber++;
+
+        // ゲームオブジェクトを削除します
+        for(int i = gameObjects.Count - 1; i >= 0; i--)
+        {
+            GameObject destroyObject = gameObjects[i];
+            gameObjects.Remove(destroyObject);
+            Destroy(destroyObject);
+        }
+
+        GenerateStage();
     }
 
     /// @brief ステージを生成します
     /// @param stageNum ステージ番号
-    private void GenerateStage(int stageNum)
+    private void GenerateStage()
     {
-        GameObject stage = Instantiate(stages[stageNum], Vector3.zero, Quaternion.identity);
+        GameObject backGround = Instantiate(stageBackGrounds[currentStageNumber], 
+                                            stageBackGrounds[currentStageNumber].transform.position, 
+                                            stageBackGrounds[currentStageNumber].transform.rotation);
+        GameObject stage = Instantiate(stages[currentStageNumber], Vector3.zero, Quaternion.identity);
         WaveGenerator generator = stage.GetComponent<WaveGenerator>();
         StageMovement stageMovement = stage.GetComponent<StageMovement>();
 
@@ -39,6 +58,7 @@ public class StageManager : MonoBehaviour
         //{
         //    generator.Battle = battleManager;
         //}
+        gameObjects.Add(backGround);
         gameObjects.Add(stage);
 
         GeneratePlayer(stageMovement);
@@ -51,10 +71,5 @@ public class StageManager : MonoBehaviour
         PlayerManager playerManager = generatePlayer.GetComponent<PlayerManager>();
         playerManager.Movement = stageMovement;
         gameObjects.Add(generatePlayer);
-    }
-
-    /// @brief オブジェクトを再読み込みします
-    public void ReloadObjects()
-    {
     }
 }

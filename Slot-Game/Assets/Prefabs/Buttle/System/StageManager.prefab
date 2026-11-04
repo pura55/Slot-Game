@@ -46,6 +46,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StageManager
   stages:
   - {fileID: 6674513159994892422, guid: b72796df559870742b4716b12792597f, type: 3}
+  - {fileID: 6674513159994892422, guid: af7747af948d21142afc47f58b35148e, type: 3}
+  stageBackGrounds:
+  - {fileID: 7893053266596974328, guid: 0557d4f5a31fd7c4cb1dbbd87ddcab02, type: 3}
+  - {fileID: 5727105760982975010, guid: 01e09e40f99d1cd45aeae08f4a85b61f, type: 3}
+  - {fileID: 8329352644226918057, guid: 07494f6ed841c634781b7948f3d376b3, type: 3}
   battleManager: {fileID: 0}
   player: {fileID: 6135197554462265708, guid: f6143f3c10eddf34f8d51d2171da57d2, type: 3}
-  playerGeneratePosition: {x: -8, y: 0, z: 0}
+  playerGeneratePosition: {x: -4, y: 0, z: 0}

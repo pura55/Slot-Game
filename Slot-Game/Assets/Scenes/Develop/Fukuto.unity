@@ -549,10 +549,6 @@ PrefabInstance:
       propertyPath: battleManager
       value: 
       objectReference: {fileID: 1091392639}
-    - target: {fileID: 7863625227185544363, guid: c9d7e9979d54f6b4684a2a380c23862b, type: 3}
-      propertyPath: playerGeneratePosition.x
-      value: -4
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -632,7 +628,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1814204248310054934, guid: a14288ac88a69194c8a4a8d9dde5ff3f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: 1814204248310054934, guid: a14288ac88a69194c8a4a8d9dde5ff3f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
