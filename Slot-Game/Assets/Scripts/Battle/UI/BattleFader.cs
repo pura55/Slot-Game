@@ -39,11 +39,15 @@ public class BattleFader : MonoBehaviour
     public void OrderFadeIn()
     {
         isFadeIn = true;
+        fadeAlpha = minFadeAlpha;
+        fade.color = new Color(fadeColor, fadeColor, fadeColor, fadeAlpha);
     }
 
     public void OrderFadeOut()
     {
         isFadeOut = true;
+        fadeAlpha = maxFadeAlpha;
+        fade.color = new Color(fadeColor, fadeColor, fadeColor, fadeAlpha);
     }
 
     /// @brief フェードインを行います

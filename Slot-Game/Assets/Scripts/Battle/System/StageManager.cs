@@ -14,7 +14,9 @@ public class StageManager : MonoBehaviour
     [SerializeField] private List<GameObject> stageBackGrounds; // 背景
     [SerializeField] private BattleManager battleManager; // バトルマネージャー
     [SerializeField] private GameObject player; // プレイヤー
+    [SerializeField] private BattleFader battleFader; // バトルフェーダー
     [SerializeField] private Vector3 playerGeneratePosition = new Vector3(-7, 0f, 0f);
+    [SerializeField] private float nextStageInterval = 1f; // 次のステージまでの間隔
     #endregion
 
     #region State
@@ -27,15 +29,26 @@ public class StageManager : MonoBehaviour
     void Start()
     {
         GenerateStage();
+        battleFader.OrderFadeOut();
     }
 
     /// @brief 次のステージへ遷移する処理を行います
-    public void NextStage()
+    public void ChangeNextStage()
     {
+        battleFader.OrderFadeIn();
+
+        StartCoroutine(WaitNextStage());
+    }
+
+    /// @brief ステージ遷移の待機をします
+   IEnumerator WaitNextStage()
+    {
+        yield return new WaitForSeconds(nextStageInterval);
+
         currentStageNumber++;
 
         // 次のステージが存在しない場合最初のステージに遷移します
-        if(stages.Count <= currentStageNumber)
+        if (stages.Count <= currentStageNumber)
         {
             currentStageNumber = initStageNumber;
         }
@@ -51,6 +64,8 @@ public class StageManager : MonoBehaviour
         }
 
         GenerateStage();
+
+        battleFader.OrderFadeOut();
     }
 
     /// @brief ステージを生成します

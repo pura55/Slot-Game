@@ -546,6 +546,10 @@ PrefabInstance:
       value: StageManager
       objectReference: {fileID: 0}
     - target: {fileID: 7863625227185544363, guid: c9d7e9979d54f6b4684a2a380c23862b, type: 3}
+      propertyPath: battleFader
+      value: 
+      objectReference: {fileID: 33728151}
+    - target: {fileID: 7863625227185544363, guid: c9d7e9979d54f6b4684a2a380c23862b, type: 3}
       propertyPath: battleManager
       value: 
       objectReference: {fileID: 1091392639}

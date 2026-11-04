@@ -221,7 +221,7 @@ public class BattleManager : MonoBehaviour
             // ƒvƒŒƒCƒ„[‚Ì“o˜^‚ğ‰ğœ
             PlayerLeaveBattle();
 
-            stageManager.NextStage();
+            stageManager.ChangeNextStage();
         }
     }
 
