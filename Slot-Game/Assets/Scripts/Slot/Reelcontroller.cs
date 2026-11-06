@@ -91,7 +91,7 @@ public class Reelcontroller : MonoBehaviour
         if (stopping)
         {
             float target = targetIndex / (float)N;
-            float dist = Mathf.Repeat(target = pos, 1f);
+            float dist = Mathf.Repeat(target - pos, 1f);
 
             if (dist <= delta)
             {
@@ -115,7 +115,7 @@ public class Reelcontroller : MonoBehaviour
         image.uvRect = r;
     }
 
-    [ContextMenu("File Layout From Text")]
+    [ContextMenu("Fill Layout From Text")]
     void FillLayoutFromText()
     {
         string[] names = layoutText.Split(new char[] { ' ', ',', '\n', '\r' }, System.StringSplitOptions.RemoveEmptyEntries);
