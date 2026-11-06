@@ -31,6 +31,8 @@ public class BattleManager : MonoBehaviour
     private List<IDamageable> damagedEnemies = new(); // ダメージを受ける敵
 
     private BattleState battleState = BattleState.IDLE; // バトルの状態
+
+    private bool isBoss = false;
     #endregion
 
     private void OnEnable()
@@ -92,7 +94,7 @@ public class BattleManager : MonoBehaviour
             // ボスかどうかを確認します
             if(enemy.GetComponent<IAmEnemy>().IsBoss)
             {
-
+                isBoss = true;
             }
         }
 
@@ -215,13 +217,16 @@ public class BattleManager : MonoBehaviour
                 return;
             }
 
-            PlayerManager player = joinPlayer.GameObject.GetComponent<PlayerManager>();
-            player.SetState(CharacterStateInput.LEAVE);
+            playerManager.SetState(CharacterStateInput.LEAVE);
 
             // プレイヤーの登録を解除
             PlayerLeaveBattle();
 
-            stageManager.ChangeNextStage();
+            if(isBoss)
+            {
+                stageManager.ChangeNextStage();
+                isBoss = false;
+            }
         }
     }
 
@@ -268,6 +273,9 @@ public class BattleManager : MonoBehaviour
         {
             enemy.ObjectReset();
         }
+
+        isBoss = false;
+
         joinPlayer.ObjectReset();
         PlayerLeaveBattle();
 

@@ -177,7 +177,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
   playerManager: {fileID: 5075082389928881493}
   playerAnimation: {fileID: 1960268744935228255}
-  HP: 10
+  HP: 100
 --- !u!50 &6123154415868265530
 Rigidbody2D:
   serializedVersion: 5
