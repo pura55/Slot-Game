@@ -31,10 +31,6 @@
         {
             "symbolname": "BIG_BONUS",
             "probability": 0.07
-        },
-        {
-            "symbolname": "ATTACK_BONUS",
-            "probability": 0.08
         }
     ]
 }

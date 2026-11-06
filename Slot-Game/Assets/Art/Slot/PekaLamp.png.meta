@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 0b6d37f68caba0d43ae7cfd5093eb177
+guid: 4c9fd0ce12ecdf748a5a79b7996cb6c8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1945303979761129535
-    second: Reel_5_0
+      213: 7157536888145341068
+    second: PekaLamp_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,17 +96,43 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Reel_5_0
+      name: PekaLamp_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 240
-        height: 80
+        width: 548
+        height: 388
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1c72f2a4654e005e0800000000000000
-      internalID: -1945303979761129535
+      spriteID: c8a68a4a0eda45360800000000000000
+      internalID: 7157536888145341068
       vertices: []
       indices: 
       edges: []
@@ -135,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Reel_5_0: -1945303979761129535
+      PekaLamp_0: 7157536888145341068
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
