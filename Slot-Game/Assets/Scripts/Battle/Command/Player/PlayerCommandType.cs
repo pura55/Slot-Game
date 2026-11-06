@@ -14,3 +14,12 @@ public enum PlayerCommandType
     COIN             // コイン
 }
 
+/// プレイヤーコマンドを呼ぶ例
+///
+/// 「イベント宣言」
+/// public event Action<PlayerCommandType> OnHit;
+/// 
+/// 「イベントの呼び出し」
+/// 当たっていないとき：OnHit?.(PlayerCommand.None);
+/// 小当たり：OnHit?,(PlayerCommand.LIGHT_ATTACK);
+///
