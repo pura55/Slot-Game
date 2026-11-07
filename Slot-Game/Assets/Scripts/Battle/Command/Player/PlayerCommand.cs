@@ -28,5 +28,7 @@ public class PlayerCommand : ScriptableObject, ICommandable
         {
             effect.ApplyEffect(user, target);
         }
+
+        BattleStateObserver.PlayerBattleState = CharacterBattleState.IDLE;
     }
 }

@@ -82,15 +82,33 @@ public class SimpleEnemyAI : MonoBehaviour, IBattleable, IAmEnemy
     /// @brief ターン減少処理を行います
     public void ReduceTurn(int turn)
     {
+        if (currentWaitTurn == activeTurn)
+        {
+            return;
+        }
+
         currentWaitTurn -= turn;
         leftTurnManager.ChangeLeftTurn(currentWaitTurn);
 
         if (currentWaitTurn == activeTurn)
         {
-            enemyCommander.OperateCommand(EnemyCommandType.LIGHT_ATTACK);
-            currentWaitTurn = waitingTurn;
-            leftTurnManager.ChangeLeftTurn(currentWaitTurn);
+            StartCoroutine(WaitAction());
         }
+    }
+
+    // @brief 行動待機を行います
+    IEnumerator WaitAction()
+    {
+        // 行動可能な状態になるまで待機します
+        yield return new WaitUntil(() => BattleStateObserver.PlayerBattleState == CharacterBattleState.IDLE && BattleStateObserver.EnemyBattleState == CharacterBattleState.IDLE);
+
+        Debug.Log("条件が満たされました！処理を再開します。");
+
+        BattleStateObserver.EnemyBattleState = CharacterBattleState.ACTION;
+
+        enemyCommander.OperateCommand(EnemyCommandType.LIGHT_ATTACK);
+        currentWaitTurn = waitingTurn;
+        leftTurnManager.ChangeLeftTurn(currentWaitTurn);
     }
 
     /// @brief 死亡時の処理を実行します
