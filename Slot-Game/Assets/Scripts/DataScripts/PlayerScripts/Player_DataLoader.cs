@@ -1,9 +1,8 @@
 using UnityEngine;
 
-public class Player_DataLoader : MonoBehaviour
+public class Player_DataLoader : DataLoaderBase
 {
     #region Config
-    [SerializeField] private TextAsset player_Data;
     [SerializeField] private Player_DataSo player_DataSo;
     #endregion
 
@@ -12,15 +11,10 @@ public class Player_DataLoader : MonoBehaviour
         LoadData();
     }
 
-    private void Start()
-    {
-
-    }
-
-    private void LoadData()
+    protected override void LoadData()
     {
         // ‹¤’Ê‚ÌJSON“Ç‚İ‚İ‹@”\‚ğ—˜—p
-        Player_Data data = JsonDataLoader.Load<Player_Data>(player_Data);
+        Player_Data data = JsonDataLoader.Load<Player_Data>(textAsset);
 
         // “Ç‚İ‚İ‚É¬Œ÷‚µ‚½ê‡
         if (data != null)
