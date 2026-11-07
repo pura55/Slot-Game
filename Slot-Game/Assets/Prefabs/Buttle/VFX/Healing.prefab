@@ -9705,7 +9705,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cbced9fd2d9dec44a28225be0353d31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnVFXController
-  destroyTime: 6
+  destroyTime: 0.7
 --- !u!1001 &1687924163140513629
 PrefabInstance:
   m_ObjectHideFlags: 0
