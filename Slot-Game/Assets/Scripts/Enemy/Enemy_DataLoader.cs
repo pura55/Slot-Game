@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class EnemyDataLoader : MonoBehaviour
+public class Enemy_DataLoader : MonoBehaviour
 {
     #region Config
-    [SerializeField] private TextAsset enemyData;
-    [SerializeField] private EnemyDataSo enemyDataSo;
+    [SerializeField] private TextAsset enemy_Data;
+    [SerializeField] private Enemy_DataSo enemy_DataSo;
     #endregion
 
     private void Awake()
@@ -20,12 +20,12 @@ public class EnemyDataLoader : MonoBehaviour
     private void LoadData()
     {
         // 共通のJSON読み込み機能を利用
-         EnemyData data = JsonDataLoader.Load<EnemyData>(enemyData);
+         Enemy_Data data = JsonDataLoader.Load<Enemy_Data>(enemy_Data);
 
         // 読み込みに成功した場合
         if (data != null)
         {
-            enemyDataSo.CopyData(data);
+            enemy_DataSo.CopyData(data);
 
             Debug.Log("データが読み込まれました。");
         }

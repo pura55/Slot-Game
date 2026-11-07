@@ -2,16 +2,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Enemy_Scriptable")]
-public class EnemyDataSo : ScriptableObject
+public class Enemy_DataSo : ScriptableObject
 {
     // エネミーのデータをリスト化する変数
-    public List<EnemyDataBase> Enemys;
+    public List<Enemy_DataBase> Enemys;
 
     /// @brief データをコピーする関数
-    public void CopyData(EnemyData data)
+    public void CopyData(Enemy_Data data)
     {
         // リストを初期化
-        Enemys = new List<EnemyDataBase>();
+        Enemys = new List<Enemy_DataBase>();
 
         Debug.Log($"コピーまでは来てます");
 
@@ -20,7 +20,7 @@ public class EnemyDataSo : ScriptableObject
             Debug.Log($"データコピー中");
 
             // 実体を作る
-            EnemyDataBase progressEnemy = new EnemyDataBase();
+            Enemy_DataBase progressEnemy = new Enemy_DataBase();
             progressEnemy.ID = Enemy.ID;
             progressEnemy.HP = Enemy.HP;
             progressEnemy.XP = Enemy.XP;

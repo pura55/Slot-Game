@@ -415,8 +415,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0db1b84b385639b4c840074b5e193fd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDataLoader
-  enemyData: {fileID: 4900000, guid: 0320e0867ec4d9747a4f1584083272d9, type: 3}
-  enemyDataSo: {fileID: 11400000, guid: 537b017f36386ec46b4f70c9529aa328, type: 2}
+  enemy_Data: {fileID: 4900000, guid: 0320e0867ec4d9747a4f1584083272d9, type: 3}
+  enemy_DataSo: {fileID: 11400000, guid: 537b017f36386ec46b4f70c9529aa328, type: 2}
 --- !u!4 &727720336
 Transform:
   m_ObjectHideFlags: 0
@@ -568,7 +568,7 @@ GameObject:
   - component: {fileID: 1840925112}
   - component: {fileID: 1840925111}
   m_Layer: 0
-  m_Name: Player_DataLoader
+  m_Name: PlayerDataLoader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

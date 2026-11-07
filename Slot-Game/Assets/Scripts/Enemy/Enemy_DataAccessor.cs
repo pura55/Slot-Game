@@ -1,9 +1,9 @@
 using UnityEngine;
 
 //エネミーデータを検索・取得するためのクラス
-public class EnemyDataAccessor : MonoBehaviour
+public class Enemy_DataAccessor : MonoBehaviour
 {
-    [SerializeField] private EnemyDataSo enemyData;
+    [SerializeField] private Enemy_DataSo enemy_Data;
 
     //指定されたシンボル名に対応する確率を取得
     //ID = 取得したいエネミーの名前
@@ -16,15 +16,15 @@ public class EnemyDataAccessor : MonoBehaviour
         XP = 0;
 
         //ScriptableObjectまたはデータリストが存在しない場合は終了
-        if (enemyData == null ||
-            enemyData.Enemys == null)
+        if (enemy_Data == null ||
+            enemy_Data.Enemys == null)
         {
             return false;
         }
 
 
         //ID名が一致するデータを検索
-        foreach (var item in enemyData.Enemys)
+        foreach (var item in enemy_Data.Enemys)
         {
             if (item.ID == ID)
             {

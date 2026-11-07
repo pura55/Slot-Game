@@ -1,6 +1,6 @@
 using UnityEngine;
 
-//エネミーデータを検索・取得するためのクラス
+//プレイヤーデータを検索・取得するためのクラス
 public class Player_DataAccessor : MonoBehaviour
 {
     [SerializeField] private Player_DataSo player_Data;
