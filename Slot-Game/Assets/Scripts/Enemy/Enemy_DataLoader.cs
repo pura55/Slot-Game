@@ -20,7 +20,7 @@ public class Enemy_DataLoader : MonoBehaviour
     private void LoadData()
     {
         // ‹¤’Ê‚ÌJSON“Ç‚İ‚İ‹@”\‚ğ—˜—p
-         Enemy_Data data = JsonDataLoader.Load<Enemy_Data>(enemy_Data);
+        var data = JsonDataLoader.Load<Enemy_Data>(enemy_Data);
 
         // “Ç‚İ‚İ‚É¬Œ÷‚µ‚½ê‡
         if (data != null)

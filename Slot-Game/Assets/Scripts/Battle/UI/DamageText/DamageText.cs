@@ -7,24 +7,15 @@ using System.Collections;
 /// 
 /// ダメージテキストの処理を行います
 /// </summary>
-public class DamageText : APooledObject
+public class DamageText : PooledText
 {
     #region Config
-    [SerializeField] private float lifeTime = 1f; // ライフタイム
-    [SerializeField] private float speed = 10f; // 設定上の速度
     [SerializeField] private float gravity = 2f; // 重力
-    [SerializeField] private TMP_Text textMeshPro; // ダメージのテキスト
-    [SerializeField] private RectTransform rectTransform; // トランスフォーム
-    #endregion
-
-    #region State
-    private float velocity = 3f; // 移動速度
     #endregion
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        rectTransform = GetComponent<RectTransform>();
     }
 
     // Update is called once per frame
@@ -34,7 +25,7 @@ public class DamageText : APooledObject
     }
 
     /// @brief 移動処理を行う関数
-    private void Movement()
+    protected override void Movement()
     {
         velocity -= gravity;
 
@@ -43,32 +34,23 @@ public class DamageText : APooledObject
     }
 
     /// @brief 情報を設定する関数
-    public void SetInfo(Vector3 position, int damage, DamagedTarget target)
+    public void SetInfo(Vector3 position, int damageAmount, DamagedTarget target)
     {
         // テキストを設定
         switch (target)
         {
             case DamagedTarget.ENEMY:
                 textMeshPro.color = Color.white;
-                textMeshPro.text = damage.ToString();
+                textMeshPro.text = damageAmount.ToString();
                 break;
             case DamagedTarget.PLAYER:
                 textMeshPro.color = Color.red;
-                textMeshPro.text = "-" + damage;
+                textMeshPro.text = "-" + damageAmount;
                 break;
         }
 
         rectTransform.position = new Vector3(position.x, position.y, position.z);
         velocity = speed;
         StartCoroutine(WaitToRelease());
-    }
-
-    /// @brief リリースを待機する関数
-    private IEnumerator WaitToRelease()
-    {
-        // リリース待機
-        yield return new WaitForSeconds(lifeTime);
-
-        Release();
     }
 }

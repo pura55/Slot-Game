@@ -18,6 +18,8 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IHealable
     private int currentHitPoint = 10; // 現在の体力
 
     public event Action<Vector3, int, DamagedTarget> OnDamaged; // ダメージ表示用イベント
+
+    public event Action<Vector3, int> OnHealed; // 回復テキスト表示用イベント
     #endregion
 
     private void Start()
@@ -54,6 +56,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IHealable
     public void Healed(int amount)
     { 
         currentHitPoint += amount;
+        OnHealed?.Invoke(transform.position, amount);
     }
 
     /// @brief 体力をリセットします

@@ -27,7 +27,7 @@ public class BattleManager : MonoBehaviour
     private List<IBattleable> joinEnemies = new(); // 参加している敵
     public List<IBattleable> JoinEnemies { get { return joinEnemies; } }
 
-    private IDamageable damagedPlayer; // ダメージを受けるプレイヤー
+    private PlayerHealth damagedPlayer; // ダメージを受けるプレイヤー
     private List<IDamageable> damagedEnemies = new(); // ダメージを受ける敵
 
     private BattleState battleState = BattleState.IDLE; // バトルの状態
@@ -70,8 +70,10 @@ public class BattleManager : MonoBehaviour
         playerManager = player.GetComponent<PlayerManager>();
 
         // プレイヤーダメージ表示の登録
-        damagedPlayer = player.GetComponent<IDamageable>();
+        damagedPlayer = player.GetComponent<PlayerHealth>();
         damagedPlayer.OnDamaged += CharacterShowDamage;
+        damagedPlayer.OnHealed += CharacterShowHeal;
+
 
         // 敵の参加者・ダメージ表示登録
         foreach (GameObject enemy in enemies)
@@ -166,6 +168,7 @@ public class BattleManager : MonoBehaviour
         joinPlayer.OnAct -= PlayerAction;
         joinPlayer.OnDead -= PlayerDead;
         damagedPlayer.OnDamaged -= CharacterShowDamage;
+        damagedPlayer.OnHealed -= CharacterShowHeal;
 
 
         // 敵の参照を削除
@@ -234,6 +237,12 @@ public class BattleManager : MonoBehaviour
     private void CharacterShowDamage(Vector3 position, int damage, DamagedTarget target)
     {
         damageTextManager.ShowDamageText(position, damage, target);
+    }
+
+    /// @brief キャラクターの回復を表示します
+    private void CharacterShowHeal(Vector3 position, int heal)
+    {
+        damageTextManager.ShowHealText(position, heal);
     }
 
     /// @brief プレイヤー行動時の処理を行います

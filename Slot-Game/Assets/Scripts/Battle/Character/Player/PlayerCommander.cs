@@ -27,6 +27,11 @@ public class PlayerCommander : MonoBehaviour
             {
                 OperateCommand(PlayerCommandType.BONUS);
             }
+
+            if(Keyboard.current.hKey.wasPressedThisFrame)
+            {
+                OperateCommand(PlayerCommandType.HEAL);
+            }
         }
     }
 

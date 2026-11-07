@@ -1,3 +1,5 @@
+using System;
+using UnityEngine;
 
 /// <summary>
 /// 回復を受けれるオブジェクトのインターフェース
@@ -7,4 +9,6 @@ public interface IHealable
     /// @brief 回復をする共通の関数
     /// @param amount 回復量
     public void Healed(int amount);
+
+    public event Action<Vector3, int> OnHealed; // 回復イベント
 }

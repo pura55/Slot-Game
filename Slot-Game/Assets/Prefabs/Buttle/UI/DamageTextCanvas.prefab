@@ -115,4 +115,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamageTextManager
   damageText: {fileID: 3134703911710137338, guid: 47ed9163c4fbb584694f3d55e024ddaa, type: 3}
-  poolSize: 10
+  damagePoolSize: 10
+  healText: {fileID: -1886818555498114329, guid: d56c3a336b7957a47a81adb9a3ccc73c, type: 3}
+  healPoolSize: 3
