@@ -41,11 +41,11 @@ public class DamageText : PooledText
         {
             case DamagedTarget.ENEMY:
                 textMeshPro.color = Color.white;
-                textMeshPro.text = damageAmount.ToString();
+                textMeshPro.SetText("{0}", damageAmount);
                 break;
             case DamagedTarget.PLAYER:
                 textMeshPro.color = Color.red;
-                textMeshPro.text = "-" + damageAmount;
+                textMeshPro.SetText("-{0}", damageAmount);
                 break;
         }
 

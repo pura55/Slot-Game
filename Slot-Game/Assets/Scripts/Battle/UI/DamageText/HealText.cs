@@ -31,7 +31,7 @@ public class HealText : PooledText
     {
         // テキストを設定
         textMeshPro.color = Color.green;
-        textMeshPro.text = "+" + healAmount;
+        textMeshPro.SetText("+{0}", healAmount);
 
         rectTransform.position = new Vector3(position.x, position.y, position.z);
         StartCoroutine(WaitToRelease());
