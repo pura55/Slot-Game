@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -30,7 +31,11 @@ public class BattleManager : MonoBehaviour
     private PlayerHealth damagedPlayer; // ダメージを受けるプレイヤー
     private List<IDamageable> damagedEnemies = new(); // ダメージを受ける敵
 
-    private BattleState battleState = BattleState.IDLE; // バトルの状態
+    // イベント // 
+    public event Action StartBossBattle; // ボスバトルのイベント
+    public event Action StartNormalBattle; // 通常バトルのイベント
+    public event Action OnWin; // 勝利時のイベント
+    public event Action OnLose; // 敗北時のイベント
 
     private bool isBoss = false;
     #endregion
@@ -100,6 +105,17 @@ public class BattleManager : MonoBehaviour
             }
         }
 
+        // ボス戦の場合ボス用のイベント処理を開始します
+        if(isBoss)
+        {
+            StartBossBattle?.Invoke();
+        }
+        else
+        {
+            // 通常バトルのイベント処理を開始します
+            StartNormalBattle?.Invoke();
+        }
+
         if (joinEnemies is { Count: 0 })
         {
             Debug.LogError("敵の参照が取得できないか、生成されていない可能性があります");
@@ -123,33 +139,6 @@ public class BattleManager : MonoBehaviour
         foreach (IBattleable enemy in joinEnemies)
         {
             enemy.SetState(CharacterStateInput.BATTLE);
-        }
-    }
-
-    /// @brief 状態設定を行います
-    public void SetState(BattleStateInput input)
-    {
-        battleState = (battleState, input) switch
-        {
-            (BattleState.IDLE, BattleStateInput.START) => BattleState.RUNNING,
-            (BattleState.RUNNING, BattleStateInput.END) => BattleState.FINISHING,
-            _ => battleState
-        };
-
-        OnEnterState(battleState);
-    }
-
-    /// @brief 各状態に入った際の処理を行います
-    private void OnEnterState(BattleState state)
-    {
-        switch (state)
-        {
-            case BattleState.IDLE:
-                break;
-            case BattleState.RUNNING:
-                break;
-            case BattleState.FINISHING:
-                break;
         }
     }
 

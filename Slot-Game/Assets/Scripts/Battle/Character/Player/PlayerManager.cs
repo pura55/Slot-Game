@@ -112,7 +112,7 @@ public class PlayerManager : MonoBehaviour, IBattleable
     {
         stageMovement.SetFirstPosition();
         playerHealth.ResetHealth();
-        playerState = PlayerState.SPAWN;
+        SetState(CharacterStateInput.SPAWN);
         stageMovement.SetSpeed(playerState);
         StartCoroutine(WaitSpawnPresentation());
     }
