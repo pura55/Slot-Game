@@ -11,11 +11,8 @@ public class HealEffect : CommandEffect
 
     public override void ApplyEffect(GameObject user, List<GameObject> targets)
     {
-        foreach(GameObject target in targets)
-        {
-            IHealable damageable = target.GetComponent<IHealable>();
+        IHealable healable = user.GetComponent<IHealable>();
 
-            damageable.Healed(healAmount);
-        }
+        healable.Healed(healAmount);
     }
 }

@@ -1,31 +1,36 @@
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
-/// <summary>
-/// プレイヤーコマンダー
-/// 
-/// プレイヤーのコマンドを指示します
-/// </summary>
 public class PlayerCommander : MonoBehaviour
 {
     #region Config
     [SerializeField] private List<PlayerCommand> playerCommands; // プレイヤーのコマンド
     [SerializeField] private PlayerManager playerManager; // プレイヤー管理者
     #endregion
-
     private void Update()
     {
-        if(playerManager.State == PlayerState.BATTLE)
+        // 敵の行動中やプレイヤーが既に行動中の場合、処理を受け付けない
+        if (BattleStateObserver.EnemyBattleState != CharacterBattleState.IDLE || BattleStateObserver.PlayerBattleState != CharacterBattleState.IDLE)
         {
-            if(Keyboard.current.rKey.wasPressedThisFrame)
+            return;
+        }
+
+        if (playerManager.State == PlayerState.BATTLE)
+        {
+            if (Keyboard.current.rKey.wasPressedThisFrame)
             {
                 OperateCommand(PlayerCommandType.LIGHT_ATTACK);
             }
 
-            if(Keyboard.current.bKey.wasPressedThisFrame)
+            if (Keyboard.current.bKey.wasPressedThisFrame)
             {
                 OperateCommand(PlayerCommandType.BONUS);
+            }
+
+            if (Keyboard.current.hKey.wasPressedThisFrame)
+            {
+                OperateCommand(PlayerCommandType.HEAL);
             }
         }
     }
@@ -55,12 +60,14 @@ public class PlayerCommander : MonoBehaviour
             return;
         }
 
+        BattleStateObserver.PlayerBattleState = CharacterBattleState.ACTION;
+
         playerManager.ExecuteAction();
 
         // 指令されたコマンドが存在する場合実行します
-        foreach (PlayerCommand command in  playerCommands)
+        foreach (PlayerCommand command in playerCommands)
         {
-            if(command.playerCommandType != type)
+            if (command.playerCommandType != type)
             {
                 continue;
             }
@@ -84,7 +91,7 @@ public class PlayerCommander : MonoBehaviour
         // 参加している敵を追加します
         foreach (IBattleable joinTarget in playerManager.EffectTargets)
         {
-           enemies.Add(joinTarget.GameObject);
+            enemies.Add(joinTarget.GameObject);
         }
 
         return enemies;

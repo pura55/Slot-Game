@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,10 +28,14 @@ public class BattleManager : MonoBehaviour
     private List<IBattleable> joinEnemies = new(); // 参加している敵
     public List<IBattleable> JoinEnemies { get { return joinEnemies; } }
 
-    private IDamageable damagedPlayer; // ダメージを受けるプレイヤー
+    private PlayerHealth damagedPlayer; // ダメージを受けるプレイヤー
     private List<IDamageable> damagedEnemies = new(); // ダメージを受ける敵
 
-    private BattleState battleState = BattleState.IDLE; // バトルの状態
+    // イベント // 
+    public event Action StartBossBattle; // ボスバトルのイベント
+    public event Action StartNormalBattle; // 通常バトルのイベント
+    public event Action OnWin; // 勝利時のイベント
+    public event Action OnLose; // 敗北時のイベント
 
     private bool isBoss = false;
     #endregion
@@ -70,8 +75,10 @@ public class BattleManager : MonoBehaviour
         playerManager = player.GetComponent<PlayerManager>();
 
         // プレイヤーダメージ表示の登録
-        damagedPlayer = player.GetComponent<IDamageable>();
+        damagedPlayer = player.GetComponent<PlayerHealth>();
         damagedPlayer.OnDamaged += CharacterShowDamage;
+        damagedPlayer.OnHealed += CharacterShowHeal;
+
 
         // 敵の参加者・ダメージ表示登録
         foreach (GameObject enemy in enemies)
@@ -96,6 +103,17 @@ public class BattleManager : MonoBehaviour
             {
                 isBoss = true;
             }
+        }
+
+        // ボス戦の場合ボス用のイベント処理を開始します
+        if(isBoss)
+        {
+            StartBossBattle?.Invoke();
+        }
+        else
+        {
+            // 通常バトルのイベント処理を開始します
+            StartNormalBattle?.Invoke();
         }
 
         if (joinEnemies is { Count: 0 })
@@ -124,33 +142,6 @@ public class BattleManager : MonoBehaviour
         }
     }
 
-    /// @brief 状態設定を行います
-    public void SetState(BattleStateInput input)
-    {
-        battleState = (battleState, input) switch
-        {
-            (BattleState.IDLE, BattleStateInput.START) => BattleState.RUNNING,
-            (BattleState.RUNNING, BattleStateInput.END) => BattleState.FINISHING,
-            _ => battleState
-        };
-
-        OnEnterState(battleState);
-    }
-
-    /// @brief 各状態に入った際の処理を行います
-    private void OnEnterState(BattleState state)
-    {
-        switch (state)
-        {
-            case BattleState.IDLE:
-                break;
-            case BattleState.RUNNING:
-                break;
-            case BattleState.FINISHING:
-                break;
-        }
-    }
-
     /// @brief プレイヤー死亡時の処理を行います
     private void PlayerDead(IBattleable battleable)
     {
@@ -166,6 +157,7 @@ public class BattleManager : MonoBehaviour
         joinPlayer.OnAct -= PlayerAction;
         joinPlayer.OnDead -= PlayerDead;
         damagedPlayer.OnDamaged -= CharacterShowDamage;
+        damagedPlayer.OnHealed -= CharacterShowHeal;
 
 
         // 敵の参照を削除
@@ -234,6 +226,12 @@ public class BattleManager : MonoBehaviour
     private void CharacterShowDamage(Vector3 position, int damage, DamagedTarget target)
     {
         damageTextManager.ShowDamageText(position, damage, target);
+    }
+
+    /// @brief キャラクターの回復を表示します
+    private void CharacterShowHeal(Vector3 position, int heal)
+    {
+        damageTextManager.ShowHealText(position, heal);
     }
 
     /// @brief プレイヤー行動時の処理を行います

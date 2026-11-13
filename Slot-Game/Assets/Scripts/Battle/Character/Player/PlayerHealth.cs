@@ -12,12 +12,16 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IHealable
     [SerializeField] private PlayerManager playerManager; // プレイヤー管理者
     [SerializeField] private CharacterAnimation playerAnimation; // プレイヤーのアニメーション
     [SerializeField] private int HP = 10; // 設定上の体力
+    [SerializeField] private GameObject healVFX; // スポーンエフェクト
+    [SerializeField] private Vector3 vfxPosition = new Vector3(0, -1, 0); // エフェクトの座標
     #endregion
 
     #region State
     private int currentHitPoint = 10; // 現在の体力
 
     public event Action<Vector3, int, DamagedTarget> OnDamaged; // ダメージ表示用イベント
+
+    public event Action<Vector3, int> OnHealed; // 回復テキスト表示用イベント
     #endregion
 
     private void Start()
@@ -54,11 +58,19 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IHealable
     public void Healed(int amount)
     { 
         currentHitPoint += amount;
+        GenerateHealVFX();
+        OnHealed?.Invoke(transform.position, amount);
     }
 
     /// @brief 体力をリセットします
     public void ResetHealth()
     {
         currentHitPoint = HP;
+    }
+
+    /// @brief 回復エフェクトを生成します
+    private void GenerateHealVFX()
+    {
+        Instantiate(healVFX, transform.position + vfxPosition, healVFX.transform.rotation);
     }
 }

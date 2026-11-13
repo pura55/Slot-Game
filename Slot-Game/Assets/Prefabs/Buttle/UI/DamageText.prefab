@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamageUI
   lifeTime: 0.6
-  speed: 25
-  gravity: 0.2
+  speed: 10
   textMeshPro: {fileID: 7103228117718074141}
   rectTransform: {fileID: 1238834852972684871}
+  gravity: 0.1

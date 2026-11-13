@@ -22,5 +22,7 @@ public class EnemyCommand : ScriptableObject, ICommandable
         {
             effect.ApplyEffect(user, target);
         }
+
+        BattleStateObserver.EnemyBattleState = CharacterBattleState.IDLE;
     }
 }

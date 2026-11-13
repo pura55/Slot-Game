@@ -178,6 +178,7 @@ MonoBehaviour:
   playerManager: {fileID: 5075082389928881493}
   playerAnimation: {fileID: 1960268744935228255}
   HP: 100
+  healVFX: {fileID: 8965346827193099702, guid: 3f451817b4a7bed4aa7d8ad3afb1ceda, type: 3}
 --- !u!50 &6123154415868265530
 Rigidbody2D:
   serializedVersion: 5

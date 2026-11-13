@@ -92,13 +92,12 @@ public class LeftTurnManager : MonoBehaviour
     /// @brief 残りターンを変更します
     public void ChangeLeftTurn(int leftTurn)
     {
-        turnCount.text = leftTurn.ToString();
+        turnCount.SetText("{0}", leftTurn);
     }
 
     /// @brief テキストをオンにします
     public void OnText()
     {
-        Debug.Log("テキストをオンにします");
         if (turnPanel == null) Debug.LogError("[エラー] TurnPanel が空です！");
         turnPanel.enabled = true;
         turnText.enabled = true;
