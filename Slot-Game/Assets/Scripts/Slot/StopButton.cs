@@ -1,15 +1,18 @@
 using UnityEngine;
 
-// スロット全体の流れ(スタート・ストップ・判定)を管理するスクリプトです
+//スロット全体の流れ(スタート・ストップ・判定)を管理するスクリプトです
 public class StopButton : MonoBehaviour
 {
     [Header("つなぐもの")]
-    public Reelcontroller[] reels;                          // 左・中・右の順
+    public Reelcontroller[] reels;                          //左・中・右の順
     public Lottery lottery;
     [SerializeField] private ReelStopSolver solver;
     [SerializeField] private BonusManager bonus;
   
     [SerializeField] private NumberManager numberManager;
+
+    [Header("テスト用")]
+    public bool ignoreBattleState;
 
     [Header("設定")]
     [Range(1, 6)] public int setting = 1;
@@ -18,7 +21,7 @@ public class StopButton : MonoBehaviour
     public bool useDebugRole;
     public Role debugRole;
 
-    public Role currentRole;                                // 今回の当選役
+    public Role currentRole;                                //今回の当選役
 
     // 戦闘側が受け取るイベント
     public event System.Action<PlayerCommandType> OnHit;
@@ -27,7 +30,7 @@ public class StopButton : MonoBehaviour
     bool[] decided = new bool[3];
     bool waitJudge;
 
-    // ---------------- スタート・ストップ ----------------
+    //---------------- スタート・ストップ ----------------
 
     public void StartAll()
     {
@@ -39,14 +42,22 @@ public class StopButton : MonoBehaviour
             }
         }
 
-        // BETしていなければ始めない
+        if(!ignoreBattleState&&
+            BattleStateObserver.PlayerBattleState == CharacterBattleState.IDLE &&
+            BattleStateObserver.EnemyBattleState == CharacterBattleState.IDLE)
+        {
+            Debug.Log("今はレバーを押せない");
+            return;
+        }
+
+        //BETしていなければ始めない
         if (numberManager != null && !numberManager.IsUsed)
         {
             Debug.Log("先にBETしてください");
             return;
         }
 
-        // 当選役を決める(ボーナス後のゲームは、ブドウが確定)
+        //当選役を決める(ボーナス後のゲームは、ブドウが確定)
         Role forced;
 
         if (bonus.TryTakeForcedRole(out forced))
@@ -87,13 +98,13 @@ public class StopButton : MonoBehaviour
 
     void StopReel(int i)
     {
-        // 回っていない、または止まりに行っている最中は受け付けない
+        //回っていない、または止まりに行っている最中は受け付けない
         if (!reels[i].IsSpinning || reels[i].IsStopping)
         {
             return;
         }
 
-        // 左から順に押していなければ、受け付けない
+        //左から順に押していなければ、受け付けない
         for (int j = 0; j < i; j++)
         {
             if (!decided[j])
@@ -132,7 +143,7 @@ public class StopButton : MonoBehaviour
         bonus.OnGameEnd();
     }
 
-    // ---------------- 入賞判定 ----------------
+    //---------------- 入賞判定 ----------------
 
     void Judge()
     {
@@ -210,7 +221,7 @@ public class StopButton : MonoBehaviour
         OnHit?.Invoke(command);
     }
 
-    // ---------------- 引き込めるかの確認 ----------------
+    //---------------- 引き込めるかの確認 ----------------
 
     [ContextMenu("Check Reach")]
     void CheckReach()
