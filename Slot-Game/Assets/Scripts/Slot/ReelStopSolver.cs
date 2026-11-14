@@ -3,7 +3,8 @@
 // ストップを押したとき、どこで止めるかを決めるスクリプトです
 public class ReelStopSolver : MonoBehaviour
 {
-    public int maxSlip = 4;     // 最大で滑るコマ数
+    public int maxSlip = 4;         // 小役を引き込める最大コマ数
+    public int bonusMaxSlip = 2;    // ボーナスを引き込める最大コマ数(小さいほど目押しが必要)
 
     // 押した位置から0〜maxSlipコマ滑らせて、いちばん点数が高い位置を選ぶ
     public int ChooseSlip(Reelcontroller[] reels, int reel, int press, Role currentRole,
@@ -16,7 +17,8 @@ public class ReelStopSolver : MonoBehaviour
         for (int d = 0; d <= maxSlip; d++)
         {
             int idx = SlotRules.Mod(press + d, n);
-            int score = Evaluate(reels, reel, idx, currentRole, bonus, stopIndex, decided);
+            bool bonusPull = d <= bonusMaxSlip;     // この滑り量なら、ボーナスを引き込んでよいか
+            int score = Evaluate(reels, reel, idx, currentRole, bonus, stopIndex, decided, bonusPull);
 
             // 同点なら、滑りが少ないほうを残す
             if (score > bestScore)
@@ -31,7 +33,7 @@ public class ReelStopSolver : MonoBehaviour
 
     // reel番目をidxで止めたときの点数
     int Evaluate(Reelcontroller[] reels, int reel, int idx, Role currentRole,
-                 BonusManager bonus, int[] stopIndex, bool[] decided)
+                 BonusManager bonus, int[] stopIndex, bool[] decided, bool bonusPull)
     {
         int[] cur = (int[])stopIndex.Clone();
         bool[] st = (bool[])decided.Clone();
@@ -40,13 +42,24 @@ public class ReelStopSolver : MonoBehaviour
 
         Symbol target;
         bool hasTarget = SlotRules.TryGetTarget(currentRole, out target);
+
+        // ボーナスを引き込むのは、小役が当選していないゲームだけ
+        Symbol[] pattern = null;
+        bool hasBonus = false;
+
+        if (bonusPull && !hasTarget)
+        {
+            hasBonus = SlotRules.TryGetBonusPattern(bonus.bonusFlag, out pattern);
+        }
+
         int score = 0;
 
         foreach (var line in SlotRules.Lines)
         {
             Symbol[] s = new Symbol[3];
             bool allStopped = true;
-            bool alive = hasTarget;     // まだ揃う可能性がある
+            bool alive = hasTarget;         // 小役が、まだ揃う可能性がある
+            bool bonusAlive = hasBonus;     // ボーナスが、まだ揃う可能性がある
 
             for (int r = 0; r < 3; r++)
             {
@@ -62,9 +75,19 @@ public class ReelStopSolver : MonoBehaviour
                 {
                     alive = false;
                 }
+
+                if (hasBonus && s[r] != pattern[r])
+                {
+                    bonusAlive = false;
+                }
             }
 
             if (alive)
+            {
+                score += 1;
+            }
+
+            if (bonusAlive)
             {
                 score += 1;
             }
@@ -78,10 +101,14 @@ public class ReelStopSolver : MonoBehaviour
                     {
                         score += 100;
                     }
+                    else if (hasBonus && SlotRules.MatchBonus(bonus.bonusFlag, s[0], s[1], s[2]))
+                    {
+                        score += 100;       // ボーナスが揃う
+                    }
                 }
                 else
                 {
-                    score -= 1000;      // 当選していない役が揃う → 蹴飛ばす
+                    score -= 1000;          // 当選していない役が揃う → 蹴飛ばす
                 }
             }
         }
@@ -110,7 +137,7 @@ public class ReelStopSolver : MonoBehaviour
             {
                 if (visible)
                 {
-                    score -= 500;       // 当選していないのに出る → 蹴飛ばす
+                    score -= 500;           // 当選していないのに出る → 蹴飛ばす
                 }
             }
         }

@@ -3,16 +3,16 @@ using UnityEngine;
 public class SlotRules
 {
     //見る3ライン
-    static readonly int[][] Lines =
+    public static readonly int[][] Lines =
     {
         new int[] { 1, 1, 1 },                          // 中段
         new int[] { 0, 1, 2 },                          // ななめ下がり
         new int[] { 2, 1, 0 }                           // ななめ上がり
     };
 
-    static readonly Symbol HealSymbol = Symbol.Cherry;  // HEAL(左リール)の図柄
+    public static readonly Symbol HealSymbol = Symbol.Cherry;  // HEAL(左リール)の図柄
 
-    static bool TryGetTarget(Role role, out Symbol target)
+    public static bool TryGetTarget(Role role, out Symbol target)
     {
         switch (role)
         {
@@ -53,6 +53,22 @@ public class SlotRules
             case Role.BONUS:
                 return a == Symbol.Seven && b == Symbol.Seven && c == Symbol.Bar;
         }
+        return false;
+    }
+
+    public static bool TryGetBonusPattern(Role bonus, out Symbol[] pattern)
+    {
+        switch (bonus)
+        {
+            case Role.BIG_BONUS:
+                pattern = new Symbol[] { Symbol.Seven, Symbol.Seven, Symbol.Seven };
+                return true;
+            case Role.BONUS:
+                pattern = new Symbol[] { Symbol.Seven, Symbol.Seven, Symbol.Bar };
+                return true;
+        }
+
+        pattern = null;
         return false;
     }
 

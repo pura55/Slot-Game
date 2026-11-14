@@ -8,13 +8,8 @@ public class StopButton : MonoBehaviour
     public Lottery lottery;
     [SerializeField] private ReelStopSolver solver;
     [SerializeField] private BonusManager bonus;
-    [SerializeField] private SlotMessage message;
-    [SerializeField] private SoundPlayer soundPlayer;
+  
     [SerializeField] private NumberManager numberManager;
-
-    [Header("音")]
-    [SerializeField] private AudioClip leverSe;             // レバーの音
-    [SerializeField] private AudioClip stopSe;              // ストップの音
 
     [Header("設定")]
     [Range(1, 6)] public int setting = 1;
@@ -83,11 +78,7 @@ public class StopButton : MonoBehaviour
 
         waitJudge = reels[0].IsSpinning;
 
-        // 実際に回り始めたときだけ鳴らす
-        if (waitJudge && soundPlayer != null)
-        {
-            soundPlayer.Play(leverSe);
-        }
+       
     }
 
     public void StopLeft()   { StopReel(0); }
@@ -107,15 +98,6 @@ public class StopButton : MonoBehaviour
         {
             if (!decided[j])
             {
-                if (message != null)
-                {
-                    message.Show("左から順に押してください");
-                }
-                else
-                {
-                    Debug.Log("左から順に押してください");
-                }
-
                 return;
             }
         }
@@ -127,11 +109,7 @@ public class StopButton : MonoBehaviour
         stopIndex[i] = best;
         reels[i].RequestStop(best);
 
-        // 受け付けたときだけ鳴らす
-        if (soundPlayer != null)
-        {
-            soundPlayer.Play(stopSe);
-        }
+        
     }
 
     void Update()
