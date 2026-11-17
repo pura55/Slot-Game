@@ -20,6 +20,10 @@ public class GlassBreakController : MonoBehaviour
 
     [Header("Timeline")]
     [SerializeField] private PlayableDirector director;
+    [SerializeField] private GlassScreenShake screenShake;
+
+    [Header("¬‚³‚ÈƒKƒ‰ƒX‚Ì”j•Ğ")]
+    [SerializeField] private SmallGlassSpawner smallGlassSpawner;
 
     public void PlayEffect()
     {
@@ -64,6 +68,18 @@ public class GlassBreakController : MonoBehaviour
 
     public void BreakGlass()
     {
+        //‰æ–Ê‚Ì—h‚ê
+        if (screenShake != null)
+        {
+            screenShake.Shake();
+        }
+        
+        //¬‚³‚ÈƒKƒ‰ƒX‚Ì”j•Ğ
+        if (smallGlassSpawner != null)
+        {
+            smallGlassSpawner.SpawnFragments();
+        }
+
         if (glassBackground == null ||
             glassFragments == null)
             return;
@@ -137,6 +153,8 @@ public class GlassBreakController : MonoBehaviour
         // Œ³‚ÌƒKƒ‰ƒX‚ÆaŒ‚‚ğ”ñ•\¦
         glassBackground.enabled = false;
         slashEffects.SetActive(false);
+
+
     }
 
     private List<Vector2> ClipPolygon(
