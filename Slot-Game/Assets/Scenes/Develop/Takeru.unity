@@ -2808,10 +2808,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6f4f691b76216e48b9604dd69b3b474, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BackgroundBlurController
-  blurImage: {fileID: 416774306}
-  blurSize: 5
-  screenTexture: {fileID: 0}
-  blurMaterial: {fileID: 0}
 --- !u!114 &1923775437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3110,7 +3106,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!328 &2119074746
 VideoPlayer:
   m_ObjectHideFlags: 0
