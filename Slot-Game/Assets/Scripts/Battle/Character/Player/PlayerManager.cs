@@ -14,6 +14,7 @@ public class PlayerManager : MonoBehaviour, IBattleable
     #region Config
     [SerializeField] private PlayerHealth playerHealth; // プレイヤーの体力
     [SerializeField] private PlayerAnimation playerAnimation; // プレイヤーのアニメーション
+    [SerializeField] private PlayerCommander playerCommander; // プレイヤーコマンダー
     [SerializeField] private GameObject spawnVFX; // スポーンエフェクト
     [SerializeField] private float spawnPresentationTime = 2f; // スポーンの演出時間
     #endregion
@@ -33,6 +34,29 @@ public class PlayerManager : MonoBehaviour, IBattleable
     private StageMovement stageMovement;
     public StageMovement Movement { set { stageMovement = value; } }
     #endregion
+
+    private void OnEnable()
+    {
+        /// @ToDo ここにコマンドを使用する型を記入してイベントを追加してください
+        /// @user ClassType.Function += OperateCommand;
+        /// </例> SlotReel.OnCommand += OperateCommand;
+
+        //StopButton.OnHit += InputCommand;
+    }
+
+    private void OnDisable()
+    {
+        /// @ToDo ここにコマンドを使用する型を記入してイベントを削除してください
+        /// @user ClassType.Function -= OperateCommand;
+        /// </例> SlotReel.OnCommand -= OperateCommand;
+
+        // StopButton.OnHit -= InputCommand;
+    }
+
+    /// @brief コマンドを指令します
+    /// @user 使用する場合はイベント処理として実行してください
+    ///       </例> event Action<PlayerCommandType> OnCommand;
+    ///             OnCommand?.Invoke(PlayerCommandType userOperationType);
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -54,6 +78,18 @@ public class PlayerManager : MonoBehaviour, IBattleable
         {
             SetState(CharacterStateInput.MOVE);
         }
+    }
+
+    /// @brief コマンド入力処理を行います
+    public void InputCommand(PlayerCommandType commandType)
+    {
+        // バトル時以外の入力は受け付けないため処理を抜けます
+        if(State != PlayerState.BATTLE)
+        {
+            return;
+        }
+
+        playerCommander.OperateCommand(commandType);
     }
 
     /// @brief 状態設定を行います

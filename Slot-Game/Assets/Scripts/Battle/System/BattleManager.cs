@@ -34,8 +34,8 @@ public class BattleManager : MonoBehaviour
     // イベント // 
     public event Action StartBossBattle; // ボスバトルのイベント
     public event Action StartNormalBattle; // 通常バトルのイベント
-    public event Action OnWin; // 勝利時のイベント
-    public event Action OnLose; // 敗北時のイベント
+    //public event Action OnWin; // 勝利時のイベント
+    //public event Action OnLose; // 敗北時のイベント
 
     private bool isBoss = false;
     #endregion
