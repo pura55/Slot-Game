@@ -37,7 +37,7 @@ Material:
     - _Contrast: 1.2
     - _Darkness: 0.2
     - _Distortion: 0.6
-    - _FadeAlpha: 1
+    - _FadeAlpha: 0
     - _Glow: 0.9
     - _Scale: 2
     - _Speed: 1
