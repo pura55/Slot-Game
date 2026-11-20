@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DataLoader : MonoBehaviour
+public class TemporaryDataLoader : MonoBehaviour
 {
     #region Config
     [SerializeField] private TextAsset temporaryData;

@@ -1,9 +1,8 @@
 using UnityEngine;
 
-public class SlotProbabilityDataLoader : MonoBehaviour
+public class SlotProbabilityDataLoader : DataLoaderBase
 {
     #region Config
-    [SerializeField] private TextAsset slotprobabilityData;
     [SerializeField] private SlotProbabilityDataSo slotprobabilityDataSo;
     #endregion
 
@@ -12,17 +11,10 @@ public class SlotProbabilityDataLoader : MonoBehaviour
         LoadData();
     }
 
-    private void Start()
-    {
-
-    }
-
-
-
-    private void LoadData()
+    protected override void LoadData()
     {
         // ã§í ÇÃJSONì«Ç›çûÇ›ã@î\Çóòóp
-        SlotProbabilityData data = JsonDataLoader.Load<SlotProbabilityData>(slotprobabilityData);
+        SlotProbabilityData data = JsonDataLoader.Load<SlotProbabilityData>(textAsset);
 
         // ì«Ç›çûÇ›Ç…ê¨å˜ÇµÇΩèÍçá
         if (data != null)
