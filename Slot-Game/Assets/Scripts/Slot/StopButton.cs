@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 //スロット全体の流れ(スタート・ストップ・判定)を管理するスクリプトです
 public class StopButton : MonoBehaviour
@@ -24,7 +25,7 @@ public class StopButton : MonoBehaviour
     public Role currentRole;                                //今回の当選役
 
     // 戦闘側が受け取るイベント
-    public event System.Action<PlayerCommandType> OnHit;
+    public static event Action<PlayerCommandType> OnHit;
 
     int[] stopIndex = new int[3];
     bool[] decided = new bool[3];
