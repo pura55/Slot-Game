@@ -1,9 +1,11 @@
+
 using UnityEngine;
 using UnityEngine.Video;
 using UnityEngine.Playables;
 
 public class DarkVideoController : MonoBehaviour
 {
+    [Header("ˆÃ“]“®‰æ")]
     [SerializeField] private VideoPlayer videoPlayer;
     [SerializeField] private PlayableDirector director;
 
@@ -11,10 +13,21 @@ public class DarkVideoController : MonoBehaviour
     [SerializeField] private GameObject blackTop;
     [SerializeField] private GameObject blackBottom;
 
-    void Start()
+    [Header("aŒ‚ƒGƒtƒFƒNƒg")]
+    [SerializeField] private GameObject slashTop;
+    [SerializeField] private GameObject slashBottom;
+
+    [Header("aŒ‚‚ğL‚Î‚·")]
+    [SerializeField] private SlashStretch slashTopStretch;
+    [SerializeField] private SlashStretch slashBottomStretch;
+
+    private void Start()
     {
         blackTop.SetActive(false);
         blackBottom.SetActive(false);
+
+        slashTop.SetActive(false);
+        slashBottom.SetActive(false);
 
         videoPlayer.prepareCompleted += OnPrepared;
         videoPlayer.loopPointReached += OnVideoFinished;
@@ -29,12 +42,20 @@ public class DarkVideoController : MonoBehaviour
 
     private void OnVideoFinished(VideoPlayer player)
     {
-        // Ø’f—p‚Ì‰æ‘œ‚ğ•\¦
+        // “®‰æ‚ğ’â~
+        player.Stop();
+
+        // Ø’f—p‰æ‘œ‚ğ•\¦
         blackTop.SetActive(true);
         blackBottom.SetActive(true);
 
-        // “®‰æ‚ğ’â~
-        player.Stop();
+        // aŒ‚‚ğ•\¦
+        slashTop.SetActive(true);
+        slashBottom.SetActive(true);
+
+        // ¶‰º‚©‚ç‰Eã‚ÖL‚Î‚·
+        slashTopStretch.PlayStretch();
+        slashBottomStretch.PlayStretch();
 
         // Timeline‚ğÅ‰‚©‚çÄ¶
         director.time = 0;
@@ -46,7 +67,10 @@ public class DarkVideoController : MonoBehaviour
 
     private void OnDestroy()
     {
-        videoPlayer.prepareCompleted -= OnPrepared;
-        videoPlayer.loopPointReached -= OnVideoFinished;
+        if (videoPlayer != null)
+        {
+            videoPlayer.prepareCompleted -= OnPrepared;
+            videoPlayer.loopPointReached -= OnVideoFinished;
+        }
     }
 }
