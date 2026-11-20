@@ -111,6 +111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerManager
   playerHealth: {fileID: 6309702127871437713}
   playerAnimation: {fileID: 1960268744935228255}
+  playerCommander: {fileID: -4604180101053347148}
   spawnVFX: {fileID: 3377181292992421420, guid: 540885e9dca90ad4ebfe77215fe0e526, type: 3}
   spawnPresentationTime: 1
 --- !u!114 &1960268744935228255
@@ -179,6 +180,7 @@ MonoBehaviour:
   playerAnimation: {fileID: 1960268744935228255}
   HP: 100
   healVFX: {fileID: 8965346827193099702, guid: 3f451817b4a7bed4aa7d8ad3afb1ceda, type: 3}
+  vfxPosition: {x: 0, y: -1, z: 0}
 --- !u!50 &6123154415868265530
 Rigidbody2D:
   serializedVersion: 5

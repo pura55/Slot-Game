@@ -793,6 +793,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8954671121921057961}
   - component: {fileID: 7593644641110859006}
+  - component: {fileID: 4411319549451450294}
+  - component: {fileID: 6078528623201994875}
   m_Layer: 6
   m_Name: StopButton
   m_TagString: Untagged
@@ -832,14 +834,45 @@ MonoBehaviour:
   - {fileID: 4122106728772623085}
   - {fileID: 2025996035829442232}
   lottery: {fileID: 6249007422781446722}
-  solver: {fileID: 0}
-  bonus: {fileID: 0}
-  numberManager: {fileID: 0}
+  solver: {fileID: 6078528623201994875}
+  bonus: {fileID: 4411319549451450294}
+  numberManager: {fileID: 7118804425181596252}
   ignoreBattleState: 0
   setting: 1
   useDebugRole: 0
   debugRole: 0
   currentRole: 0
+--- !u!114 &4411319549451450294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2269286199632595155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94e80d39037cbb54d8fd6ce67399f820, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BonusManager
+  pekaFirstRate: 0.5
+  pekaLamp: {fileID: 3619941028805975458}
+  bonusGames: 5
+  bonusFlag: 0
+  attackFlag: 0
+--- !u!114 &6078528623201994875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2269286199632595155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b12fd00a25cb8fb40a53799d8f13e534, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ReelStopSolver
+  maxSlip: 4
+  bonusMaxSlip: 2
 --- !u!1 &2336155551775908176
 GameObject:
   m_ObjectHideFlags: 0
@@ -906,7 +939,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!114 &5478589125721712222
 MonoBehaviour:

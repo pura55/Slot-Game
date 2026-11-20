@@ -43,9 +43,9 @@ public class StopButton : MonoBehaviour
             }
         }
 
-        if(!ignoreBattleState&&
-            BattleStateObserver.PlayerBattleState == CharacterBattleState.IDLE &&
-            BattleStateObserver.EnemyBattleState == CharacterBattleState.IDLE)
+        if(!ignoreBattleState &&
+            BattleStateObserver.PlayerBattleState == CharacterBattleState.ACTION ||
+            BattleStateObserver.EnemyBattleState == CharacterBattleState.ACTION)
         {
             Debug.Log("¡‚ÍƒŒƒo[‚ğ‰Ÿ‚¹‚È‚¢");
             return;

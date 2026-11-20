@@ -69,7 +69,6 @@ public class PlayerManager : MonoBehaviour, IBattleable
     // Update is called once per frame
     void Update()
     {
-        InputMovement();
     }
 
     /// @brief “ü—Íˆ—‚ğs‚¢‚Ü‚·
