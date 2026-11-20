@@ -41,7 +41,10 @@ public class PlayerManager : MonoBehaviour, IBattleable
         /// @user ClassType.Function += OperateCommand;
         /// </例> SlotReel.OnCommand += OperateCommand;
 
-        //StopButton.OnHit += InputCommand;
+        // イベントの登録
+        Reelcontroller.OnSpin += InputMovement;
+
+        StopButton.OnHit += InputCommand;
     }
 
     private void OnDisable()
@@ -50,13 +53,11 @@ public class PlayerManager : MonoBehaviour, IBattleable
         /// @user ClassType.Function -= OperateCommand;
         /// </例> SlotReel.OnCommand -= OperateCommand;
 
-        // StopButton.OnHit -= InputCommand;
-    }
+        // イベントの解除
+        Reelcontroller.OnSpin -= InputMovement;
 
-    /// @brief コマンドを指令します
-    /// @user 使用する場合はイベント処理として実行してください
-    ///       </例> event Action<PlayerCommandType> OnCommand;
-    ///             OnCommand?.Invoke(PlayerCommandType userOperationType);
+        StopButton.OnHit -= InputCommand;
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -74,17 +75,19 @@ public class PlayerManager : MonoBehaviour, IBattleable
     /// @brief 入力処理を行います
     private void InputMovement()
     {
-        if (Keyboard.current.dKey.isPressed && playerState == PlayerState.IDLE)
+        if (playerState != PlayerState.IDLE)
         {
-            SetState(CharacterStateInput.MOVE);
+            return;
         }
+
+        SetState(CharacterStateInput.MOVE);
     }
 
     /// @brief コマンド入力処理を行います
     public void InputCommand(PlayerCommandType commandType)
     {
         // バトル時以外の入力は受け付けないため処理を抜けます
-        if(State != PlayerState.BATTLE)
+        if(playerState != PlayerState.BATTLE)
         {
             return;
         }

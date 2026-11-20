@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 
 //リールをコントロールする用のスクリプトです
@@ -24,6 +25,9 @@ public class Reelcontroller : MonoBehaviour
     public bool IsSpinning { get { return spinning; } }
     public bool IsStopping { get { return stopping; } }
 
+    // 回転イベント
+    public static event Action OnSpin; 
+
     void Start()
     {
         Apply();
@@ -41,6 +45,9 @@ public class Reelcontroller : MonoBehaviour
 
         stopping = false;
         spinning = true;
+
+        // 回転イベント開始
+        OnSpin?.Invoke();
     }
 
     //ボタンを押した瞬間先にある最初のコマの番号
