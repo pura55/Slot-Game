@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f14950671e1dfc4486a80d19188462f, type: 3}
-  m_Name: SimpleSlashVFX
+  m_Name: DoubleSlashEffect
   m_EditorClassIdentifier: Assembly-CSharp::VisualEffect
-  generateVisualEffect: {fileID: 350316919327737731, guid: df9deed996ed2aa4281286e9522f3feb, type: 3}
+  generateVisualEffect: {fileID: 350316919327737731, guid: 5028ce99f77ad51449b974c62ab5442e, type: 3}
