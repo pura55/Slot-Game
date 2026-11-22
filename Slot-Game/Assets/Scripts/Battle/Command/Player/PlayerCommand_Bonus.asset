@@ -15,5 +15,6 @@ MonoBehaviour:
   playerCommandType: 5
   commandDescription: "\u30DC\u30FC\u30CA\u30B9\u30C0\u30E1\u30FC\u30B8\u3092\u4E0E\u3048\u307E\u3059"
   commandEffects:
+  - {fileID: 11400000, guid: cb9b609b3c5106040a45485fcecba7a0, type: 2}
   - {fileID: 11400000, guid: e8c743bf3a1769443ba5c73ada5acc93, type: 2}
   - {fileID: 11400000, guid: a54b81b00a1c6534584780f63fdfe542, type: 2}
