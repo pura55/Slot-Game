@@ -5,8 +5,8 @@ public class GameSceneManager : MonoBehaviour
 {
     private void Start()
     {
-        // Fukutoシーンを追加で読み込む
-        SceneManager.LoadSceneAsync("Fukuto", LoadSceneMode.Additive);
+        // バトル用シーンを追加で読み込む
+        SceneManager.LoadSceneAsync("BattleScene", LoadSceneMode.Additive);
     }
 }
 
