@@ -12,10 +12,15 @@ using UnityEngine.InputSystem;
 public class PlayerManager : MonoBehaviour, IBattleable
 {
     #region Config
+    [Header("PlayerComponents")]
     [SerializeField] private PlayerHealth playerHealth; // プレイヤーの体力
     [SerializeField] private PlayerAnimation playerAnimation; // プレイヤーのアニメーション
     [SerializeField] private PlayerCommander playerCommander; // プレイヤーコマンダー
+
+    [Header("VFX")]
     [SerializeField] private GameObject spawnVFX; // スポーンエフェクト
+
+    [Header("SpawnTime")]
     [SerializeField] private float spawnPresentationTime = 2f; // スポーンの演出時間
     #endregion
 

@@ -7,7 +7,13 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Command_DamageEffect_Create")]
 public class DamageEffect : CommandEffect
 {
+    #region Config
     [SerializeField] private int damageAmount = 10; // É_ÉÅÅ[ÉWó 
+    #endregion
+
+    #region State
+    public int DamageAmount { set { damageAmount = value; } }
+    #endregion
 
     public override void ApplyEffect(GameObject user, List<GameObject> targets)
     {

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 209c8ca17a5373e468996dfec94febc2, type: 3}
   m_Name: EnemyCommand_LightAttack
   m_EditorClassIdentifier: Assembly-CSharp::EnemyCommand
-  enemyActType: 0
+  enemyCommandType: 0
   commandDescription: "\u5F31\u653B\u6483\u3092\u884C\u3044\u307E\u3059"
   commandEffects:
-  - {fileID: 11400000, guid: d5836d3b6a43e8e4d92e9f8187642f9b, type: 2}
+  - {fileID: 11400000, guid: 5e357a00f98952341b9d5f688e37f36c, type: 2}

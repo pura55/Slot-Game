@@ -8,6 +8,7 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     #region Config
+    [Header("SettingValues")]
     [SerializeField] private float movementSpeed = 2f; // ˆÚ“®‘¬“x
     [SerializeField] private float movementDistance = 4f; // ˆÚ“®‹——£
     #endregion

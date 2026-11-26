@@ -9,6 +9,7 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour, IDamageable
 {
     #region Config
+    [Header("EnemyComponents")]
     [SerializeField] private SimpleEnemyAI simpleEnemyAI; // 敵AI
     [SerializeField] private CharacterAnimation enemyAnimation; // 敵のアニメーション
     #endregion

@@ -9,9 +9,12 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour, IDamageable, IHealable
 {
     #region Config
+    [Header("PlayerComponents")]
     [SerializeField] private PlayerManager playerManager; // プレイヤー管理者
     [SerializeField] private CharacterAnimation playerAnimation; // プレイヤーのアニメーション
-    [SerializeField] private int HP = 10; // 設定上の体力
+    [SerializeField] private PlayerStatus playerStatus; // プレイヤーのステータス
+
+    [Header("VFX")]
     [SerializeField] private GameObject healVFX; // スポーンエフェクト
     [SerializeField] private Vector3 vfxPosition = new Vector3(0, -1, 0); // エフェクトの座標
     #endregion
@@ -58,6 +61,11 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IHealable
     public void Healed(int amount)
     { 
         currentHitPoint += amount;
+        if(playerStatus.PlayerHp <= currentHitPoint)
+        {
+            currentHitPoint = playerStatus.PlayerHp;
+        }
+
         GenerateHealVFX();
         OnHealed?.Invoke(transform.position, amount);
     }
@@ -65,7 +73,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IHealable
     /// @brief 体力をリセットします
     public void ResetHealth()
     {
-        currentHitPoint = HP;
+        currentHitPoint = playerStatus.PlayerHp;
     }
 
     /// @brief 回復エフェクトを生成します

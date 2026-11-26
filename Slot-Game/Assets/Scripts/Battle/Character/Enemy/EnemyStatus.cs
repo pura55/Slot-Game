@@ -8,6 +8,7 @@ using UnityEngine;
 public class EnemyStatus : MonoBehaviour
 {
     #region Config
+    [Header("ID")]
     [SerializeField] private int enemyId = 1; // ID
     #endregion
 

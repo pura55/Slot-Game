@@ -20,6 +20,7 @@ public static class PlayerLevelManager
     private static int currentExp = 0; 
 
     public static event Action<int> OnExpGained; // 経験値を取得した際のイベント処理
+    public static event Action OnLevelUp; // レベルアップした際のイベント処理
     #endregion
 
     /// @brief レベルの初期化を行います
@@ -41,6 +42,8 @@ public static class PlayerLevelManager
         {
             CurrentLevel = maxLevel;
         }
+
+        OnLevelUp?.Invoke();
 
         Debug.Log("レベルアップ：" + $"{CurrentLevel - 1}" + "→" + $"{CurrentLevel}");
     }

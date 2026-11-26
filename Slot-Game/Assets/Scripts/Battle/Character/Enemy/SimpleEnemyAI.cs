@@ -11,12 +11,17 @@ using UnityEngine;
 public class SimpleEnemyAI : MonoBehaviour, IBattleable, IAmEnemy
 {
     #region Config
+    [Header("SettingValues")]
     [SerializeField] private int waitingTurn = 3; // 待機ターン
     [SerializeField] private bool isBoss = false; // ボスかどうかのフラグ
-    [SerializeField] private LeftTurnManager leftTurnManager; // 待機ターン管理
+
+    [Header("EnemyComponents")]
     [SerializeField] private EnemyCommander enemyCommander; // 敵のコマンド指示
     [SerializeField] private EnemyMovement enemyMovement; // 敵の移動
     [SerializeField] private EnemyStatus enemyStatus; //敵のステータス
+
+    [Header("OtherComponents")]
+    [SerializeField] private LeftTurnManager leftTurnManager; // 待機ターン管理
     #endregion
 
     #region State
@@ -69,7 +74,7 @@ public class SimpleEnemyAI : MonoBehaviour, IBattleable, IAmEnemy
                 leftTurnManager.ChangeLeftTurn(currentWaitTurn);
                 break;
             case EnemyState.DEAD:
-                ExecuteDead();
+                ExecuteDead(true);
                 break;
         }
     }
@@ -113,11 +118,19 @@ public class SimpleEnemyAI : MonoBehaviour, IBattleable, IAmEnemy
     }
 
     /// @brief 死亡時の処理を実行します
-    private void ExecuteDead()
+    /// @param isDefeated 討伐されたかどうかのフラグ
+    private void ExecuteDead(bool isDefeated)
     {
         Debug.Log("敵が死亡します");
         OnDead?.Invoke(this);
-        PlayerLevelManager.GainExp(enemyStatus.EnemyExp);
+
+        // プレイヤーに倒された場合のみ経験値処理を行うため
+        // フラグによる判定を行います
+        if(isDefeated)
+        {
+            PlayerLevelManager.GainExp(enemyStatus.EnemyExp);
+        }
+
         Destroy(gameObject);
     }
 
@@ -131,6 +144,6 @@ public class SimpleEnemyAI : MonoBehaviour, IBattleable, IAmEnemy
     {
         yield return new WaitForSeconds(resetTime);
 
-        ExecuteDead();
+        ExecuteDead(false);
     }
 }

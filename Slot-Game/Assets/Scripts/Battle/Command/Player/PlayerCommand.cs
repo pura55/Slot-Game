@@ -7,7 +7,7 @@ using System.Collections.Generic;
 [CreateAssetMenu(menuName = "PlayerCommand_Create")]
 public class PlayerCommand : ScriptableObject, ICommandable
 {
-    #region 
+    #region Config
     public PlayerCommandType playerCommandType; // コマンドの種類
     public string commandDescription = string.Empty; // コマンドの説明
 

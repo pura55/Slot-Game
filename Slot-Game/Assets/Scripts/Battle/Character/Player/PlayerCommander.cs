@@ -5,7 +5,10 @@ using UnityEngine.InputSystem;
 public class PlayerCommander : MonoBehaviour
 {
     #region Config
+    [Header("UsingCommand")]
     [SerializeField] private List<PlayerCommand> playerCommands; // プレイヤーのコマンド
+
+    [Header("PlayerComponents")]
     [SerializeField] private PlayerManager playerManager; // プレイヤー管理者
     #endregion
     private void Update()

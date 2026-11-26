@@ -9,7 +9,10 @@ using UnityEngine;
 public class EnemyCommander : MonoBehaviour
 {
     #region Config
+    [Header("UsingCommand")]
     [SerializeField] private List<EnemyCommand> enemyCommands; // “G‚ÌƒRƒ}ƒ“ƒh
+
+    [Header("EnemyComponents")]
     [SerializeField] private SimpleEnemyAI enemyAI; // “GAI
     #endregion
 
