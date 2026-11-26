@@ -16,6 +16,7 @@ public class SimpleEnemyAI : MonoBehaviour, IBattleable, IAmEnemy
     [SerializeField] private LeftTurnManager leftTurnManager; // 待機ターン管理
     [SerializeField] private EnemyCommander enemyCommander; // 敵のコマンド指示
     [SerializeField] private EnemyMovement enemyMovement; // 敵の移動
+    [SerializeField] private EnemyStatus enemyStatus; //敵のステータス
     #endregion
 
     #region State
@@ -116,6 +117,7 @@ public class SimpleEnemyAI : MonoBehaviour, IBattleable, IAmEnemy
     {
         Debug.Log("敵が死亡します");
         OnDead?.Invoke(this);
+        PlayerLevelManager.GainExp(enemyStatus.EnemyExp);
         Destroy(gameObject);
     }
 

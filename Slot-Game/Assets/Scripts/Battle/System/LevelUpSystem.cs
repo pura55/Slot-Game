@@ -26,12 +26,15 @@ public class LevelUpSystem : MonoBehaviour
     /// @param expAmount 取得経験値量
     private void ProcessExpGain(int expAmount)
     {
+        Debug.Log("経験値獲得処理を始めます");
+        Debug.Log("現在の保有経験値：" + $"{PlayerLevelManager.CurrentExp}");
+
         int progressExp = PlayerLevelManager.CurrentExp;
         int additionalRemainingAmount = expAmount;
 
         bool isProcessFinished = false;
 
-        while(isProcessFinished)
+        while(!isProcessFinished)
         {
             // 次のレベル到達に必要な経験値を求めるため
             // 必要経験値から現在の経験値を減算します
@@ -44,6 +47,7 @@ public class LevelUpSystem : MonoBehaviour
 
                 requiredExp *= increaseGainRate;
                 progressExp = 0;
+                PlayerLevelManager.CurrentExp = progressExp;
             }
             else
             {
@@ -51,5 +55,9 @@ public class LevelUpSystem : MonoBehaviour
                 isProcessFinished = true;
             }
         }
+
+        Debug.Log("取得経験値：" + $"{expAmount}");
+        Debug.Log("現在の必要経験値：" + $"{requiredExp}");
+        Debug.Log("次レベル到達経験値：" + $"{requiredExp - additionalRemainingAmount}");
     }
 }

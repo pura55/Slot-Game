@@ -485,6 +485,7 @@ GameObject:
   - component: {fileID: 2386428596268596660}
   - component: {fileID: -8875998228819192640}
   - component: {fileID: -1568373045482908422}
+  - component: {fileID: 5893388329172935696}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -580,9 +581,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SimpleEnemyAI
   waitingTurn: 3
+  isBoss: 0
   leftTurnManager: {fileID: 5584287762450739085}
   enemyCommander: {fileID: 2386428596268596660}
   enemyMovement: {fileID: -8875998228819192640}
+  enemyStatus: {fileID: 5893388329172935696}
 --- !u!114 &-4193948984193464853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -639,3 +642,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAnimation
   spriteRenderer: {fileID: 8773716748637015715}
+--- !u!114 &5893388329172935696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8723584746571827974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a8691b13588f7d4596fe553492be4b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyStatus
+  enemyId: 1
