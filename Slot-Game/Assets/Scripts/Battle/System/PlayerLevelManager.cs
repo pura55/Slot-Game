@@ -9,12 +9,15 @@ using UnityEngine;
 public static class PlayerLevelManager
 {
     #region State
+    // 現在のレベル
     public static int CurrentLevel { get { return currentLevel; } private set { currentLevel = value;  } }
-    private static int currentLevel = 0; // 現在のレベル
+    private static int currentLevel = 0; 
+
     private const int maxLevel = 10; // 最大レベル
 
+    // 現在の経験値
     public static int CurrentExp { get { return currentExp; } set { currentExp = value; } }
-    private static int currentExp = 0; // 現在の経験値
+    private static int currentExp = 0; 
 
     public static event Action<int> OnExpGained; // 経験値を取得した際のイベント処理
     #endregion

@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         RemoveDuplicateEventSystem();
+        PlayerLevelManager.InitLevel();
     }
 
     // Update is called once per frame
