@@ -327,7 +327,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Reelcontroller
   image: {fileID: 5369183711430384078}
   layout: 020000000300000001000000050000000200000004000000010000000500000002000000030000000100000005000000020000000000000001000000050000000600000002000000040000000100000005000000
-  speed: 1.3
+  speed: 0.5
   layoutText: 
   numberManager: {fileID: 7118804425181596252}
 --- !u!1 &1406930690423115278
@@ -780,7 +780,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Reelcontroller
   image: {fileID: 7502853717942941072}
   layout: 010000000600000003000000020000000100000004000000000000000300000002000000010000000600000003000000020000000100000006000000030000000200000001000000060000000300000002000000
-  speed: 1.2
+  speed: 0.6
   layoutText: 
   numberManager: {fileID: 7118804425181596252}
 --- !u!1 &2269286199632595155
@@ -795,6 +795,8 @@ GameObject:
   - component: {fileID: 7593644641110859006}
   - component: {fileID: 4411319549451450294}
   - component: {fileID: 6078528623201994875}
+  - component: {fileID: 4518576181447594038}
+  - component: {fileID: 393343826110802499}
   m_Layer: 6
   m_Name: StopButton
   m_TagString: Untagged
@@ -834,8 +836,8 @@ MonoBehaviour:
   - {fileID: 4122106728772623085}
   - {fileID: 2025996035829442232}
   lottery: {fileID: 6249007422781446722}
-  solver: {fileID: 6078528623201994875}
-  bonus: {fileID: 4411319549451450294}
+  solver: {fileID: 393343826110802499}
+  bonus: {fileID: 4518576181447594038}
   numberManager: {fileID: 7118804425181596252}
   ignoreBattleState: 0
   setting: 1
@@ -873,6 +875,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ReelStopSolver
   maxSlip: 4
   bonusMaxSlip: 2
+--- !u!114 &4518576181447594038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2269286199632595155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94e80d39037cbb54d8fd6ce67399f820, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BonusManager
+  pekaFirstRate: 0.5
+  pekaLamp: {fileID: 3619941028805975458}
+  bonusGames: 5
+  bonusFlag: 0
+  attackFlag: 0
+--- !u!114 &393343826110802499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2269286199632595155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b12fd00a25cb8fb40a53799d8f13e534, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ReelStopSolver
+  maxSlip: 4
+  bonusMaxSlip: 3
 --- !u!1 &2336155551775908176
 GameObject:
   m_ObjectHideFlags: 0
@@ -1361,7 +1394,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 650, y: -300}
+  m_AnchoredPosition: {x: 686, y: -346}
   m_SizeDelta: {x: 548, y: 388}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3445070900375907181
@@ -1708,6 +1741,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Lottery
   dataAccessor: {fileID: 7658630483019236272}
+  testSetting: 1
 --- !u!1 &7142696648747667928
 GameObject:
   m_ObjectHideFlags: 0
@@ -2405,7 +2439,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Reelcontroller
   image: {fileID: 8028264286479783971}
   layout: 000000000100000002000000010000000300000004000000020000000100000002000000010000000000000005000000010000000200000001000000040000000600000001000000020000000100000005000000
-  speed: 1.4
+  speed: 0.6
   layoutText: 
   numberManager: {fileID: 7118804425181596252}
 --- !u!1 &8988564821037389902
