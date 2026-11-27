@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class BonusManager : MonoBehaviour
 {
-    [SerializeField] private float pekaFirstRate = 0.5f;    // ボーナス当選時に先ペカになる割合
-    [SerializeField] private GameObject pekaLamp;           // 金色に光らせるもの
-    [SerializeField] private int bonusGames = 5;            // BIG_BONUS 後のブドウ確定ゲーム数(BONUS は半分)
+    [SerializeField] private float pekaFirstRate = 0.5f;    //ボーナス当選時に先ペカになる割合
+    [SerializeField] private GameObject pekaLamp;           //金色に光らせるもの
+    [SerializeField] private int bonusGames = 5;            //BIG_BONUS 後のブドウ確定ゲーム数(BONUS は半分)
 
     public Role bonusFlag = Role.None;                      // 持ち越し中のボーナス(BIG_BONUS / BONUS)
     public bool attackFlag;                                 // 戦闘側から true にされる AT 用フラグ
@@ -24,16 +24,16 @@ public class BonusManager : MonoBehaviour
 
             if (Random.value < pekaFirstRate)
             {
-                SetPeka(true);                              // 先ペカ
+                SetPeka(true);                              //先ペカ
             }
             else
             {
-                pekaAfterStop = true;                       // 停止後ペカ
+                pekaAfterStop = true;                       //停止後ペカ
             }
         }
     }
 
-    // ボーナス後のゲームなら、確定で出す役(ブドウ)を返す
+    //ボーナス後のゲームなら、確定で出す役(ブドウ)を返す
     public bool TryTakeForcedRole(out Role role)
     {
         if (bonusGamesLeft > 0)

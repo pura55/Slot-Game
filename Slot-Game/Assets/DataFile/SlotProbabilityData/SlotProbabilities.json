@@ -2,35 +2,75 @@
     "SlotProbabilities": [
         {
             "symbolname": "LIGHT_ATTACK",
-            "probability": 0.05
+            "probability_1": 0.05,
+            "probability_2": 0.06,
+            "probability_3": 0.07,
+            "probability_4": 0.08,
+            "probability_5": 0.09,
+            "probability_6": 0.1
         },
         {
             "symbolname": "HEAVY_ATTACK",
-            "probability": 0.02
+            "probability_1": 0.02,
+            "probability_2": 0.03,
+            "probability_3": 0.04,
+            "probability_4": 0.05,
+            "probability_5": 0.06,
+            "probability_6": 0.07
         },
         {
             "symbolname": "REPLAY",
-            "probability": 0.03
+            "probability_1": 0.03,
+            "probability_2": 0.03,
+            "probability_3": 0.03,
+            "probability_4": 0.03,
+            "probability_5": 0.03,
+            "probability_6": 0.03
         },
         {
             "symbolname": "HEAL",
-            "probability": 0.04
+            "probability_1": 0.04,
+            "probability_2": 0.04,
+            "probability_3": 0.04,
+            "probability_4": 0.04,
+            "probability_5": 0.04,
+            "probability_6": 0.04
         },
         {
             "symbolname": "COIN",
-            "probability": 0.05
+            "probability_1": 0.05,
+            "probability_2": 0.06,
+            "probability_3": 0.07,
+            "probability_4": 0.08,
+            "probability_5": 0.09,
+            "probability_6": 0.1
         },
         {
             "symbolname": "BIG_COIN",
-            "probability": 0.05
+            "probability_1": 0.05,
+            "probability_2": 0.06,
+            "probability_3": 0.07,
+            "probability_4": 0.08,
+            "probability_5": 0.09,
+            "probability_6": 0.1
         },
         {
             "symbolname": "BONUS",
-            "probability": 0.06
+            "probability_1": 0.06,
+            "probability_2": 0.07,
+            "probability_3": 0.08,
+            "probability_4": 0.09,
+            "probability_5": 0.1,
+            "probability_6": 0.11
         },
         {
             "symbolname": "BIG_BONUS",
-            "probability": 0.07
+            "probability_1": 0.07,
+            "probability_2": 0.08,
+            "probability_3": 0.09,
+            "probability_4": 0.1,
+            "probability_5": 0.11,
+            "probability_6": 0.12
         }
     ]
 }
