@@ -10,6 +10,9 @@ public class EnemyStatus : MonoBehaviour
     #region Config
     [Header("ID")]
     [SerializeField] private int enemyId = 1; // ID
+
+    [Header("Components")]
+    [SerializeField] private Enemy_DataAccessor dataAccessor; // データアクセサー
     #endregion
 
     #region State
@@ -21,4 +24,12 @@ public class EnemyStatus : MonoBehaviour
     public int EnemyExp { get { return experiencePoints; } }
     private int experiencePoints = 60;
     #endregion
+
+    private void Awake()
+    {
+        if(dataAccessor.TryGetEnemy(enemyId, out enemyHp,out experiencePoints))
+        {
+            Debug.Log("敵データの取得成功");
+        }
+    }
 }
