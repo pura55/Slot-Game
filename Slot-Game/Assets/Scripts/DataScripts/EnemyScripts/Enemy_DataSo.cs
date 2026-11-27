@@ -5,17 +5,17 @@ using UnityEngine;
 public class Enemy_DataSo : ScriptableObject
 {
     // エネミーのデータをリスト化する変数
-    public List<Enemy_DataBase> Enemys;
+    public List<Enemy_DataBase> Enemies;
 
     /// @brief データをコピーする関数
     public void CopyData(Enemy_Data data)
     {
         // リストを初期化
-        Enemys = new List<Enemy_DataBase>();
+        Enemies = new List<Enemy_DataBase>();
 
         Debug.Log($"コピーまでは来てます");
 
-        foreach (var Enemy in data.Enemys)
+        foreach (var Enemy in data.Enemies)
         {
             Debug.Log($"データコピー中");
 
@@ -26,7 +26,7 @@ public class Enemy_DataSo : ScriptableObject
             progressEnemy.XP = Enemy.XP;
 
             // 実体を入れる
-            Enemys.Add(progressEnemy);
+            Enemies.Add(progressEnemy);
         }
     }
 }
