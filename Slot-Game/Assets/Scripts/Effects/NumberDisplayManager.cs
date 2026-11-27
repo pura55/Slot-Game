@@ -41,7 +41,7 @@ public class NumberDisplayManager : MonoBehaviour
     /// </summary>
     public void AddNumber()
     {
-        AddValue(1);
+        AddValue(15);
     }
 
     /// <summary>
