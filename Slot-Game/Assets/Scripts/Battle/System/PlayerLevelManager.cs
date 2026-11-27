@@ -11,9 +11,10 @@ public static class PlayerLevelManager
     #region State
     // 現在のレベル
     public static int CurrentLevel { get { return currentLevel; } private set { currentLevel = value;  } }
-    private static int currentLevel = 0; 
+    private static int currentLevel = 1; 
 
     private const int maxLevel = 10; // 最大レベル
+    private const int minLevel = 1; // 最少レベル
 
     // 現在の経験値
     public static int CurrentExp { get { return currentExp; } set { currentExp = value; } }
@@ -26,11 +27,11 @@ public static class PlayerLevelManager
     /// @brief レベルの初期化を行います
     public static void InitLevel()
     {
-        // 初期化量のレベルは0
-        int initAmount = 0; 
+        // 初期化経験値
+        int initExpAmount = 0; 
 
-        CurrentLevel = initAmount;
-        CurrentExp = initAmount;
+        CurrentLevel = minLevel;
+        CurrentExp = initExpAmount;
     }
 
     /// @brief レベルアップを行います
