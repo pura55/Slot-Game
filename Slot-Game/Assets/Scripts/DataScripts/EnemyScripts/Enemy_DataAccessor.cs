@@ -17,14 +17,14 @@ public class Enemy_DataAccessor : MonoBehaviour
 
         //ScriptableObjectまたはデータリストが存在しない場合は終了
         if (enemy_Data == null ||
-            enemy_Data.Enemys == null)
+            enemy_Data.Enemies == null)
         {
             return false;
         }
 
 
         //ID名が一致するデータを検索
-        foreach (var item in enemy_Data.Enemys)
+        foreach (var item in enemy_Data.Enemies)
         {
             if (item.ID == ID)
             {

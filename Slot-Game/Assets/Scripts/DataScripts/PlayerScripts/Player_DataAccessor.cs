@@ -7,10 +7,13 @@ public class Player_DataAccessor : MonoBehaviour
 
     //Level = プレイヤーのレベル
     //HP = プレイヤーの体力
-    public bool TryGetStatus(int Level, out int HP)
+    public bool TryGetStatus(int Level, out int HP, out int LightDamage, out int HeavyDamage)
     {
         //取得失敗時の初期値の設定
         HP = 0;
+        LightDamage = 0;
+        HeavyDamage = 0;
+
 
         //ScriptableObjectまたはデータリストが存在しない場合は終了
         if (player_Data == null ||
@@ -27,6 +30,8 @@ public class Player_DataAccessor : MonoBehaviour
             {
                 //一致したデータを返す
                 HP = item.HP;
+                LightDamage = item.LightDamage;
+                HeavyDamage = item.HeavyDamage;
                 return true;
             }
         }

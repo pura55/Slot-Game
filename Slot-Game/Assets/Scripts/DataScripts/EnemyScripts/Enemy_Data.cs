@@ -4,5 +4,5 @@ using System.Collections.Generic;
 
 [Serializable]public class Enemy_Data
 {
-    public List<Enemy_DataBase> Enemys; //エネミーのデータをリスト化する変数
+    public List<Enemy_DataBase> Enemies; //エネミーのデータをリスト化する変数
 }
