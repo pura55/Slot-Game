@@ -19,6 +19,7 @@ public class PlayerManager : MonoBehaviour, IBattleable
 
     [Header("VFX")]
     [SerializeField] private GameObject spawnVFX; // スポーンエフェクト
+    [SerializeField] private GameObject levelUpVFX; // レベルアップエフェクト
 
     [Header("SpawnTime")]
     [SerializeField] private float spawnPresentationTime = 2f; // スポーンの演出時間
@@ -50,6 +51,8 @@ public class PlayerManager : MonoBehaviour, IBattleable
         Reelcontroller.OnSpin += InputMovement;
 
         StopButton.OnHit += InputCommand;
+
+        PlayerLevelManager.OnLevelUp += GenerateLevelUpVFX;
     }
 
     private void OnDisable()
@@ -62,6 +65,8 @@ public class PlayerManager : MonoBehaviour, IBattleable
         Reelcontroller.OnSpin -= InputMovement;
 
         StopButton.OnHit -= InputCommand;
+
+        PlayerLevelManager.OnLevelUp -= GenerateLevelUpVFX;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -176,5 +181,10 @@ public class PlayerManager : MonoBehaviour, IBattleable
     private void GenerateSpawnVFX()
     {
         Instantiate(spawnVFX, transform.position + spawnVFX.transform.position, spawnVFX.transform.rotation, stageMovement.StageTransfrom);
+    }
+    
+    private void GenerateLevelUpVFX()
+    {
+        Instantiate(levelUpVFX, transform.position + levelUpVFX.transform.position, levelUpVFX.transform.rotation, transform);
     }
 }

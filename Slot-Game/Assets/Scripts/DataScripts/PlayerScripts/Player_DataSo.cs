@@ -23,6 +23,8 @@ public class Player_DataSo : ScriptableObject
             Player_DataBase progressStatus = new Player_DataBase();
             progressStatus.Level = Status.Level;
             progressStatus.HP = Status.HP;
+            progressStatus.LightDamage = Status.LightDamage;
+            progressStatus.HeavyDamage = Status.HeavyDamage;
 
             // ŽÀ‘Ì‚ð“ü‚ê‚é
             Statuses.Add(progressStatus);
