@@ -8,6 +8,10 @@ using UnityEngine;
 public class PlayerStatus : MonoBehaviour
 {
     #region Config
+    [Header("PlayerComponents")]
+    [SerializeField] private Player_DataAccessor dataAccessor; // データアクセサー
+    [SerializeField] private PlayerHealth playerHealth; // プレイヤーヘルス
+
     [Header("DamageCommandEffect")]
     [SerializeField] private DamageEffect heavyDamage; // 強ダメージ
     [SerializeField] private DamageEffect lightDamage; // 弱ダメージ
@@ -40,12 +44,14 @@ public class PlayerStatus : MonoBehaviour
     /// @brief ステータスの初期化を行います
     private void InitStatus()
     {
-        UpdateDamageAmount();
+        UpdateStatus();
+        playerHealth.ResetHealth();
     }
 
     /// @brief ステータスの更新を行います
     private void UpdateStatus()
     {
+        dataAccessor.TryGetStatus(PlayerLevelManager.CurrentLevel, out playerHp, out lightAttackDamage, out heavyAttackDamage);
         UpdateDamageAmount();
     }
 
