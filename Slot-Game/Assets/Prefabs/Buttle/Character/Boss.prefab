@@ -656,6 +656,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStatus
   enemyId: 2
+  dataAccessor: {fileID: 5651526094662827138}
 --- !u!114 &5651526094662827138
 MonoBehaviour:
   m_ObjectHideFlags: 0
