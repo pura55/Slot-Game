@@ -327,7 +327,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Reelcontroller
   image: {fileID: 5369183711430384078}
   layout: 020000000300000001000000050000000200000004000000010000000500000002000000030000000100000005000000020000000000000001000000050000000600000002000000040000000100000005000000
-  speed: 0.5
+  speed: 1.25
   layoutText: 
   numberManager: {fileID: 7118804425181596252}
 --- !u!1 &1406930690423115278
@@ -780,7 +780,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Reelcontroller
   image: {fileID: 7502853717942941072}
   layout: 010000000600000003000000020000000100000004000000000000000300000002000000010000000600000003000000020000000100000006000000030000000200000001000000060000000300000002000000
-  speed: 0.6
+  speed: 1.2
   layoutText: 
   numberManager: {fileID: 7118804425181596252}
 --- !u!1 &2269286199632595155
@@ -794,7 +794,7 @@ GameObject:
   - component: {fileID: 8954671121921057961}
   - component: {fileID: 7593644641110859006}
   - component: {fileID: 4411319549451450294}
-  - component: {fileID: 6078528623201994875}
+  - component: {fileID: 1936904793486841815}
   - component: {fileID: 4518576181447594038}
   - component: {fileID: 393343826110802499}
   m_Layer: 6
@@ -861,7 +861,7 @@ MonoBehaviour:
   bonusGames: 5
   bonusFlag: 0
   attackFlag: 0
---- !u!114 &6078528623201994875
+--- !u!114 &1936904793486841815
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -870,11 +870,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 2269286199632595155}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b12fd00a25cb8fb40a53799d8f13e534, type: 3}
+  m_Script: {fileID: 11500000, guid: 469a11f64dfc62f4da3f26d4a391710b, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ReelStopSolver
-  maxSlip: 4
-  bonusMaxSlip: 2
+  m_EditorClassIdentifier: Assembly-CSharp::SlotKeyInput
+  stopButton: {fileID: 7593644641110859006}
+  betButton: {fileID: 4682592368521670229}
+  numberManager: {fileID: 7118804425181596252}
+  betKey: 102
+  leverKey: 32
+  stopLeftKey: 103
+  stopCenterKey: 104
+  stopRightKey: 106
 --- !u!114 &4518576181447594038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -891,7 +897,7 @@ MonoBehaviour:
   pekaLamp: {fileID: 3619941028805975458}
   bonusGames: 5
   bonusFlag: 0
-  attackFlag: 0
+  attackFlag: 1
 --- !u!114 &393343826110802499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2439,7 +2445,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Reelcontroller
   image: {fileID: 8028264286479783971}
   layout: 000000000100000002000000010000000300000004000000020000000100000002000000010000000000000005000000010000000200000001000000040000000600000001000000020000000100000005000000
-  speed: 0.6
+  speed: 1.3
   layoutText: 
   numberManager: {fileID: 7118804425181596252}
 --- !u!1 &8988564821037389902
