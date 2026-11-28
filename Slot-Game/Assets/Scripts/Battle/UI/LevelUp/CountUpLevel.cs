@@ -2,11 +2,11 @@ using UnityEngine;
 using TMPro;
 
 /// <summary>
-/// カウントアップナンバー
+/// カウントアップレベル
 /// 
-/// 繰り上がる数字を管理します
+/// 繰り上がるレベルの数字を表示します
 /// </summary>
-public class CountUpNumber : MonoBehaviour
+public class CountUpLevel : MonoBehaviour
 {
     #region Config
     [SerializeField] private TextMeshProUGUI textMeshProUGUI; // テキスト

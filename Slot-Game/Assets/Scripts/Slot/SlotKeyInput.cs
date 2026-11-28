@@ -6,7 +6,7 @@ public class SlotKeyInput : MonoBehaviour
 {
     [SerializeField] private StopButton stopButton;
     [SerializeField] private Button betButton;
-    [SerializeField] private NumberManager numberManager;
+    [SerializeField] private CoinManager coinManager;
 
     [SerializeField] private KeyCode betKey = KeyCode.F;
     [SerializeField] private KeyCode leverKey = KeyCode.Space;
@@ -52,7 +52,7 @@ public class SlotKeyInput : MonoBehaviour
             }
         }
 
-        if(numberManager!=null&& numberManager.IsUsed)
+        if(coinManager!=null&& coinManager.IsUsed)
         {
             return;
         }

@@ -2,6 +2,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// プレイヤーコマンダー
+/// 
+/// コマンドの指示を行います
+/// </summary>
 public class PlayerCommander : MonoBehaviour
 {
     #region Config
@@ -11,6 +16,7 @@ public class PlayerCommander : MonoBehaviour
     [Header("PlayerComponents")]
     [SerializeField] private PlayerManager playerManager; // プレイヤー管理者
     #endregion
+
     private void Update()
     {
         // 敵の行動中やプレイヤーが既に行動中の場合、処理を受け付けない
@@ -25,6 +31,7 @@ public class PlayerCommander : MonoBehaviour
         }
     }
 
+    /// @brief コマンドを指示します
     public void OperateCommand(PlayerCommandType type)
     {
         if (playerManager.State != PlayerState.BATTLE)

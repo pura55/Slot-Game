@@ -12,7 +12,7 @@ public class Reelcontroller : MonoBehaviour
 
     public string layoutText;               //並びを文字で貼り入れるための欄
 
-    [SerializeField] private NumberManager numberManager;
+    [SerializeField] private CoinManager coinManager; //　コインマネジャー
 
     bool spinning;
     bool stopping;                          //停止位置へ滑っている途中
@@ -36,8 +36,13 @@ public class Reelcontroller : MonoBehaviour
     //リールを回す
     public void StartSpin()
     {
+        if(coinManager == null)
+        {
+            Debug.LogError("コインマネジャーが設定されていません");
+        }
+
         // 3枚消費していなければ回さない
-        if (numberManager == null || !numberManager.IsUsed)
+        if (!coinManager.IsUsed)
         {
             Debug.Log("先に3枚消費してください");
             return;
