@@ -19,28 +19,10 @@ public class PlayerCommander : MonoBehaviour
             return;
         }
 
-        //if (playerManager.State == PlayerState.BATTLE)
-        //{
-        //    if (Keyboard.current.rKey.wasPressedThisFrame)
-        //    {
-        //        OperateCommand(PlayerCommandType.LIGHT_ATTACK);
-        //    }
-
-        //    if (Keyboard.current.kKey.wasPressedThisFrame)
-        //    {
-        //        OperateCommand(PlayerCommandType.HEAVY_ATTACK);
-        //    }
-
-        //    if (Keyboard.current.bKey.wasPressedThisFrame)
-        //    {
-        //        OperateCommand(PlayerCommandType.BONUS);
-        //    }
-
-        //    if (Keyboard.current.hKey.wasPressedThisFrame)
-        //    {
-        //        OperateCommand(PlayerCommandType.HEAL);
-        //    }
-        //}
+        if(DebugManager.IsDebug)
+        {
+            DebugInputs();
+        }
     }
 
     public void OperateCommand(PlayerCommandType type)
@@ -85,5 +67,33 @@ public class PlayerCommander : MonoBehaviour
         }
 
         return enemies;
+    }
+
+    /// @brief デバック時のキー入力を行います 
+    private void DebugInputs()
+    {
+        if (playerManager.State == PlayerState.BATTLE)
+        {
+            if (Keyboard.current.digit1Key.wasPressedThisFrame)
+            {
+                OperateCommand(PlayerCommandType.LIGHT_ATTACK);
+            }
+
+            if (Keyboard.current.digit2Key.wasPressedThisFrame)
+            {
+                OperateCommand(PlayerCommandType.HEAVY_ATTACK);
+            }
+
+            if (Keyboard.current.digit3Key.wasPressedThisFrame)
+            {
+                OperateCommand(PlayerCommandType.HEAL);
+            }
+
+            if (Keyboard.current.digit4Key.wasPressedThisFrame)
+            {
+                OperateCommand(PlayerCommandType.BONUS);
+            }
+
+        }
     }
 }

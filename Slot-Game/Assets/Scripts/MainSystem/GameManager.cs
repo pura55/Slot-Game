@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 /// <summary>
 /// ゲームマネージャー
@@ -18,7 +20,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        ChangePlayMode();
     }
 
     /// @brief 重複したEventSystemを削除します
@@ -39,5 +41,29 @@ public class GameManager : MonoBehaviour
                 Destroy(es.gameObject);
             }
         }
+    }
+
+    /// @brief プレイする際のモードを変更します
+    private void ChangePlayMode()
+    {
+        if(Keyboard.current.dKey.wasPressedThisFrame && Keyboard.current.tabKey.wasPressedThisFrame)
+        {
+            if(!DebugManager.IsDebug)
+            {
+                DebugManager.IsDebug = true;
+                Debug.Log("デバックモードに入りました。");
+            }
+            else
+            {
+                DebugManager.IsDebug = false;
+                Debug.Log("デバックモードを解除しました。");
+            }
+        }
+    }
+
+    /// @brief タイトルシーンのロードを行います
+    public void BackToTitle()
+    {
+        SceneManager.LoadScene("Title");
     }
 }
