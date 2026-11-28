@@ -1,9 +1,12 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class SlotProbabilityDataLoader : DataLoaderBase
 {
     #region Config
-    [SerializeField] private SlotProbabilityDataSo slotprobabilityDataSo;
+    [Header("スロットデータのTextAssetはこちらに入れてください")]
+    [SerializeField] private List<TextAsset> textAssets;
+    [SerializeField] private List<SlotProbabilityDataSo> slotprobabilityDataSo;
     #endregion
 
     private void Awake()
@@ -13,15 +16,24 @@ public class SlotProbabilityDataLoader : DataLoaderBase
 
     protected override void LoadData()
     {
-        // 共通のJSON読み込み機能を利用
-        SlotProbabilityData data = JsonDataLoader.Load<SlotProbabilityData>(textAsset);
+      
+        //SlotProbabilityData data = JsonDataLoader.Load<SlotProbabilityData>(textAsset);
 
-        // 読み込みに成功した場合
-        if (data != null)
+        for(int i = 0; i < textAssets.Count; i++)
         {
-            slotprobabilityDataSo.CopyData(data);
+            // 共通のJSON読み込み機能を利用
+            SlotProbabilityData data = JsonDataLoader.Load<SlotProbabilityData>(textAssets[i]);
 
-            Debug.Log("データが読み込まれました。");
+            //読み込みに成功した場合
+            if (data != null)
+            {
+                slotprobabilityDataSo[i].CopyData(data);
+
+                Debug.Log("データが読み込まれました");
+            }
+
         }
+
+
     }
 }
