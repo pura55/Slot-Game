@@ -329,7 +329,7 @@ MonoBehaviour:
   layout: 020000000300000001000000050000000200000004000000010000000500000002000000030000000100000005000000020000000000000001000000050000000600000002000000040000000100000005000000
   speed: 1.25
   layoutText: 
-  numberManager: {fileID: 7118804425181596252}
+  coinManager: {fileID: 7118804425181596252}
 --- !u!1 &1406930690423115278
 GameObject:
   m_ObjectHideFlags: 0
@@ -782,7 +782,7 @@ MonoBehaviour:
   layout: 010000000600000003000000020000000100000004000000000000000300000002000000010000000600000003000000020000000100000006000000030000000200000001000000060000000300000002000000
   speed: 1.2
   layoutText: 
-  numberManager: {fileID: 7118804425181596252}
+  coinManager: {fileID: 7118804425181596252}
 --- !u!1 &2269286199632595155
 GameObject:
   m_ObjectHideFlags: 0
@@ -838,7 +838,7 @@ MonoBehaviour:
   lottery: {fileID: 6249007422781446722}
   solver: {fileID: 393343826110802499}
   bonus: {fileID: 4518576181447594038}
-  numberManager: {fileID: 7118804425181596252}
+  coinManager: {fileID: 7118804425181596252}
   ignoreBattleState: 0
   setting: 1
   useDebugRole: 0
@@ -875,7 +875,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SlotKeyInput
   stopButton: {fileID: 7593644641110859006}
   betButton: {fileID: 4682592368521670229}
-  numberManager: {fileID: 7118804425181596252}
+  coinManager: {fileID: 7118804425181596252}
   betKey: 102
   leverKey: 32
   stopLeftKey: 103
@@ -949,7 +949,6 @@ RectTransform:
   - {fileID: 856330800152811609}
   - {fileID: 5201948061761037912}
   - {fileID: 8755352529260352804}
-  - {fileID: 6465337655044067526}
   m_Father: {fileID: 4388719999879161912}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1441,51 +1440,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!1 &4366902985768101635
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6465337655044067526}
-  - component: {fileID: 5185575589953031812}
-  m_Layer: 6
-  m_Name: KeyInput (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6465337655044067526
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4366902985768101635}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 118242.96, y: 72795.23, z: -9719.999}
-  m_LocalScale: {x: 215.99998, y: 215.99998, z: 108}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3670228325822475896}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5185575589953031812
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4366902985768101635}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee587e8f96a63994e80cb200fcc2335a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::KeyInput
-  numberManager: {fileID: 7118804425181596252}
 --- !u!1 &5207902445626126820
 GameObject:
   m_ObjectHideFlags: 0
@@ -2447,7 +2401,7 @@ MonoBehaviour:
   layout: 000000000100000002000000010000000300000004000000020000000100000002000000010000000000000005000000010000000200000001000000040000000600000001000000020000000100000005000000
   speed: 1.3
   layoutText: 
-  numberManager: {fileID: 7118804425181596252}
+  coinManager: {fileID: 7118804425181596252}
 --- !u!1 &8988564821037389902
 GameObject:
   m_ObjectHideFlags: 0

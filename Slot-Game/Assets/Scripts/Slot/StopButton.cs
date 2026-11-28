@@ -10,7 +10,7 @@ public class StopButton : MonoBehaviour
     [SerializeField] private ReelStopSolver solver;
     [SerializeField] private BonusManager bonus;
   
-    [SerializeField] private NumberManager numberManager;
+    [SerializeField] private CoinManager coinManager;
 
     [Header("テスト用")]
     public bool ignoreBattleState;
@@ -52,7 +52,7 @@ public class StopButton : MonoBehaviour
         }
 
         //BETしていなければ始めない
-        if (numberManager != null && !numberManager.IsUsed)
+        if (coinManager != null && !coinManager.IsUsed)
         {
             Debug.Log("先にBETしてください");
             return;
