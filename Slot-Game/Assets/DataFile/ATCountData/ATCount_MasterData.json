@@ -1,0 +1,34 @@
+{
+    "ATCount": [
+        {
+            "Setting": 1,
+            "Min": 6,
+            "Max": 60
+        },
+        {
+            "Setting": 2,
+            "Min": 5,
+            "Max": 50
+        },
+        {
+            "Setting": 3,
+            "Min": 4,
+            "Max": 40
+        },
+        {
+            "Setting": 4,
+            "Min": 3,
+            "Max": 30
+        },
+        {
+            "Setting": 5,
+            "Min": 2,
+            "Max": 20
+        },
+        {
+            "Setting": 6,
+            "Min": 1,
+            "Max": 10
+        }
+    ]
+}

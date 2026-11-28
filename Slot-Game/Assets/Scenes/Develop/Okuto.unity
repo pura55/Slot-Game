@@ -541,7 +541,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SlotProbabilityDataLoader
   textAsset: {fileID: 4900000, guid: 2f71f610551c31f4e9c8df27a7e20902, type: 3}
-  slotprobabilityDataSo: {fileID: 11400000, guid: a02be35601c187841923b601a96e90c9, type: 2}
+  textAssets:
+  - {fileID: 4900000, guid: 2f71f610551c31f4e9c8df27a7e20902, type: 3}
+  - {fileID: 4900000, guid: 46a0678914e867a4fbc4a296bfd84630, type: 3}
+  - {fileID: 4900000, guid: 7cda8d4086a5a0c4aa67debbea8e0464, type: 3}
+  slotprobabilityDataSo:
+  - {fileID: 11400000, guid: a02be35601c187841923b601a96e90c9, type: 2}
+  - {fileID: 11400000, guid: 3467099c5365a2647b83aaa602c33c5b, type: 2}
+  - {fileID: 11400000, guid: 55b53b833feb667418696cdff1f482f7, type: 2}
 --- !u!4 &1357173316
 Transform:
   m_ObjectHideFlags: 0
@@ -595,6 +602,52 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1840925110}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2037340430
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2037340432}
+  - component: {fileID: 2037340431}
+  m_Layer: 0
+  m_Name: ATCountDataLoader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2037340431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2037340430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57c57492c99fa8b4cba2c7cd1750fdfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ATCount_DataLoader
+  textAsset: {fileID: 4900000, guid: 9cbb7507c81e8df4fb0db42392c390dc, type: 3}
+  atcount_DataSo: {fileID: 11400000, guid: 92b17a61a3d4ae043837949f4be209e0, type: 2}
+--- !u!4 &2037340432
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2037340430}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -716,3 +769,4 @@ SceneRoots:
   - {fileID: 1357173316}
   - {fileID: 727720336}
   - {fileID: 1840925112}
+  - {fileID: 2037340432}
