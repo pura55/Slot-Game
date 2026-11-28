@@ -19,28 +19,28 @@ public class PlayerCommander : MonoBehaviour
             return;
         }
 
-        if (playerManager.State == PlayerState.BATTLE)
-        {
-            if (Keyboard.current.rKey.wasPressedThisFrame)
-            {
-                OperateCommand(PlayerCommandType.LIGHT_ATTACK);
-            }
+        //if (playerManager.State == PlayerState.BATTLE)
+        //{
+        //    if (Keyboard.current.rKey.wasPressedThisFrame)
+        //    {
+        //        OperateCommand(PlayerCommandType.LIGHT_ATTACK);
+        //    }
 
-            if (Keyboard.current.kKey.wasPressedThisFrame)
-            {
-                OperateCommand(PlayerCommandType.HEAVY_ATTACK);
-            }
+        //    if (Keyboard.current.kKey.wasPressedThisFrame)
+        //    {
+        //        OperateCommand(PlayerCommandType.HEAVY_ATTACK);
+        //    }
 
-            if (Keyboard.current.bKey.wasPressedThisFrame)
-            {
-                OperateCommand(PlayerCommandType.BONUS);
-            }
+        //    if (Keyboard.current.bKey.wasPressedThisFrame)
+        //    {
+        //        OperateCommand(PlayerCommandType.BONUS);
+        //    }
 
-            if (Keyboard.current.hKey.wasPressedThisFrame)
-            {
-                OperateCommand(PlayerCommandType.HEAL);
-            }
-        }
+        //    if (Keyboard.current.hKey.wasPressedThisFrame)
+        //    {
+        //        OperateCommand(PlayerCommandType.HEAL);
+        //    }
+        //}
     }
 
     public void OperateCommand(PlayerCommandType type)
